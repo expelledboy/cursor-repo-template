@@ -7,28 +7,10 @@ This document is optimized for quickly and safely editing a `justfile`, while st
 
 ---
 
-## Quick start (minimum)
+## Quick start
 
-Create `justfile` at project root:
-
-```just
-default:
-  @just --list
-
-build:
-  echo Building…
-
-test: build
-  echo Testing…
-```
-
-Run:
-
-* `just` → runs the `[default]` recipe, or the first recipe if none is marked default
-* `just --list` / `just --summary` → discover recipes
-* `just --show <recipe>` → view a recipe
-* `just --evaluate <expr-or-var>` → evaluate variables/expressions
-* `just var=val` → override variable `var` with `val` (e.g. `just target=prod build`)
+For a minimal, task-oriented setup, see `docs/how-to/dev/just-quickstart.md`.
+This document is intentionally **reference-heavy** (dense signal) and optimized for looking things up, not onboarding.
 
 ---
 

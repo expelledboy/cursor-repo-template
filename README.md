@@ -24,7 +24,7 @@ This bidirectional linking ensures agents can find and maintain context correctl
 ## Learn More
 
 - **System rationale**: `docs/explanation/architecture/doc-system-rationale.md`
-- **Getting started**: `docs/how-to/docs/getting-started.md`
+- **Getting started**: `docs/tutorials/getting-started.md`
 
 ---
 

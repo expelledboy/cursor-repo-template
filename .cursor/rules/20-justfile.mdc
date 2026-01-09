@@ -1,0 +1,14 @@
+---
+description: justfile, just, recipes, task runner
+---
+- When working with a `justfile` (authoring, debugging, adding recipes, flags, groups, imports, dotenv, settings), load:
+  - `docs/reference/dev/justfile.md` (authoritative syntax/semantics; dense signal)
+  - `docs/how-to/dev/just-quickstart.md` (minimal working patterns; practical usage)
+- If the task involves running `just` inside Cursor, also load:
+  - `docs/how-to/dev/cursor-integration.md` (direnv workaround)
+- For toolchain context (direnv/Nix/just interplay), optionally load:
+  - `docs/reference/dev/tool-stack.md`
+
+- Keep changes clean:
+  - Prefer updating `docs/reference/dev/justfile.md` for factual/semantic truth.
+  - Prefer updating `docs/how-to/dev/just-quickstart.md` for runnable examples and workflows.

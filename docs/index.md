@@ -1,6 +1,6 @@
 # Documentation Map (start here)
 
-Read this file first. It lists the canonical sources of truth and where to add new information. Authority order: **reference → how-to → explanation → work → archive**.
+Read this file first. It lists the canonical sources of truth and where to add new information. Authority order: **reference → how-to → explanation → tutorials → work → archive**.
 
 ## Documentation System
 
@@ -8,7 +8,7 @@ This repository uses a **Software-Defined Documentation System** optimized for C
 
 - **Context Rule:** `.cursor/rules/10-docs-routing.mdc`
 - **System rationale**: `docs/explanation/architecture/doc-system-rationale.md` (why this structure exists)
-- **Getting started**: `docs/how-to/docs/getting-started.md` (how to use this system)
+- **Tutorial**: `docs/tutorials/getting-started.md` (learn the system)
 - **Restructuring guide**: `docs/how-to/docs/content-aware-restructuring.md` (how to restructure docs systematically)
 
 ## Development Tools
@@ -16,6 +16,8 @@ This repository uses a **Software-Defined Documentation System** optimized for C
 Development environment setup and tooling (direnv, just, Nix Flake).
 
 - **Tool stack reference**: `docs/reference/dev/tool-stack.md` (what each tool does)
+- **Justfile editing rule**: `.cursor/rules/20-justfile.mdc` (load just reference + quickstart when editing a `justfile`)
+- **Just quickstart**: `docs/how-to/dev/just-quickstart.md` (minimal setup + basic usage)
 - **Justfile reference**: `docs/reference/dev/justfile.md` (authoring guide and reference)
 - **Setup guide**: `docs/how-to/dev/setup.md` (how to set up the environment)
 - **Cursor integration**: `docs/how-to/dev/cursor-integration.md` (Cursor IDE workarounds)

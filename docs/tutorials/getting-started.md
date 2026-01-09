@@ -1,27 +1,32 @@
 # Getting Started with the Documentation System
 
-This guide walks you through setting up and using the Software-Defined Documentation System in your project.
+This tutorial guides you through setting up and understanding the Software-Defined Documentation System.
 
-## Step 1: Understand the Structure
+## Goal
+
+By the end of this tutorial, you will understand the four quadrants of the documentation system and how to create your first domain.
+
+## Prerequisite: The Structure
 
 The documentation system uses a **Hybrid Diátaxis + Domain** structure:
 
+- **`docs/tutorials/`** - Learning-oriented lessons (lowest authority; high token cost; avoid for execution tasks)
 - **`docs/reference/`** - Stable facts, contracts, configurations (single source of truth)
 - **`docs/how-to/`** - Step-by-step procedures, runbooks
 - **`docs/explanation/`** - Rationale, architecture, mental models
 - **`docs/work/`** - Drafts, research, verification notes (with Status/Date)
 - **`docs/archive/`** - Superseded content (with banners)
 
-**Authority order**: reference → how-to → explanation → work → archive
+**Authority order**: reference → how-to → explanation → tutorials → work → archive
 
-## Step 2: Customize AGENTS.md
+## Step 1: Customize `AGENTS.md`
 
 Edit `AGENTS.md` to replace any project-specific references. The file should describe:
 - Your project's name
 - Your project's specific domains (if known)
 - Any project-specific verification expectations
 
-## Step 3: Create Your First Domain
+## Step 2: Create Your First Domain
 
 When you're ready to document your first project domain:
 
@@ -50,11 +55,34 @@ When you're ready to document your first project domain:
    - Explanation: `docs/explanation/your-domain/architecture.md`
    ```
 
+## Step 3 (Exercise): Create a “sample” domain end-to-end
+
+This is a short, hands-on exercise to make sure you can execute the “Map + Router” loop **without guessing**. Do this in your real project (or in a scratch branch), not necessarily in the template’s default docs.
+
+1. **Create three canonicals** (empty but real, so you can fill them in later):
+   - `docs/reference/sample/config.md` (facts/constraints only)
+   - `docs/how-to/sample/setup.md` (steps only)
+   - `docs/explanation/sample/architecture.md` (why/intent only)
+
+2. **Create the routing rule**:
+   - `.cursor/rules/20-sample.topic.mdc`
+   - Include:
+     - A `description:` line with trigger keywords (“sample”, “example domain”, etc.)
+     - A bullet list that tells an agent exactly which canonicals to load
+
+3. **Register the domain in the Map**:
+   - Add a section to `docs/index.md`:
+     - **Context Rule**: `.cursor/rules/20-sample.topic.mdc`
+     - Reference/How-to/Explanation links for the sample domain
+
+**Success criteria**: when you ask an agent “how does the sample domain work?”, it should load only those three canonicals and the rule—not the whole repo.
+
 ## Step 4: Start Documenting
 
 When creating new documentation:
 
 1. **Ask yourself**: "What is the intent?"
+   - Lesson (learn-by-doing) → `docs/tutorials/`
    - Fact → `docs/reference/`
    - Procedure → `docs/how-to/`
    - Rationale → `docs/explanation/`

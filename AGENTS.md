@@ -2,8 +2,37 @@
 
 You are working in this repository. Follow this behavior contract on every task.
 
+## Context Efficiency & The Compass
+The "Context Window" is your scarcest resource. Do not load all docs. Use the **Diátaxis Compass** to decide what to read based on your task:
+
+| If your task is... | And you need to... | Load ONLY... | Ignore... |
+|---|---|---|---|
+| **Coding / Execution** | Apply skills (Work) | **How-to** (Steps) + **Reference** (Facts) | Tutorials, Explanation |
+| **Learning / Onboarding** | Acquire skills (Study) | **Tutorials** (Lessons) | Reference (too dense) |
+| **Architecture / Design** | Understand context (Study) | **Explanation** (Why) + **Reference** (Facts) | Tutorials, How-to |
+
+## Context Loading Quickstart (copy/paste)
+
+Use these when you’re about to start work. They are designed to prevent “context bloat”.
+
+- **Implement / modify code (execution task)**
+  - **Load**: `docs/reference/<domain>/**` + `docs/how-to/<domain>/**` (and the domain’s `.cursor/rules/*.mdc` if it exists).
+  - **Ignore**: `docs/tutorials/**` and `docs/explanation/**` unless you are blocked on intent/rationale.
+
+- **Debug / troubleshoot**
+  - **Load**: `docs/how-to/<domain>/**` first, then `docs/reference/<domain>/**` for contracts/invariants.
+  - **Ignore**: `docs/tutorials/**` (learning) and most `docs/explanation/**` (background) unless needed.
+
+- **Architecture / design / “why is it like this?”**
+  - **Load**: `docs/explanation/<domain>/**` + `docs/reference/<domain>/**`.
+  - **Ignore**: `docs/how-to/**` and `docs/tutorials/**`.
+
+- **Onboarding / learn the system**
+  - **Load**: `docs/tutorials/**` only.
+  - **Ignore**: `docs/reference/**` until you need exact facts/contracts.
+
 ## Authority order
-reference → how-to → explanation → work → archive. When docs conflict, defer to the highest authority.
+reference → how-to → explanation → tutorials → work → archive. When docs conflict, defer to the highest authority.
 
 ## First steps for any task
 1) Read `docs/index.md` (doc map + sources of truth).

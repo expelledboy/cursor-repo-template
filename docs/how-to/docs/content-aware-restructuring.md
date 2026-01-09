@@ -10,8 +10,9 @@
 - Files that are too long or serve multiple purposes
 
 **Prerequisites**:
-- Understanding of Diátaxis framework (reference, how-to, explanation, work, archive)
+- Understanding of Diátaxis framework (reference, how-to, explanation, tutorials, work, archive)
 - Familiarity with the documentation system's authority order
+- Understanding of context efficiency principles (tutorials are ignored during execution tasks)
 - Access to all documentation files
 
 ---
@@ -21,8 +22,9 @@
 This process involves systematically analyzing all documentation files to identify restructuring opportunities, then executing changes in prioritized phases. The goal is to create a maintainable documentation structure where:
 
 - **Reference** = Stable facts, contracts, configurations (single source of truth)
-- **How-to** = Step-by-step procedures, runbooks
-- **Explanation** = Rationale, architecture, mental models
+- **How-to** = Step-by-step procedures, runbooks (task-oriented, high signal for execution)
+- **Explanation** = Rationale, architecture, mental models (understanding-oriented)
+- **Tutorials** = Learning-oriented lessons (lowest authority; high token cost; ignored during execution tasks)
 - **Work** = Drafts, research, verification notes (with Status/Date)
 - **Archive** = Superseded content (with banners)
 
@@ -62,14 +64,15 @@ Count total files and verify you have the complete set. This ensures nothing is 
 
 **For each batch:**
 1. Read all files in the batch completely (not summaries)
-2. Identify the primary intent of each file (reference, how-to, explanation, work)
+2. Identify the primary intent of each file (reference, how-to, explanation, tutorials, work)
 3. Note what each file does well vs. what needs improvement
 4. Look for obvious overlaps or duplication
 
 **What to look for:**
 - **Duplication**: Same content in multiple files
 - **Mixed concerns**: Facts + procedures + rationale in one file
-- **Wrong category**: Facts in explanation docs, procedures in reference docs
+- **Wrong category**: Facts in explanation docs, procedures in reference docs, learning content in how-to
+- **Tutorials vs How-to confusion**: Learning-oriented content in how-to (should be tutorials), or task-oriented content in tutorials (should be how-to)
 - **Work docs with stable content**: Verified facts that should be promoted
 - **Size/complexity**: Very long files that mix multiple concerns
 
@@ -96,13 +99,21 @@ This helps identify where content should live.
    - Long how-to docs that include reference material
    - Reference docs that include step-by-step procedures
    - Explanation docs that include factual tables
+   - Tutorials content in how-to docs (learning vs task-oriented)
+   - How-to content in tutorials (task-oriented vs learning-oriented)
 
 3. **Promotion patterns**:
    - Work docs with "verified facts" sections
    - Work docs with stable content and Status: Draft
    - Research docs with confirmed findings
 
-4. **Structural patterns**:
+4. **Tutorials patterns**:
+   - Learning-oriented content in how-to docs (should be tutorials)
+   - Task-oriented content in tutorials (should be how-to)
+   - Onboarding guides in wrong category
+   - Content that mixes learning with task execution
+
+5. **Structural patterns**:
    - Files that are too long (>500 lines often indicates mixed concerns)
    - Files that serve multiple audiences
    - Files that are hard to navigate
@@ -142,14 +153,17 @@ Decision: Merge A + B → new saml-config.md, use A as base, add file locations 
 
 1. **What is the intent?**
    - Fact → Reference
-   - Procedure → How-to
+   - Procedure (task-oriented) → How-to
+   - Learning/onboarding (study-oriented) → Tutorials
    - Rationale → Explanation
    - Draft/Research → Work
 
 2. **Where should it live?**
    - Use Diátaxis framework
-   - Consider authority order (reference > how-to > explanation > work)
+   - Consider authority order (reference > how-to > explanation > tutorials > work)
+   - Consider context efficiency (tutorials ignored during execution tasks)
    - Consider discoverability (where would someone look for this?)
+   - **Tutorials vs How-to**: Is this for learning/onboarding (tutorials) or task execution (how-to)?
 
 3. **Which file is the better base?**
    - More complete/authoritative
@@ -232,7 +246,7 @@ Dependencies: Referenced by saml-local-testing.md, security-model.md
 - Content is duplicated and should be centralized
 
 **Process:**
-1. Identify the target location (reference, how-to, explanation)
+1. Identify the target location (reference, how-to, explanation, tutorials)
 2. Extract content to new or existing file
 3. Replace original with link or summary
 4. Update all references
@@ -251,6 +265,29 @@ Dependencies: Referenced by saml-local-testing.md, security-model.md
 3. Update work doc with superseded banner or delete
 4. Update all references
 
+#### When Distinguishing Tutorials from How-to
+
+**Decision criteria:**
+- **Tutorials** = Learning-oriented, onboarding, "study" mode
+  - Teaches concepts while doing
+  - Guides someone new to the system
+  - Focuses on understanding and building mental models
+  - May include background context and "why" explanations
+  - Agents ignore during execution tasks (context efficiency)
+- **How-to** = Task-oriented, execution-focused, "work" mode
+  - Provides steps to complete a specific task
+  - Assumes familiarity with the system
+  - Focuses on getting work done efficiently
+  - Minimal background, maximum actionability
+  - Agents load during coding/debugging (high signal)
+
+**Process:**
+1. Identify the primary intent (learning vs task execution)
+2. Consider the audience (newcomer vs experienced user)
+3. Consider context efficiency (will agents need this during execution?)
+4. Move content to appropriate category
+5. Update all references
+
 ### Quality Checks
 
 **Before finalizing decisions, verify:**
@@ -259,7 +296,9 @@ Dependencies: Referenced by saml-local-testing.md, security-model.md
 - ✅ No assumptions made without reading files completely
 - ✅ Specific evidence cited (line numbers, section names)
 - ✅ Decisions align with Diátaxis principles
-- ✅ Authority order is respected
+- ✅ Authority order is respected (reference > how-to > explanation > tutorials > work)
+- ✅ Tutorials vs How-to distinction is clear (learning vs task-oriented)
+- ✅ Context efficiency implications considered (tutorials ignored during execution)
 - ✅ Dependencies are identified and will be updated
 
 ---
@@ -392,17 +431,24 @@ Dependencies: Referenced by saml-local-testing.md, security-model.md
 **Use as a lens for categorization:**
 
 - **Reference** = "What is" (facts, contracts, invariants, configurations)
-- **How-to** = "How to do" (procedures, steps, runbooks, troubleshooting)
+- **How-to** = "How to do" (procedures, steps, runbooks, troubleshooting; task-oriented, high signal for execution)
 - **Explanation** = "Why/how it works" (rationale, architecture, mental models)
+- **Tutorials** = "Learn by doing" (guided lessons; lowest authority; high token cost; ignored during execution tasks)
 - **Work** = "Drafts and research" (temporary, with Status/Date)
 - **Archive** = "Superseded" (with banners, historical record)
+
+**Key distinction: Tutorials vs How-to**
+- **Tutorials**: Learning-oriented, onboarding, "study" mode. Agents ignore during execution tasks.
+- **How-to**: Task-oriented, execution-focused, "work" mode. Agents load during coding/debugging.
+- If content teaches concepts while doing → Tutorials
+- If content provides steps to complete a task → How-to
 
 ### Authority Hierarchy
 
 **Use to resolve conflicts:**
 
 ```
-reference → how-to → explanation → work → archive
+reference → how-to → explanation → tutorials → work → archive
 ```
 
 When docs disagree, the higher authority wins. Use this to decide what to promote and what to archive.
@@ -432,6 +478,8 @@ When docs disagree, the higher authority wins. Use this to decide what to promot
 - Long how-to docs that include reference material
 - Reference docs that include step-by-step procedures
 - Explanation docs that include factual tables
+- Tutorials content in how-to docs (learning-oriented content in task-oriented docs)
+- How-to content in tutorials (task-oriented content in learning-oriented docs)
 - Work docs with stable content that should be promoted
 
 ### Structural Issues
@@ -468,7 +516,7 @@ When docs disagree, the higher authority wins. Use this to decide what to promot
 
 ### When to Extract
 
-- Content is in the wrong category
+- Content is in the wrong category (e.g., learning content in how-to, task content in tutorials)
 - Content is stable and should be promoted
 - Content is duplicated and should be centralized
 
@@ -487,7 +535,8 @@ When docs disagree, the higher authority wins. Use this to decide what to promot
 
 - **Read entire files**, not summaries
 - **Look for structure**, not just content
-- **Note what each section does** (fact, procedure, rationale)
+- **Note what each section does** (fact, procedure, learning lesson, rationale)
+- **Distinguish tutorials from how-to**: Is this for learning/onboarding (tutorials) or task execution (how-to)?
 - **Track where information appears** multiple times
 
 ### Comparison Strategy
@@ -525,7 +574,7 @@ When docs disagree, the higher authority wins. Use this to decide what to promot
 
 ### What if there are conflicting decisions?
 
-- Apply authority order (reference > how-to > explanation > work)
+- Apply authority order (reference > how-to > explanation > tutorials > work)
 - Use the more authoritative source
 - Verify against codebase when possible
 - Document the decision and rationale
@@ -552,9 +601,10 @@ When docs disagree, the higher authority wins. Use this to decide what to promot
 
 - ✅ All files have been reviewed
 - ✅ Duplication eliminated or minimized
-- ✅ Concerns separated (facts, procedures, rationale)
-- ✅ Content in correct categories
+- ✅ Concerns separated (facts, procedures, learning lessons, rationale)
+- ✅ Content in correct categories (tutorials vs how-to distinction clear)
 - ✅ Single sources of truth established
+- ✅ Context efficiency respected (tutorials properly isolated from execution tasks)
 - ✅ All links and references updated
 - ✅ Naming conventions followed
 - ✅ Authority order respected

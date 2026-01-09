@@ -8,9 +8,14 @@ Purpose: Capture the "why" behind the Hybrid Diátaxis + Domain structure and Cu
 - Make Cursor agents reliable via Rules that route to the smallest authoritative set.
 
 ## Design choices
+- **Four Quadrants (Diátaxis)**: We strictly separate content types to optimize for **Agent Context Window**:
+  - **Tutorials** (`docs/tutorials/`): Learning-oriented. **Low signal** for coding tasks. Agents should ignore this when implementing features.
+  - **How-to** (`docs/how-to/`): Task-oriented. **High signal** for execution.
+  - **Reference** (`docs/reference/`): Information-oriented. **High signal** for constraints/contracts.
+  - **Explanation** (`docs/explanation/`): Understanding-oriented. Useful for planning, noise for coding.
 - **Hybrid Diátaxis + Domain**: Combine Diátaxis intent buckets (reference = facts, how-to = procedures, explanation = rationale) with domain folders (auth, deployment, testing, ui) so agents can route by both task type and topic, reducing conflict and scope creep.
 - **Bidirectional Context Linking**: `docs/index.md` acts as the Map, explicitly listing the `.cursor/rules/*.mdc` (Router) for each domain. This couples content to context, ensuring agents can find the "Brain" (Rule) from the "Topic" (Index).
-- **Authority order**: reference → how-to → explanation → work → archive; resolves conflicts and keeps work notes non-authoritative.
+- **Authority order**: reference → how-to → explanation → tutorials → work → archive; resolves conflicts and keeps work notes non-authoritative.
 - **Doc map first**: `docs/index.md` as the llms-txt-style index; agents read it first instead of loading the repo at random.
 - **Routing layer**: `.cursor/rules/*.mdc` (flat .mdc for compatibility) enforce minimal context loading and doc update expectations.
 - **Work vs. truth**: Drafts/notes live in `docs/work/**` with Status+date; stable facts move to reference/how-to/explanation and obsolete copies get a Superseded banner in archive.
