@@ -46,7 +46,8 @@ reference → how-to → explanation → tutorials → work → archive. When do
 - Repeatable procedures → `docs/how-to/**`.
 - Rationale/architecture → `docs/explanation/**`.
 - Drafts/notes/plans/tests → `docs/work/<category>/YYYY-MM-DD-<slug>.md` with a **Status** field.
-- Use lowercase kebab-case filenames (no ALL_CAPS). When adding dates to filenames or headers, use the actual current date in `YYYY-MM-DD` (no placeholders).
+- Use lowercase kebab-case filenames (no ALL_CAPS).
+- **CRITICAL: When adding dates to filenames or headers, ALWAYS call `date +%Y-%m-%d` first to get the actual current date. Never use placeholders or guess the date.**
 - Superseded material goes to `docs/archive/` with a banner:
   `Status: Superseded | Superseded by: <path> | Date: YYYY-MM-DD | Reason: …`
 - Do not create new top-level markdown files outside `docs/` unless agreed.
