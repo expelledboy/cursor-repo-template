@@ -1,5 +1,9 @@
 # Documentation system rationale (why we structured it this way)
 
+**Status**: Stable
+**Date**: 2026-01-14
+**Purpose**: Explain why the documentation system uses Hybrid Diátaxis + Domain structure and Cursor routing.
+
 Purpose: Capture the "why" behind the Hybrid Diátaxis + Domain structure and Cursor routing, so agents know the intent and avoid blind rule-following.
 
 ## Goals

@@ -3,11 +3,14 @@ set dotenv-load := true
 set export := true
 set shell := ["bash", "-cu"]
 
+mod agentos "scripts/agentos"
+
 # Default Recipe
 # ==============
 
+[private]
 default:
-  @just --list --unsorted
+  @just --list --unsorted --list-submodules
 
 # Project Setup
 # =============

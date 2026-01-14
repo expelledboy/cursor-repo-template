@@ -1,0 +1,7 @@
+---
+description: agentos-complete, agentos phase complete
+---
+- Load phase directives:
+  - `docs/reference/agentos/behavior-spec.md` (report/anneal)
+  - `docs/reference/agentos/self-improvement.md`
+  - `docs/reference/agentos/self-awareness-framework.md`

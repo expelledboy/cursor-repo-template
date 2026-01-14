@@ -1,5 +1,9 @@
 # Development Tool Stack (source of truth)
 
+**Status**: Stable
+**Date**: 2026-01-14
+**Purpose**: Canonical reference for direnv, just, and Nix Flake in this repo.
+
 ## Purpose
 Reference for the development tool stack: direnv, just, and Nix Flake. How they work together and what each provides.
 
@@ -67,6 +71,8 @@ devShell = pkgs.mkShell {
     nodejs.pkgs.pnpm
     just
     git
+    python3
+    bats
   ];
 };
 ```

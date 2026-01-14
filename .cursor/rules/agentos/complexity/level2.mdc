@@ -1,0 +1,6 @@
+---
+description: agentos complexity level 2
+---
+- Load complexity directives:
+  - `docs/reference/agentos/workflow-variations.md`
+  - `docs/reference/agentos/verification-gates.md`

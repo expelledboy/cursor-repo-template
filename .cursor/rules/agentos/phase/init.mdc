@@ -1,0 +1,7 @@
+---
+description: agentos-start, agentos phase init
+---
+- Load phase directives:
+  - `docs/reference/agentos/behavior-spec.md` (intake/classify/route)
+  - `docs/reference/agentos/complexity-determination.md`
+  - `docs/reference/agentos/routing.md`

@@ -1,0 +1,6 @@
+---
+description: agentos-verify, agentos phase verify
+---
+- Load phase directives:
+  - `docs/reference/agentos/verification-contract.md`
+  - `docs/reference/agentos/verification-gates.md`

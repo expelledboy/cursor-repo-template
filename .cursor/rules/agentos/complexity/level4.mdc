@@ -1,0 +1,8 @@
+---
+description: agentos complexity level 4
+---
+- Load complexity directives:
+  - `docs/reference/agentos/workflow-variations.md`
+  - `docs/reference/agentos/verification-gates.md`
+  - `docs/reference/agentos/design-decision-templates.md`
+  - `docs/reference/agentos/structured-exploration.md`

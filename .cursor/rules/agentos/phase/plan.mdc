@@ -1,0 +1,8 @@
+---
+description: agentos-plan, agentos phase plan
+---
+- Load phase directives:
+  - `docs/reference/agentos/behavior-spec.md` (plan header requirements)
+  - `docs/reference/agentos/workflow-variations.md`
+  - `docs/reference/agentos/verification-contract.md`
+  - `docs/reference/agentos/verification-gates.md`

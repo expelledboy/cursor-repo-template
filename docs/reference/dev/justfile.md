@@ -1,6 +1,10 @@
-# just — Justfile Authoring Reference
+# just - Justfile Authoring Reference
 
-`just` is a command runner: you write "recipes" in a `justfile` and run them with `just <recipe> [args…]`.
+**Status**: Stable
+**Date**: 2026-01-14
+**Purpose**: Reference for authoring and editing `justfile` recipes and modules.
+
+`just` is a command runner: you write "recipes" in a `justfile` and run them with `just <recipe> [args...]`.
 It is not a build system (all recipes behave like `.PHONY` in make).
 
 This document is optimized for quickly and safely editing a `justfile`, while still indexing all major features.
@@ -11,10 +15,11 @@ This document is optimized for quickly and safely editing a `justfile`, while st
 
 For a minimal, task-oriented setup, see `docs/how-to/dev/just-quickstart.md`.
 This document is intentionally **reference-heavy** (dense signal) and optimized for looking things up, not onboarding.
+For module usage patterns, see `docs/how-to/dev/just-modules.md`.
 
 ---
 
-## Example A — A realistic, feature-dense justfile
+## Example A - A realistic, feature-dense justfile
 
 ```just
 # Settings
@@ -64,7 +69,7 @@ Key ideas shown:
 
 * dependencies (`test: build`)
 * parameters with defaults (`filter=""`)
-* expressions in `{{ … }}` substitutions
+* expressions in `{{ ... }}` substitutions
 * quoting to avoid argument splitting (e.g. rsync/ssh arguments)
 * variadic parameters (`*args`)
 * `[confirm]`, `[group]`, `[doc]`
@@ -146,7 +151,7 @@ build target:
 
 ### Avoiding argument splitting (critical)
 
-Substitution removes the caller’s quotes, so this is wrong:
+Substitution removes the caller's quotes, so this is wrong:
 
 ```just
 touchfile name:
@@ -176,7 +181,7 @@ Use `[arg]` to:
 * make flags that take no value (fixed `value="true"`)
 * add help text (`help="Description"`)
 
-Also: `just --usage <recipe>` prints a recipe’s usage.
+Also: `just --usage <recipe>` prints a recipe's usage.
 
 ---
 
@@ -278,8 +283,8 @@ and terminal escape constants: `CLEAR`, `NORMAL`, `BOLD`, `ITALIC`, colors, etc.
 
 * Each recipe line runs in a new shell instance.
   Implications:
-* shell variables don’t persist across lines
-* `cd` doesn’t persist across lines
+* shell variables don't persist across lines
+* `cd` doesn't persist across lines
 
 Workarounds:
 
@@ -321,7 +326,7 @@ alias b := build
 ### Doc comments
 
 * `# comment` immediately preceding recipe appears in `just --list`
-* Or use `[doc("…")]` / `[doc]` to suppress
+* Or use `[doc("...")]` / `[doc]` to suppress
 
 ### Groups
 
@@ -341,7 +346,21 @@ Use `[group("name")]` on recipes or modules; `just --groups` lists groups.
 
 ### Modules
 
-`mod foo` loads a separate module file (searched via `foo.just`, `foo/mod.just`, `foo/justfile`, `foo/.justfile`)
+`mod foo` loads a separate module file (searched via `foo.just`, `foo/mod.just`, `foo/justfile`, `foo/.justfile`).
+`mod foo "path/to/dir"` loads a module from an explicit directory. Use `mod.just` in that directory.
+
+Example:
+
+```just
+mod agentos "scripts/agentos"
+```
+
+Modules run in their own directory by default. If a module needs to run from repo root, set a working directory relative to the module, for example:
+
+```just
+set working-directory := "../.."
+```
+
 Invoke module recipes via:
 
 * `just foo bar`
@@ -360,7 +379,7 @@ Booleans can be set as `set name` (same as `set name := true`).
 
 Common settings:
 
-* `shell := ["cmd", "args…"]` (linewise recipes + backticks)
+* `shell := ["cmd", "args..."]` (linewise recipes + backticks)
 * `windows-shell := [...]` (overrides shell on Windows)
 * `script-interpreter := [...]` (for empty `[script]`)
 * `working-directory := "path"`
@@ -409,7 +428,7 @@ Modules: `[group(...)]`, `[doc(...)]`
 
 Core:
 
-* `just` / `just <recipe> [args…]`
+* `just` / `just <recipe> [args...]`
 * `just --list` / `--summary` (and `--unsorted`)
 * `just --show <recipe>`
 * `just --evaluate <expr-or-var>`
@@ -455,6 +474,6 @@ Other:
 * Re-run on changes: use `watchexec just <recipe>`
 * Parallel deps: `[parallel]`; parallel lines via GNU `parallel` shebang
 * Signal handling: fatal signals, `SIGINFO` on BSD/macOS
-* “Just scripts”: executable justfile with `#!/usr/bin/env just --justfile`
+* "Just scripts": executable justfile with `#!/usr/bin/env just --justfile`
 * Remote includes pattern: `import?` plus recipe that fetches file
 * Node `package.json`-like PATH behavior via exporting `PATH`

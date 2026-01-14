@@ -1,0 +1,6 @@
+---
+description: agentos-execute, agentos phase execute
+---
+- Load phase directives:
+  - `docs/reference/agentos/behavior-spec.md` (execution discipline)
+  - `docs/reference/agentos/safety-policy.md`

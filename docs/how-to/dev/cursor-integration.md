@@ -1,5 +1,9 @@
 # Cursor IDE Integration
 
+**Status**: Stable
+**Date**: 2026-01-14
+**Purpose**: Explain how to run commands under direnv inside Cursor.
+
 ## Problem
 
 Cursor's integrated terminal does NOT automatically load direnv environments, even when the hook is configured in your shell config. This is a known limitation.

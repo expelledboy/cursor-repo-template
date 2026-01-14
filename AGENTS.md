@@ -3,7 +3,7 @@
 You are working in this repository. Follow this behavior contract on every task.
 
 ## Context Efficiency & The Compass
-The "Context Window" is your scarcest resource. Do not load all docs. Use the **Diátaxis Compass** to decide what to read based on your task:
+The "Context Window" is your scarcest resource. Do not load all docs. Use the **Diataxis Compass** to decide what to read based on your task:
 
 | If your task is... | And you need to... | Load ONLY... | Ignore... |
 |---|---|---|---|
@@ -13,17 +13,17 @@ The "Context Window" is your scarcest resource. Do not load all docs. Use the **
 
 ## Context Loading Quickstart (copy/paste)
 
-Use these when you’re about to start work. They are designed to prevent “context bloat”.
+Use these when you're about to start work. They are designed to prevent "context bloat".
 
 - **Implement / modify code (execution task)**
-  - **Load**: `docs/reference/<domain>/**` + `docs/how-to/<domain>/**` (and the domain’s `.cursor/rules/*.mdc` if it exists).
+  - **Load**: `docs/reference/<domain>/**` + `docs/how-to/<domain>/**` (and the domain's `.cursor/rules/*.mdc` if it exists).
   - **Ignore**: `docs/tutorials/**` and `docs/explanation/**` unless you are blocked on intent/rationale.
 
 - **Debug / troubleshoot**
   - **Load**: `docs/how-to/<domain>/**` first, then `docs/reference/<domain>/**` for contracts/invariants.
   - **Ignore**: `docs/tutorials/**` (learning) and most `docs/explanation/**` (background) unless needed.
 
-- **Architecture / design / “why is it like this?”**
+- **Architecture / design / "why is it like this?"**
   - **Load**: `docs/explanation/<domain>/**` + `docs/reference/<domain>/**`.
   - **Ignore**: `docs/how-to/**` and `docs/tutorials/**`.
 
@@ -32,24 +32,24 @@ Use these when you’re about to start work. They are designed to prevent “con
   - **Ignore**: `docs/reference/**` until you need exact facts/contracts.
 
 ## Authority order
-reference → how-to → explanation → tutorials → work → archive. When docs conflict, defer to the highest authority.
+reference -> how-to -> explanation -> tutorials -> work -> archive. When docs conflict, defer to the highest authority.
 
 ## First steps for any task
 1) Read `docs/index.md` (doc map + sources of truth).
 2) Load only the minimal relevant docs (Cursor Rules route context).
-3) For third‑party/vendor details, use MCP (e.g., Context7); do **not** embed external facts into project docs as truth.
+3) For third-party/vendor details, use MCP (e.g., Context7); do **not** embed external facts into project docs as truth.
 4) Implement change + verification.
 5) If contracts/config/flows change: update the canonical **reference** doc first, then link from how-to/explanation.
 
 ## Creating or updating docs
-- Stable, evergreen facts → `docs/reference/**`.
-- Repeatable procedures → `docs/how-to/**`.
-- Rationale/architecture → `docs/explanation/**`.
-- Drafts/notes/plans/tests → `docs/work/<category>/YYYY-MM-DD-<slug>.md` with a **Status** field.
+- Stable, evergreen facts -> `docs/reference/**`.
+- Repeatable procedures -> `docs/how-to/**`.
+- Rationale/architecture -> `docs/explanation/**`.
+- Drafts/notes/plans/tests -> `docs/work/<category>/YYYY-MM-DD-<slug>.md` with a **Status** field.
 - Use lowercase kebab-case filenames (no ALL_CAPS).
 - **CRITICAL: When adding dates to filenames or headers, ALWAYS call `date +%Y-%m-%d` first to get the actual current date. Never use placeholders or guess the date.**
 - Superseded material goes to `docs/archive/` with a banner:
-  `Status: Superseded | Superseded by: <path> | Date: YYYY-MM-DD | Reason: …`
+  `Status: Superseded | Superseded by: <path> | Date: YYYY-MM-DD | Reason: ...`
 - Do not create new top-level markdown files outside `docs/` unless agreed.
 
 ## Context routing (Cursor)
@@ -60,6 +60,12 @@ reference → how-to → explanation → tutorials → work → archive. When do
 ## Verification expectations
 - Prefer targeted tests (unit/component/e2e) relevant to your change; if you run suites, do **not** truncate output.
 - When contracts/config/flows change, run the documented testing gates in `docs/index.md`.
+
+## Registry Scope
+Define the in-scope paths for registry validation in this repo. Replace the defaults with the actual repo paths for real projects.
+- `scripts/agentos/**`
+- `tests/agentos/**`
+- `docs/reference/agentos/validation-scripts.md`
 
 ## MCP
 - Use MCP for volatile external knowledge (library/vendor docs).

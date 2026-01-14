@@ -1,8 +1,8 @@
 ---
 alwaysApply: true
 ---
-- Read `docs/index.md` first. Follow authority order: reference → how-to → explanation → tutorials → work → archive.
-- Do not create new top-level markdown outside `docs/`. Stable facts → `docs/reference`; procedures → `docs/how-to`; rationale → `docs/explanation`; drafts/notes/tests → `docs/work/<category>/YYYY-MM-DD-<slug>.md` with **Status**.
+- Read `docs/index.md` first. Follow authority order: reference -> how-to -> explanation -> tutorials -> work -> archive.
+- Do not create new top-level markdown outside `docs/`. Stable facts -> `docs/reference`; procedures -> `docs/how-to`; rationale -> `docs/explanation`; drafts/notes/tests -> `docs/work/<category>/YYYY-MM-DD-<slug>.md` with **Status**.
 - Use lowercase kebab-case filenames (no ALL_CAPS). When adding dates to filenames or headers, use the actual current date in `YYYY-MM-DD` (no placeholders).
 - When contracts/config/flows change, update the relevant reference doc first, then link from how-to/explanation. Supersede duplicates with a banner and move to `docs/archive/`.
 - Use MCP only for external/vendor knowledge; keep project truths in repo docs.

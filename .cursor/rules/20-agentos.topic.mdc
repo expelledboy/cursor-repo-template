@@ -1,0 +1,14 @@
+---
+description: agentos, core behavior, routing, verification, lifecycle
+---
+- Load minimal AgentOS core (rule isolation):
+  - `.cursor/rules/agentos/core.mdc`
+- Phase-specific rules are loaded by commands:
+  - `.cursor/rules/agentos/phase/*.mdc`
+- Complexity rules are loaded by commands:
+  - `.cursor/rules/agentos/complexity/level*.mdc`
+- The full core list remains canonical in `docs/reference/agentos/components.md` and `docs/index.md`.
+- Always include a task plan header with: task type, primary objective, required directives, allowed domains, routing check, evidence sources, verification gates, loaded core docs, AgentOS rule loaded yes/no.
+- If destructive actions are involved, require explicit confirmation and record it in the header.
+- If the task plan header is missing, draft it and only ask the user to confirm missing or ambiguous fields.
+- Do not treat Cursor memories as authoritative.

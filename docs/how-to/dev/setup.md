@@ -1,5 +1,9 @@
 # Development Environment Setup
 
+**Status**: Stable
+**Date**: 2026-01-14
+**Purpose**: Set up direnv, Nix Flake, and just for this repo.
+
 ## Prerequisites
 
 - **Nix** with flakes enabled: [Install Nix](https://nixos.org/download.html)

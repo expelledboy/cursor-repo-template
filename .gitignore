@@ -34,6 +34,7 @@ build/
 *.dll
 
 # Dependencies
+.direnv/
 node_modules/
 vendor/
 __pycache__/
@@ -61,3 +62,4 @@ temp/
 
 # Project-specific ignores
 # Add your project-specific patterns here
+docs/local/

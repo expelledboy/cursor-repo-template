@@ -35,7 +35,7 @@ When you're ready to document your first project domain:
    - `docs/how-to/your-domain/setup.md` (procedures)
    - `docs/explanation/your-domain/architecture.md` (rationale)
 
-2. **Create a Cursor Rule** (`.cursor/rules/20-your-domain.topic.mdc`):
+2. **Create a Cursor Rule** (`.cursor/rules/20-your-domain.topic.mdc`) (example only):
    ```markdown
    ---
    description: your-domain, keywords, that, trigger, this, rule
@@ -45,7 +45,7 @@ When you're ready to document your first project domain:
    - If changing config/contracts, update the reference doc first.
    ```
 
-3. **Update `docs/index.md`**:
+3. **Update `docs/index.md`** (example only):
    Add a new section:
    ```markdown
    ## Your Domain
@@ -86,7 +86,7 @@ When creating new documentation:
    - Fact → `docs/reference/`
    - Procedure → `docs/how-to/`
    - Rationale → `docs/explanation/`
-   - Draft/Research → `docs/work/YYYY-MM-DD-slug.md`
+   - Draft/Research → `docs/work/<category>/YYYY-MM-DD-slug.md`
 
 2. **Follow naming conventions**:
    - Lowercase kebab-case (e.g., `saml-config.md`, not `SAML_CONFIG.md`)

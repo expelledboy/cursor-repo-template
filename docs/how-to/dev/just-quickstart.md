@@ -1,5 +1,9 @@
 # How to: Create and use a minimal `justfile`
 
+**Status**: Stable
+**Date**: 2026-01-14
+**Purpose**: Provide a minimal, task-oriented `justfile` and usage steps.
+
 This is a **how-to**: it assumes you already know what `just` is and you want a minimal working setup.
 
 If you want the full language/feature reference, see `docs/reference/dev/justfile.md`.

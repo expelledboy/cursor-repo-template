@@ -1,5 +1,9 @@
 # Development Tool Stack Rationale
 
+**Status**: Stable
+**Date**: 2026-01-14
+**Purpose**: Explain why the repo uses direnv + Nix Flake + just.
+
 ## Why This Stack?
 
 We use **direnv + Nix Flake + just** to create a reproducible, self-documenting development environment.

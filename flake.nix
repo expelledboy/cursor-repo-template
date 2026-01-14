@@ -16,11 +16,12 @@
             # Examples:
             # nodejs
             # nodejs.pkgs.pnpm
-            # python3
+            python3
+            bats
             # go
             # rustc
             # cargo
-            # just  # Task runner (if not using system just)
+            # just -- using system just
             # git
             # jq
           ];

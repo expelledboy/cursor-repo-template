@@ -1,0 +1,7 @@
+---
+description: agentos-design, agentos phase design
+---
+- Load phase directives:
+  - `docs/reference/agentos/behavior-spec.md` (design-decision checkpoint)
+  - `docs/reference/agentos/design-decision-templates.md`
+  - `docs/reference/agentos/structured-exploration.md`

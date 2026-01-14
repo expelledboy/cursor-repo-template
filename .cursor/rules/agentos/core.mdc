@@ -1,0 +1,12 @@
+---
+description: agentos core (minimal)
+---
+- Load these core directives:
+  - `docs/reference/agentos/behavior-spec.md`
+  - `docs/reference/agentos/routing.md`
+  - `docs/reference/agentos/context-compass.md`
+  - `docs/reference/agentos/safety-policy.md`
+  - `docs/reference/agentos/directive-tiers.md`
+  - `docs/reference/agentos/cursor-mechanics.md`
+  - `docs/reference/agentos/state-surface.md`
+*** End Patch}"))}Commentary to=functions.apply_patch code with JSON input: '{"cmd":"*** Begin Patch\n*** Add File: .cursor/rules/agentos/core.mdc\n+---\n+description: agentos core (minimal)\n+---\n+- Load these core directives:\n+  - `docs/reference/agentos/behavior-spec.md`\n+  - `docs/reference/agentos/routing.md`\n+  - `docs/reference/agentos/context-compass.md`\n+  - `docs/reference/agentos/safety-policy.md`\n+  - `docs/reference/agentos/directive-tiers.md`\n+  - `docs/reference/agentos/cursor-mechanics.md`\n+- Core adapter notes:\n+  - `docs/explanation/agentos/cursor-adapter-notes.md`\n*** End Patch"}'}```
