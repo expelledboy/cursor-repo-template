@@ -15,7 +15,8 @@ importance_factors:
   criticality: "layer_foundation"
   connectivity_impact: "defines_core_specs"
 governed_by: ["docs/reference/agentos/doe-framework.md"]
-governs: ["docs/reference/agentos/behavior-spec.md", "docs/reference/agentos/architecture.md", "docs/reference/agentos/learning-system.md", "docs/reference/agentos/relationship-orchestration.md", "docs/reference/agentos/state-management.md"]
+# Layer specifications define the layers but do not govern component specifications
+# Component specifications are governed by the DOE framework directly
 ---
 
 # Directive Layer: Source of Truth

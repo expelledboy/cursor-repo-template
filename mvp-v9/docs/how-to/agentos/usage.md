@@ -4,7 +4,7 @@ status: stable
 created_date: 2026-01-18
 purpose: "Basic usage guide for AgentOS v9 functionality"
 domain: agentos
-authority_level: 2
+authority_level: 4
 doe_layer: directive
 doe_responsibility: "Define usage patterns and operational procedures"
 doe_governance: "Governed by behavior-spec.md and doe-framework.md"
