@@ -16,209 +16,98 @@ implementations: ["src/agentos.py"]
 
 # Using AgentOS v9
 
-## Basic Usage
+## Prerequisites
 
-### Analyze a Codebase
+- AgentOS v9 installed and accessible
+- Python 3.8+ available
+- Basic understanding of DOE framework (Directive-Orchestration-Execution)
+
+## Codebase Analysis
+
+### Command Syntax
 ```bash
 ./src/agentos.py analyze [path]
 ```
 
-Analyzes the structure of a codebase and provides metrics:
+### Parameters
+- `path`: Directory or file path to analyze (default: current directory)
 
-- Total files and directories
-- File type distribution
-- Basic structural information
+### Steps
+1. Execute analysis command on target path
+2. Review structural metrics in JSON output
+3. Identify file type distributions and patterns
 
-**Example**:
-```bash
-./src/agentos.py analyze .
-```
+### Verification
+- Command completes without errors
+- JSON output contains file counts and type distributions
+- Path information matches target location
 
-**Output**:
-```json
-{
-  "path": "/path/to/project",
-  "type": "directory",
-  "structure": {
-    "total_files": 42,
-    "total_dirs": 8,
-    "file_types": {
-      ".py": 25,
-      ".md": 5,
-      ".json": 3
-    }
-  }
-}
-```
+## Project Validation
 
-### Validate a Project
+### Command Syntax
 ```bash
 ./src/agentos.py validate [path]
 ```
 
-Performs basic validation checks on a project structure:
+### Parameters
+- `path`: Directory path to validate (default: current directory)
 
-- Directory/file existence
-- Common project file detection
-- Basic structural validation
+### Steps
+1. Execute validation command on target path
+2. Review validation results in JSON output
+3. Confirm all required project files present
 
-**Example**:
-```bash
-./src/agentos.py validate /path/to/project
-```
+### Verification
+- Command completes successfully
+- JSON output shows validation status
+- Core project files detected (README, docs structure)
 
-**Output**:
-```json
-{
-  "path": "/path/to/project",
-  "checks": [
-    {
-      "name": "directory_exists",
-      "status": "pass",
-      "message": "Target directory exists"
-    },
-    {
-      "name": "project_files",
-      "status": "pass",
-      "message": "Found project files: ['README.md', 'package.json']"
-    }
-  ]
-}
-```
+## Evidence Collection
 
-### Show Version
-```bash
-./src/agentos.py --version
-```
-
-Displays the current version of AgentOS v9.
-
-### Collect Self-Determination Evidence
+### Command Syntax
 ```bash
 ./src/agentos.py self-determination
 ```
 
-Collects structured evidence for self-determination analysis (DOE E Layer operation):
+### Steps
+1. Execute self-determination command
+2. Collect evidence from JSON output
+3. Provide evidence to orchestration layer for analysis
 
-- Gathers basic system facts (file counts, directory presence)
-- Collects relationship graph evidence
-- Validates directive structure presence
-- Produces orchestration-ready evidence
+### Verification
+- Command produces structured JSON evidence
+- Evidence meets DOE standards (timestamp, layer declaration)
+- Orchestration-ready flag set to true
 
-**Output** (Evidence Collection):
-```json
-{
-  "evidence_collection": {
-    "collection_type": "self-determination",
-    "timestamp": "2026-01-18T19:44:18.027177",
-    "doe_layer": "execution",
-    "doe_responsibility": "Collect structured evidence for self-determination analysis",
-    "evidence_quality": "doe_compliant"
-  },
-  "system_facts": {
-    "docs_count": 11,
-    "scripts_count": 13,
-    "src_count": 1,
-    "total_files": 64,
-    "directories_present": {
-      "docs": true,
-      "scripts": true,
-      "src": true
-    }
-  },
-  "relationship_evidence": {
-    "renderer_status": "executed",
-    "relationship_count": 12,
-    "renderer_output_length": 423,
-    "evidence_collected": true
-  },
-  "directive_evidence": {
-    "docs_directory_exists": true,
-    "core_docs_present": false,
-    "validation_status": "evidence_collected"
-  },
-  "orchestration_ready": true
-}
-```
+## Learning Analysis
 
-**Next Step**: Use orchestration layer analysis to interpret this evidence.
-Performs comprehensive self-determination analysis with relationship graph orchestration:
-
-- Renders relationship graph for all documentation
-- Validates directive orchestration completeness
-- Checks core documentation presence
-- Provides orchestration status assessment
-
-**Output**:
-```json
-{
-  "analysis_type": "self-determination",
-  "relationship_graph": {
-    "status": "rendered",
-    "output": "AGENTOS V9 RELATIONSHIP GRAPH\n========================================\n\nTotal relationships: 0\n\nCore directive loading validation:\n\u2713 Relationship graph rendered with 0 connections\n\u2713 Orchestration ready for directive validation"
-  },
-  "directive_validation": {
-    "docs_found": 2,
-    "core_docs_present": false,
-    "status": "validated"
-  },
-  "meta_analysis": {
-    "capability": "on-demand",
-    "ai_agent_analysis_required": true,
-    "analysis_types_available": [
-      "system_coherence_assessment",
-      "gap_identification",
-      "evolution_opportunities",
-      "authenticity_validation",
-      "relationship_analysis"
-    ]
-  },
-  "orchestration_status": "complete"
-}
-```
-
-### Perform Learning Observation Capture
+### Manual Observation Capture
 ```bash
 ./src/agentos.py learn "observation text"
 ```
 
-Captures learning observations for AI agent analysis:
+### Parameters
+- `observation text`: Text describing issue, improvement, or discovery
 
-- Stores observation without intelligent assumptions
-- Creates task branch for learning objective
-- Indicates AI agent analysis required
-- Prepares for user alignment workflow
+### Steps
+1. Execute learn command with observation text
+2. AI agent analyzes and categorizes observation
+3. Review generated draft artifacts
+4. Provide alignment feedback iteratively
 
-**Examples**:
-
-**Text Observation**:
+### File-Based Learning Analysis
 ```bash
-./src/agentos.py learn "validation script fails when files are missing"
+./src/agentos.py learn --file [path]
 ```
 
-**File Analysis**:
-```bash
-./src/agentos.py learn --file docs/work/analysis/result.md
-```
+### Parameters
+- `--file path`: Path to file containing observation text
 
-**Output**:
-```json
-{
-  "learning_type": "manual_capture",
-  "observation": "validation script fails when files are missing",
-  "capture_timestamp": "9.0.0",
-  "ai_agent_analysis_required": true,
-  "user_alignment_required": true,
-  "next_steps": [
-    "AI agent will analyze observation content",
-    "AI agent will determine categorization (problem/discovery)",
-    "AI agent will generate meaningful artifact content",
-    "User will provide alignment feedback",
-    "Iterate until user alignment achieved"
-  ]
-}
-```
-
+### Steps
+1. Execute learn command with file path
+2. AI agent analyzes file content
+3. Review categorization and draft artifacts
+4. Provide alignment feedback until complete
 ## Task Management
 
 ### Create Learning Task Branch
@@ -226,47 +115,104 @@ Captures learning observations for AI agent analysis:
 python3 scripts/task_manager.py create "task_name" "learning_objective"
 ```
 
-Creates a new navigable task branch for learning objectives.
+### Parameters
+- `task_name`: Identifier for the task
+- `learning_objective`: Description of what should be learned
+
+### Steps
+1. Execute create command with task name and objective
+2. Task branch created with context preservation
+3. Learning workflow initialized
+
+### Verification
+- Command completes successfully
+- Task appears in active task list
+- Context preservation confirmed
 
 ### Switch Between Task Branches
 ```bash
 python3 scripts/task_manager.py switch task-id
 ```
 
-Navigate to different learning task branches while preserving context.
+### Parameters
+- `task-id`: Identifier of task to switch to
 
-### List Active Task Branches
-```bash
-python3 scripts/task_manager.py list
-```
+### Steps
+1. Execute switch command with target task ID
+2. Current context saved automatically
+3. Target task context loaded
 
-View all active learning task branches and their status.
+### Verification
+- Command completes without errors
+- Task switch confirmed in status output
 
 ### Record Learning Iteration
 ```bash
-python3 scripts/task_manager.py record-iteration task-id '{"observation": "details", "ai_analysis": "categorization", "user_feedback": "alignment_status"}'
+python3 scripts/task_manager.py record-iteration task-id "iteration_data"
 ```
 
-Track learning iteration history and progress.
+### Parameters
+- `task-id`: Task identifier
+- `iteration_data`: JSON string with observation, analysis, and feedback
 
-### Validate Task Completion
+### Steps
+1. Execute record command with iteration details
+2. Learning progress tracked in task history
+
+### Verification
+- Iteration recorded successfully
+- Task history updated
+
+### Provide Learning Feedback
 ```bash
-python3 scripts/task_manager.py validate task-id
+python3 scripts/task_manager.py feedback task-id --message "feedback text" --alignment pending|partial|complete
 ```
 
-Perform deterministic validation that learning task meets completion criteria.
+### Parameters
+- `task-id`: Task identifier
+- `--message`: User feedback text
+- `--alignment`: Current alignment status
 
-### Complete Learning Task
+### Steps
+1. Execute feedback command with alignment assessment
+2. AI agent receives feedback for iteration
+3. Process continues until complete alignment achieved
+
+### Verification
+- Feedback recorded in task history
+- Alignment status updated appropriately
+
+## System Validation
+
+### Core Functionality Validation
 ```bash
-python3 scripts/task_manager.py complete task-id
+python3 scripts/validate.py
 ```
 
-Mark learning task as completed with full context preservation.
+### Steps
+1. Execute validation script
+2. Review all system component validations
+3. Confirm DOE framework compliance
 
-### Record Learning Feedback
+### Verification
+- All validation checks pass
+- System integrity confirmed
+- No critical errors reported
+
+### Self-Determination Evidence Collection
 ```bash
-python3 scripts/task_manager.py feedback task-id --message "your feedback here" --alignment pending|partial|complete
+./src/agentos.py self-determination
 ```
+
+### Steps
+1. Execute self-determination command
+2. Collect system evidence from output
+3. Use evidence for orchestration analysis
+
+### Verification
+- Structured evidence produced
+- DOE compliance maintained
+- Orchestration layer can consume output
 
 Record user feedback during learning alignment process:
 
