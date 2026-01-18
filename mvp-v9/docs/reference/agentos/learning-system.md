@@ -1,19 +1,21 @@
 ---
-title: "Manual Learning System"
+title: "Active Task Learning System"
 status: stable
 created_date: 2026-01-18
-purpose: "Reference for AgentOS v9 manual learning capabilities with user alignment"
+purpose: "Reference for AgentOS v9 active task learning capabilities with user alignment"
 domain: agentos
 authority_level: 1
 doe_layer: directive
 doe_responsibility: "Define learning system specifications and user alignment processes"
 doe_governance: "Governed by doe-framework.md"
 doe_precedence: 3
-doe_precedence: 3
 governed_by: ["docs/reference/agentos/doe-framework.md"]
-governs: ["scripts/memory_bank_integrator.py", "scripts/workflow_coordinator.py"]
-implementations: ["scripts/memory_bank_integrator.py", "scripts/workflow_coordinator.py"]
+governs: ["scripts/memory_bank_integrator.py", "scripts/workflow_coordinator.py", "scripts/task_manager.py"]
+implementations: ["scripts/memory_bank_integrator.py", "scripts/workflow_coordinator.py", "scripts/task_manager.py"]
 ---
+
+# @directive docs/reference/agentos/behavior-spec.md
+# @directive docs/reference/agentos/self-awareness.md
 
 # Active Task Learning System (Reference)
 
@@ -39,6 +41,35 @@ AgentOS v9 implements an active task learning system that branches all learning 
 - **Content Analysis**: Provide meaningful interpretation of observations
 - **Artifact Creation**: Generate substantive learning content
 - **User Alignment**: Handle feedback interpretation and refinement
+
+### Advanced Task Management Features
+
+#### Hierarchical Objectives
+- **Main Objectives**: High-level learning goals (e.g., "improve self-determination")
+- **Sub-objectives**: Break down complex objectives into manageable components
+- **Completion Tracking**: Mark sub-objectives complete while maintaining main objective progress
+
+#### Dependency Management
+- **Blocking Dependencies**: Tasks that must complete before others can proceed
+- **Prerequisite Validation**: Ensure all dependencies are met before task execution
+- **Dependency Chains**: Manage complex interdependencies across learning workflows
+
+#### Alternative Route Exploration
+- **Route Exploration**: Track multiple approaches to the same learning objective
+- **Deprecation Tracking**: Mark alternative routes as deprecated when better approaches found
+- **Route Selection**: Choose optimal learning paths based on effectiveness
+
+#### Dynamic Prioritization
+- **Assessment-Driven**: Reprioritize learning tasks based on new evidence and findings
+- **Resource Allocation**: Adjust learning focus based on available capacity and urgency
+- **Impact-Based**: Prioritize learning with highest self-improvement impact
+
+#### Progress Diary
+- **Comprehensive Tracking**: Record all learning activities and insights
+- **Assessment Findings**: Document what was discovered during assessments
+- **Improvements Made**: Track specific changes implemented
+- **Challenges Encountered**: Record obstacles and how they were overcome
+- **Lessons Learned**: Capture insights for future learning cycles
 
 ## Technical Implementation
 

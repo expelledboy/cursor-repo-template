@@ -49,7 +49,34 @@ class ActiveTaskEngine:
             "status": "active",
             "iterations": [],
             "context_snapshot": {},
-            "validation_status": "pending"
+            "validation_status": "pending",
+            # Advanced task management features
+            "hierarchy": {
+                "parent_task": None,
+                "sub_objectives": [],
+                "completed_sub_objectives": []
+            },
+            "dependencies": {
+                "blocking_tasks": [],  # Tasks that must complete before this one
+                "blocked_by": [],      # Tasks this one is waiting for
+                "prerequisites": []    # Non-task prerequisites
+            },
+            "prioritization": {
+                "priority_level": "medium",  # high, medium, low
+                "priority_score": 5,         # 1-10 scale
+                "reprioritization_history": []
+            },
+            "alternative_routes": {
+                "explored_routes": [],
+                "deprecated_routes": [],
+                "selected_route": None
+            },
+            "progress_diary": {
+                "assessment_findings": [],
+                "improvements_made": [],
+                "challenges_encountered": [],
+                "lessons_learned": []
+            }
         }
 
         tasks["active_tasks"][task_id] = task_data
@@ -112,6 +139,151 @@ class ActiveTaskEngine:
 
         self._save_tasks_state(tasks)
 
+        return True
+
+    def add_sub_objective(self, task_id: str, sub_objective: str, description: str = "") -> bool:
+        """Add a sub-objective to a task."""
+        tasks = self._load_tasks_state()
+
+        if task_id not in tasks["active_tasks"]:
+            return False
+
+        sub_obj_data = {
+            "id": f"{task_id}-sub-{len(tasks['active_tasks'][task_id]['hierarchy']['sub_objectives'])}",
+            "objective": sub_objective,
+            "description": description,
+            "created_at": datetime.now().isoformat(),
+            "status": "pending"
+        }
+
+        tasks["active_tasks"][task_id]["hierarchy"]["sub_objectives"].append(sub_obj_data)
+        self._save_tasks_state(tasks)
+        return True
+
+    def complete_sub_objective(self, task_id: str, sub_objective_id: str) -> bool:
+        """Mark a sub-objective as completed."""
+        tasks = self._load_tasks_state()
+
+        if task_id not in tasks["active_tasks"]:
+            return False
+
+        task = tasks["active_tasks"][task_id]
+
+        # Find and move sub-objective to completed
+        for i, sub_obj in enumerate(task["hierarchy"]["sub_objectives"]):
+            if sub_obj["id"] == sub_objective_id:
+                sub_obj["completed_at"] = datetime.now().isoformat()
+                sub_obj["status"] = "completed"
+                task["hierarchy"]["completed_sub_objectives"].append(sub_obj)
+                task["hierarchy"]["sub_objectives"].pop(i)
+                break
+
+        self._save_tasks_state(tasks)
+        return True
+
+    def add_blocking_dependency(self, task_id: str, blocking_task_id: str, reason: str = "") -> bool:
+        """Add a blocking dependency to a task."""
+        tasks = self._load_tasks_state()
+
+        if task_id not in tasks["active_tasks"]:
+            return False
+
+        dependency_data = {
+            "blocking_task_id": blocking_task_id,
+            "reason": reason,
+            "added_at": datetime.now().isoformat(),
+            "status": "active"
+        }
+
+        # Add to this task's blocked_by list
+        tasks["active_tasks"][task_id]["dependencies"]["blocked_by"].append(dependency_data)
+
+        # Add to blocking task's blocking_tasks list
+        if blocking_task_id in tasks["active_tasks"]:
+            blocking_data = {
+                "blocked_task_id": task_id,
+                "reason": reason,
+                "added_at": datetime.now().isoformat()
+            }
+            tasks["active_tasks"][blocking_task_id]["dependencies"]["blocking_tasks"].append(blocking_data)
+
+        self._save_tasks_state(tasks)
+        return True
+
+    def deprecate_alternative_route(self, task_id: str, route_description: str, deprecation_reason: str) -> bool:
+        """Deprecate an alternative route that was explored."""
+        tasks = self._load_tasks_state()
+
+        if task_id not in tasks["active_tasks"]:
+            return False
+
+        route_data = {
+            "description": route_description,
+            "deprecated_at": datetime.now().isoformat(),
+            "reason": deprecation_reason
+        }
+
+        tasks["active_tasks"][task_id]["alternative_routes"]["deprecated_routes"].append(route_data)
+        self._save_tasks_state(tasks)
+        return True
+
+    def reprioritize_task(self, task_id: str, new_priority: str, reason: str) -> bool:
+        """Change task priority with historical tracking."""
+        tasks = self._load_tasks_state()
+
+        if task_id not in tasks["active_tasks"]:
+            return False
+
+        old_priority = tasks["active_tasks"][task_id]["prioritization"]["priority_level"]
+        old_score = tasks["active_tasks"][task_id]["prioritization"]["priority_score"]
+
+        # Update priority
+        tasks["active_tasks"][task_id]["prioritization"]["priority_level"] = new_priority
+        tasks["active_tasks"][task_id]["prioritization"]["priority_score"] = self._priority_to_score(new_priority)
+
+        # Record history
+        history_entry = {
+            "changed_at": datetime.now().isoformat(),
+            "old_priority": old_priority,
+            "new_priority": new_priority,
+            "old_score": old_score,
+            "new_score": tasks["active_tasks"][task_id]["prioritization"]["priority_score"],
+            "reason": reason
+        }
+
+        tasks["active_tasks"][task_id]["prioritization"]["reprioritization_history"].append(history_entry)
+        self._save_tasks_state(tasks)
+        return True
+
+    def _priority_to_score(self, priority: str) -> int:
+        """Convert priority level to numeric score."""
+        priority_map = {"low": 3, "medium": 5, "high": 8}
+        return priority_map.get(priority, 5)
+
+    def record_progress_diary(self, task_id: str, diary_type: str, entry: str) -> bool:
+        """Record an entry in the progress diary."""
+        tasks = self._load_tasks_state()
+
+        if task_id not in tasks["active_tasks"]:
+            return False
+
+        diary_entry = {
+            "timestamp": datetime.now().isoformat(),
+            "type": diary_type,
+            "entry": entry
+        }
+
+        diary_types = {
+            "assessment": "assessment_findings",
+            "improvement": "improvements_made",
+            "challenge": "challenges_encountered",
+            "lesson": "lessons_learned"
+        }
+
+        if diary_type in diary_types:
+            tasks["active_tasks"][task_id]["progress_diary"][diary_types[diary_type]].append(diary_entry)
+
+        self._save_tasks_state(tasks)
         return True
 
     def validate_task_completion(self, task_id: str) -> Dict[str, Any]:
@@ -352,6 +524,36 @@ def main():
     feedback_parser.add_argument('--message', required=True, help='User feedback message')
     feedback_parser.add_argument('--alignment', choices=['pending', 'partial', 'complete'], default='pending', help='Alignment status')
 
+    # Advanced task management commands
+    sub_obj_parser = subparsers.add_parser('add-sub-objective', help='Add sub-objective to task')
+    sub_obj_parser.add_argument('task_id', help='Task ID')
+    sub_obj_parser.add_argument('objective', help='Sub-objective description')
+    sub_obj_parser.add_argument('--description', help='Detailed description')
+
+    complete_sub_parser = subparsers.add_parser('complete-sub-objective', help='Mark sub-objective as completed')
+    complete_sub_parser.add_argument('task_id', help='Task ID')
+    complete_sub_parser.add_argument('sub_objective_id', help='Sub-objective ID')
+
+    dependency_parser = subparsers.add_parser('add-dependency', help='Add blocking dependency')
+    dependency_parser.add_argument('task_id', help='Task ID to add dependency to')
+    dependency_parser.add_argument('blocking_task_id', help='Task ID that blocks this one')
+    dependency_parser.add_argument('--reason', help='Reason for dependency')
+
+    deprecate_parser = subparsers.add_parser('deprecate-route', help='Deprecate alternative route')
+    deprecate_parser.add_argument('task_id', help='Task ID')
+    deprecate_parser.add_argument('route_description', help='Description of deprecated route')
+    deprecate_parser.add_argument('--reason', required=True, help='Reason for deprecation')
+
+    prioritize_parser = subparsers.add_parser('reprioritize', help='Change task priority')
+    prioritize_parser.add_argument('task_id', help='Task ID')
+    prioritize_parser.add_argument('priority', choices=['low', 'medium', 'high'], help='New priority level')
+    prioritize_parser.add_argument('--reason', required=True, help='Reason for reprioritization')
+
+    diary_parser = subparsers.add_parser('record-diary', help='Record progress diary entry')
+    diary_parser.add_argument('task_id', help='Task ID')
+    diary_parser.add_argument('diary_type', choices=['assessment', 'improvement', 'challenge', 'lesson'], help='Type of diary entry')
+    diary_parser.add_argument('entry', help='Diary entry content')
+
     args = parser.parse_args()
 
     engine = ActiveTaskEngine()
@@ -363,6 +565,42 @@ def main():
     elif args.command == 'switch':
         if engine.switch_to_task(args.task_id):
             print(f"Switched to task: {args.task_id}")
+        else:
+            print(f"Task not found: {args.task_id}")
+
+    elif args.command == 'add-sub-objective':
+        if engine.add_sub_objective(args.task_id, args.objective, args.description or ""):
+            print(f"Added sub-objective to task: {args.task_id}")
+        else:
+            print(f"Task not found: {args.task_id}")
+
+    elif args.command == 'complete-sub-objective':
+        if engine.complete_sub_objective(args.task_id, args.sub_objective_id):
+            print(f"Completed sub-objective in task: {args.task_id}")
+        else:
+            print(f"Failed to complete sub-objective")
+
+    elif args.command == 'add-dependency':
+        if engine.add_blocking_dependency(args.task_id, args.blocking_task_id, args.reason or ""):
+            print(f"Added dependency: {args.blocking_task_id} blocks {args.task_id}")
+        else:
+            print(f"Failed to add dependency")
+
+    elif args.command == 'deprecate-route':
+        if engine.deprecate_alternative_route(args.task_id, args.route_description, args.reason):
+            print(f"Deprecated alternative route in task: {args.task_id}")
+        else:
+            print(f"Task not found: {args.task_id}")
+
+    elif args.command == 'reprioritize':
+        if engine.reprioritize_task(args.task_id, args.priority, args.reason):
+            print(f"Reprioritized task {args.task_id} to {args.priority}")
+        else:
+            print(f"Task not found: {args.task_id}")
+
+    elif args.command == 'record-diary':
+        if engine.record_progress_diary(args.task_id, args.diary_type, args.entry):
+            print(f"Recorded {args.diary_type} diary entry for task: {args.task_id}")
         else:
             print(f"Task not found: {args.task_id}")
 
