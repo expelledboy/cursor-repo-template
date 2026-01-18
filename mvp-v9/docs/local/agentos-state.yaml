@@ -1,0 +1,36 @@
+version: agentos-state/v1
+created: '2026-01-18T15:45:42.125020'
+contexts:
+  analyze-20260118-154542:
+    timestamp: '2026-01-18T15:45:42.125042'
+    type: analyze
+    metadata:
+      key_insights:
+      - found_relationship_patterns
+      context_summary: analysis_complete
+    active: true
+  self-determination-20260118-154612:
+    timestamp: '2026-01-18T15:46:12.917270'
+    type: self-determination
+    metadata:
+      key_insights:
+      - relationship_graph_working
+      - orchestration_validation_complete
+      context_summary: self-determination analysis successful
+    active: true
+  test-doc-alignment-20260118-155200:
+    timestamp: '2026-01-18T15:52:00.559986'
+    type: test-doc-alignment
+    metadata:
+      key_insights:
+      - docs_instruct_agents_properly
+      context_summary: documentation_implementation_alignment_verified
+    active: true
+  holistic_test-20260118-171004:
+    timestamp: '2026-01-18T17:10:04.025106'
+    type: holistic_test
+    metadata:
+      key_insights:
+      - intelligence_first_architecture_working
+      context_summary: holistic_system_test_complete
+    active: true

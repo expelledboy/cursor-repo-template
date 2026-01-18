@@ -1,0 +1,201 @@
+active_tasks:
+  learning-20260118-194508:
+    task_id: learning-20260118-194508
+    task_name: test-task
+    objective: test learning objective
+    task_type: learning
+    created_at: '2026-01-18T19:45:08.336994'
+    status: active
+    iterations:
+    - timestamp: '2026-01-18T19:45:08.479313'
+      data:
+        type: user_feedback
+        user_feedback: test feedback
+        alignment_status: partial
+        user_alignment_complete: false
+      iteration_type: user_feedback
+      user_feedback: test feedback
+      ai_agent_response: ''
+      alignment_status: partial
+    context_snapshot: {}
+    validation_status: iterating
+  learning-20260118-194509:
+    task_id: learning-20260118-194509
+    task_name: test-task
+    objective: test learning objective
+    task_type: learning
+    created_at: '2026-01-18T19:45:09.946767'
+    status: active
+    iterations:
+    - timestamp: '2026-01-18T19:45:10.092486'
+      data:
+        type: user_feedback
+        user_feedback: test feedback
+        alignment_status: partial
+        user_alignment_complete: false
+      iteration_type: user_feedback
+      user_feedback: test feedback
+      ai_agent_response: ''
+      alignment_status: partial
+    context_snapshot: {}
+    validation_status: iterating
+  learning-20260118-194510:
+    task_id: learning-20260118-194510
+    task_name: test-task
+    objective: test learning objective
+    task_type: learning
+    created_at: '2026-01-18T19:45:10.768971'
+    status: active
+    iterations:
+    - timestamp: '2026-01-18T19:45:10.921945'
+      data:
+        type: user_feedback
+        user_feedback: test feedback
+        alignment_status: partial
+        user_alignment_complete: false
+      iteration_type: user_feedback
+      user_feedback: test feedback
+      ai_agent_response: ''
+      alignment_status: partial
+    context_snapshot: {}
+    validation_status: iterating
+  learning-20260118-194511:
+    task_id: learning-20260118-194511
+    task_name: test-task
+    objective: test learning objective
+    task_type: learning
+    created_at: '2026-01-18T19:45:11.570430'
+    status: active
+    iterations:
+    - timestamp: '2026-01-18T19:45:11.717509'
+      data:
+        type: user_feedback
+        user_feedback: test feedback
+        alignment_status: partial
+        user_alignment_complete: false
+      iteration_type: user_feedback
+      user_feedback: test feedback
+      ai_agent_response: ''
+      alignment_status: partial
+    context_snapshot: {}
+    validation_status: iterating
+  learning-20260118-194512:
+    task_id: learning-20260118-194512
+    task_name: test-task
+    objective: test learning objective
+    task_type: learning
+    created_at: '2026-01-18T19:45:12.369943'
+    status: active
+    iterations:
+    - timestamp: '2026-01-18T19:45:12.518283'
+      data:
+        type: user_feedback
+        user_feedback: test feedback
+        alignment_status: partial
+        user_alignment_complete: false
+      iteration_type: user_feedback
+      user_feedback: test feedback
+      ai_agent_response: ''
+      alignment_status: partial
+    context_snapshot: {}
+    validation_status: iterating
+  learning-20260118-194513:
+    task_id: learning-20260118-194513
+    task_name: test-task
+    objective: test learning objective
+    task_type: learning
+    created_at: '2026-01-18T19:45:13.988510'
+    status: active
+    iterations:
+    - timestamp: '2026-01-18T19:45:14.144573'
+      data:
+        type: user_feedback
+        user_feedback: test feedback
+        alignment_status: partial
+        user_alignment_complete: false
+      iteration_type: user_feedback
+      user_feedback: test feedback
+      ai_agent_response: ''
+      alignment_status: partial
+    context_snapshot: {}
+    validation_status: iterating
+  learning-20260118-194514:
+    task_id: learning-20260118-194514
+    task_name: test-task
+    objective: test learning objective
+    task_type: learning
+    created_at: '2026-01-18T19:45:14.810178'
+    status: active
+    iterations:
+    - timestamp: '2026-01-18T19:45:14.968441'
+      data:
+        type: user_feedback
+        user_feedback: test feedback
+        alignment_status: partial
+        user_alignment_complete: false
+      iteration_type: user_feedback
+      user_feedback: test feedback
+      ai_agent_response: ''
+      alignment_status: partial
+    context_snapshot: {}
+    validation_status: iterating
+  learning-20260118-194515:
+    task_id: learning-20260118-194515
+    task_name: test-task
+    objective: test learning objective
+    task_type: learning
+    created_at: '2026-01-18T19:45:15.628687'
+    status: active
+    iterations:
+    - timestamp: '2026-01-18T19:45:15.782810'
+      data:
+        type: user_feedback
+        user_feedback: test feedback
+        alignment_status: partial
+        user_alignment_complete: false
+      iteration_type: user_feedback
+      user_feedback: test feedback
+      ai_agent_response: ''
+      alignment_status: partial
+    context_snapshot: {}
+    validation_status: iterating
+  learning-20260118-194516:
+    task_id: learning-20260118-194516
+    task_name: test-task
+    objective: test learning objective
+    task_type: learning
+    created_at: '2026-01-18T19:45:16.472004'
+    status: active
+    iterations:
+    - timestamp: '2026-01-18T19:45:16.630343'
+      data:
+        type: user_feedback
+        user_feedback: test feedback
+        alignment_status: partial
+        user_alignment_complete: false
+      iteration_type: user_feedback
+      user_feedback: test feedback
+      ai_agent_response: ''
+      alignment_status: partial
+    context_snapshot: {}
+    validation_status: iterating
+  learning-20260118-194517:
+    task_id: learning-20260118-194517
+    task_name: test-task
+    objective: test learning objective
+    task_type: learning
+    created_at: '2026-01-18T19:45:17.299465'
+    status: active
+    iterations:
+    - timestamp: '2026-01-18T19:45:17.461077'
+      data:
+        type: user_feedback
+        user_feedback: test feedback
+        alignment_status: partial
+        user_alignment_complete: false
+      iteration_type: user_feedback
+      user_feedback: test feedback
+      ai_agent_response: ''
+      alignment_status: partial
+    context_snapshot: {}
+    validation_status: iterating

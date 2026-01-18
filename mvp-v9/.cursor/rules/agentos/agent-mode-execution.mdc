@@ -1,0 +1,120 @@
+---
+description: build mode, agent mode, implementation, execution, file modification, command execution
+---
+
+# Agent/Build Mode Execution Instructions
+
+## Full Capability Awareness
+In agent/build mode, you have full execution capabilities:
+- Execute commands and scripts
+- Modify, create, and delete files
+- Run builds, tests, and deployments
+- Access network resources and external APIs
+- Validate implementation outcomes
+
+## Execution Safety Protocols
+
+### Pre-Execution Validation
+Before executing any command or modifying files:
+1. **Confirm Intent**: Verify the action aligns with active objective
+2. **Check Permissions**: Ensure appropriate access rights
+3. **Backup Critical Files**: Preserve important data before destructive operations
+4. **Validate Syntax**: Check command/file syntax before execution
+
+### Destructive Action Confirmation
+For destructive operations (delete, overwrite, irreversible changes):
+- Always request explicit user confirmation
+- Provide clear description of what will be changed
+- Offer rollback/recovery options when available
+- Document the operation for audit purposes
+
+### Error Handling
+- Implement proper error handling for all operations
+- Provide clear error messages and recovery suggestions
+- Log errors for debugging and improvement
+- Gracefully handle partial failures
+
+## Implementation Workflow
+
+### Task Execution Process
+1. **Load Task Context**: Access active task plan header and objectives
+2. **Validate Prerequisites**: Ensure all dependencies and requirements are met
+3. **Execute Incrementally**: Break complex tasks into verifiable steps
+4. **Validate Each Step**: Run appropriate verification gates
+5. **Update Documentation**: Keep docs synchronized with implementation
+6. **Complete Task**: Mark task complete with outcome summary
+
+### File Modification Guidelines
+- **Atomic Changes**: Make changes that can be easily rolled back
+- **Incremental Commits**: Commit frequently with clear messages
+- **Backup Strategy**: Maintain backups of critical files
+- **Syntax Validation**: Validate file syntax before saving
+
+### Command Execution Guidelines
+- **Idempotent Operations**: Prefer commands that can be safely re-run
+- **Output Capture**: Capture and analyze command outputs
+- **Timeout Handling**: Implement appropriate timeouts for long-running commands
+- **Resource Awareness**: Be mindful of system resource usage
+
+## Integration with AgentOS Components
+
+### Task Manager Integration
+- Execute tasks according to task plan headers
+- Record progress and outcomes in task iterations
+- Validate completion against task requirements
+- Update task status based on execution results
+
+### State Management Integration
+- Preserve context across execution interruptions
+- Snapshot state before and after significant operations
+- Maintain awareness of execution history
+- Restore context when resuming interrupted tasks
+
+### Learning System Integration
+- Capture execution outcomes for learning analysis
+- Record successful patterns and failure modes
+- Update learning artifacts based on execution results
+- Validate execution against learned best practices
+
+## Validation Integration
+
+### Verification Gate Execution
+Run appropriate verification gates based on task type:
+- **Code Changes**: Run tests, linting, type checking
+- **Build Operations**: Validate build outputs and dependencies
+- **Deployment**: Run smoke tests and health checks
+- **Documentation**: Validate doc links and structure
+
+### Outcome Validation
+- Verify that execution achieved intended objectives
+- Check for unintended side effects or regressions
+- Validate that changes maintain system coherence
+- Confirm that documentation reflects implementation
+
+## Error Recovery and Rollback
+
+### Automatic Recovery
+- Implement rollback procedures for failed operations
+- Restore backups when operations fail
+- Revert changes that break system functionality
+- Provide clear recovery instructions for users
+
+### Learning from Failures
+- Capture failure patterns for learning system
+- Update error handling based on failure analysis
+- Improve validation gates based on past failures
+- Enhance rollback procedures based on recovery experiences
+
+## Performance Considerations
+
+### Resource Management
+- Monitor execution time and resource usage
+- Implement timeouts for long-running operations
+- Batch operations when appropriate to reduce overhead
+- Clean up temporary files and resources
+
+### Efficiency Optimization
+- Cache results of expensive operations when safe
+- Parallelize independent operations when possible
+- Minimize redundant validation checks
+- Optimize for common execution patterns

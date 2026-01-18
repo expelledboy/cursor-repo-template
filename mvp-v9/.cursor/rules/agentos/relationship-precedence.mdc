@@ -1,0 +1,177 @@
+---
+description: documentation precedence, authority hierarchy, relationship awareness, frontmatter
+---
+
+# Frontmatter Relationship Precedence & Authority
+
+## Authority Hierarchy Enforcement
+
+Always respect the documentation authority hierarchy when loading and interpreting directives:
+
+### Primary Authority (Reference)
+**Purpose**: Authoritative contracts, specifications, and immutable truths
+**Characteristics**:
+- Highest precedence in all decisions
+- Cannot be overridden by lower authority docs
+- Require explicit ADR process for changes
+- Define system invariants and contracts
+
+**Loading Priority**: Always load first, never deferred
+
+### Secondary Authority (How-to)
+**Purpose**: Procedural guidance for implementing reference specifications
+**Characteristics**:
+- Provide step-by-step procedures for reference docs
+- Can be updated more frequently than reference
+- Must align with reference specifications
+- Include validation procedures and checkpoints
+
+**Loading Priority**: Load after reference, can be deferred for planning phases
+
+### Tertiary Authority (Explanation)
+**Purpose**: Context, rationale, and reasoning for procedures and specifications
+**Characteristics**:
+- Explain why procedures and specs exist
+- Provide architectural context and design rationale
+- Support understanding without direct implementation
+- Can evolve as understanding deepens
+
+**Loading Priority**: Load when context needed, defer during execution focus
+
+### Supporting Authority (Tutorials)
+**Purpose**: Learning materials and examples for concepts and procedures
+**Characteristics**:
+- Provide practical examples and walkthroughs
+- Support skill development and understanding
+- Can be updated frequently based on user feedback
+- Not authoritative for system behavior
+
+**Loading Priority**: Load on-demand for learning, defer during implementation
+
+### Working Authority (Work)
+**Purpose**: Current task documentation and active development artifacts
+**Characteristics**:
+- Capture current work and decisions
+- Include dated filenames with status fields
+- Not authoritative for system behavior
+- Can be cleaned up after task completion
+
+**Loading Priority**: Load for current task context, exclude from general searches
+
+### Historical Authority (Archive)
+**Purpose**: Preserved historical context and lessons learned
+**Characteristics**:
+- Superseded documentation with clear replacement pointers
+- Historical decision records and rationales
+- Not active system guidance
+- Maintained for institutional memory
+
+**Loading Priority**: Load only when historical context required
+
+## Frontmatter Relationship Navigation
+
+### Bidirectional Awareness
+When working with documents, be aware of bidirectional relationships:
+
+#### Outgoing Relationships (This Document References)
+- **depends_on**: This doc requires these others to be understood
+- **informs**: This doc provides information to these others
+- **evidence_for**: This doc provides evidence supporting these others
+- **implements**: This doc implements specifications from these others
+
+#### Incoming Relationships (Other Documents Reference This)
+- **depended_on_by**: Other docs require this one
+- **informed_by**: Other docs provide information to this one
+- **evidence_from**: Other docs provide evidence for this one
+- **implemented_by**: Other docs implement specs from this one
+
+### Relationship-Aware Loading
+When loading directives, consider relationship context:
+
+#### Dependency-First Loading
+If a document `depends_on` others, load dependencies first:
+```
+Document A (depends_on: [B, C])
+Loading Order: B → C → A
+```
+
+#### Implementation Chain Loading
+For implementation relationships, load specifications before implementations:
+```
+Spec Document → implements → Implementation Document
+Loading Order: Spec Document → Implementation Document
+```
+
+#### Evidence Chain Loading
+When evidence relationships exist, load evidence with claims:
+```
+Claim Document ← evidence_for ← Evidence Document
+Loading Order: Evidence Document → Claim Document
+```
+
+## Implementation-Documentation Alignment Validation
+
+### Frontmatter Implementation Checking
+Validate that documented implementations actually exist:
+
+#### @implementation Validation
+For docs with `@implementation` frontmatter:
+- Verify referenced implementation files exist
+- Check files are accessible and readable
+- Validate implementation matches documented specifications
+
+#### @directive Validation
+For code with `@directive` annotations:
+- Verify referenced documentation exists
+- Check documentation is current and accurate
+- Validate code implementation matches documented behavior
+
+### Relationship Consistency Validation
+Ensure relationships are bidirectional and consistent:
+
+#### Bidirectional Link Validation
+- If A depends_on B, verify B has appropriate incoming relationship
+- If A implements B, verify B has implemented_by relationship
+- Flag missing reverse relationships as potential gaps
+
+#### Authority Boundary Validation
+- Ensure relationships don't violate authority hierarchy
+- Flag when low-authority docs attempt to override high-authority docs
+- Validate that relationship chains maintain logical precedence
+
+## Self-Awareness Integration
+
+### Relationship-Based Self-Awareness
+Use frontmatter relationships for agent self-understanding:
+
+#### Authority Self-Awareness
+- Know which documents have higher authority than current context
+- Understand when to defer to higher authority sources
+- Recognize when local decisions require higher authority approval
+
+#### Relationship Self-Awareness
+- Understand how current work fits into broader system relationships
+- Recognize dependency chains and implementation hierarchies
+- Identify when local changes affect broader system relationships
+
+#### Implementation Self-Awareness
+- Know which parts of the system are documented vs implemented
+- Identify gaps between documentation and implementation
+- Understand current state of alignment validation
+
+## Mode-Appropriate Relationship Usage
+
+### Plan Mode Relationship Focus
+- Load full relationship chains for comprehensive understanding
+- Emphasize authority hierarchy for decision validation
+- Use relationships for impact analysis and planning
+
+### Build Mode Relationship Focus
+- Focus on implementation relationships and dependencies
+- Validate authority compliance for changes
+- Use relationships for change impact assessment
+
+### Ask Mode Relationship Focus
+- Provide relationship context for explanations
+- Use authority hierarchy to guide recommendations
+- Explain relationship implications for user decisions

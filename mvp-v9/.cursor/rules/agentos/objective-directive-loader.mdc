@@ -1,0 +1,118 @@
+---
+description: task execution, objective activation, directive loading, active task
+---
+
+# Active Objective Directive Loading
+
+## Task Plan Header Integration
+
+When a task plan header is active (established via task manager), automatically load associated directives based on header fields:
+
+### Task Type Directives
+- **learning**: Load learning system and feedback documentation
+- **implementation**: Load architecture and validation contracts
+- **analysis**: Load meta-analysis and relationship frameworks
+- **meta-maintenance**: Load evolution and coherence documentation
+
+### Required Directives Loading
+Load all directives listed in the task plan header:
+- Reference documentation for authoritative guidance
+- How-to guides for procedural steps
+- Verification gates for validation procedures
+
+### Domain Boundary Enforcement
+Respect allowed domains specified in task plan header:
+- Only load documentation from permitted domains
+- Validate all actions stay within domain boundaries
+- Log domain violations for review
+
+## Frontmatter Relationship Intelligence
+
+### Automatic Relationship Loading
+When loading a primary directive, automatically load related documents based on frontmatter relationships:
+
+#### Dependency Chain Loading
+- **depends_on**: Load prerequisite documents first
+- Follow dependency chains to ensure complete context
+- Validate dependency satisfaction before proceeding
+
+#### Contextual Information Loading
+- **informs**: Load documents that provide additional context
+- **evidence_for**: Load supporting evidence and rationale
+- **governed_by**: Load governing policies and constraints
+
+#### Implementation Relationship Loading
+- **implements**: Load interface specifications and contracts
+- **implemented_by**: Load concrete implementation details
+- Validate implementation matches specifications
+
+### Authority Hierarchy Navigation
+Navigate document relationships while respecting authority precedence:
+1. **Reference** documents take precedence over all others
+2. **How-to** guides provide procedures for reference docs
+3. **Explanation** docs provide context for procedures
+4. **Tutorials** offer learning paths for concepts
+5. **Work** docs capture current task evolution
+6. **Archive** docs provide historical context
+
+## Mode-Aware Directive Selection
+
+### Plan Mode Directives
+Focus on analysis and planning documentation:
+- Decision frameworks and strategy guides
+- Requirements gathering and analysis procedures
+- Planning templates and validation strategies
+
+### Build Mode Directives
+Load implementation and execution documentation:
+- Architecture patterns and implementation guides
+- Validation contracts and testing procedures
+- Deployment and operational guidelines
+
+### Ask Mode Directives
+Provide guidance and analysis documentation:
+- Explanation frameworks and conceptual guides
+- Analysis procedures and evaluation methods
+- Suggestion frameworks and best practice guides
+
+## Dynamic Directive Loading
+
+### Context-Triggered Loading
+Load additional directives based on task evolution:
+- **Complexity Increase**: Load advanced patterns and risk management
+- **New Dependencies**: Load integration and coordination guides
+- **Validation Failures**: Load debugging and troubleshooting docs
+
+### Relationship Gap Detection
+When relationships are missing, suggest directive loading:
+- Identify isolated documents lacking connections
+- Recommend loading related documentation
+- Validate completeness of directive context
+
+## Validation Integration
+
+### Directive Loading Validation
+Verify all required directives are accessible:
+- Check document existence and readability
+- Validate relationship consistency
+- Confirm authority hierarchy compliance
+
+### Mode Compatibility Validation
+Ensure loaded directives are compatible with current mode:
+- Validate capability requirements against mode constraints
+- Flag directives requiring unavailable capabilities
+- Suggest mode-appropriate alternatives
+
+## Task State Synchronization
+
+### Active Task Awareness
+Maintain awareness of current task state:
+- Load directives based on current task phase
+- Update directive context as task evolves
+- Preserve directive loading history for task continuity
+
+### Context Preservation
+Maintain directive loading context across task switches:
+- Preserve loaded directive relationships
+- Maintain authority hierarchy awareness
+- Restore directive context when resuming tasks

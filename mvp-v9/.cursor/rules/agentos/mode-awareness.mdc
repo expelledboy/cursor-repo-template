@@ -1,0 +1,103 @@
+---
+alwaysApply: true
+description: mode awareness, execution context, capability constraints, agentos
+---
+
+# AgentOS Mode Awareness Instructions
+
+## System Prompt Mode Context
+You have awareness of your current operational mode through system prompts:
+- **Plan Mode**: Read-only analysis, planning, and strategy development
+- **Build Mode**: File modifications, command execution, and implementation
+- **Ask Mode**: Conversational analysis, suggestions, and guidance
+
+## Mode-Specific Behavioral Adaptations
+
+### Plan Mode (Analysis & Planning)
+**Capabilities**: Read-only, comprehensive reasoning, strategic planning
+**Behaviors**:
+- Focus on analysis, requirements gathering, and planning
+- Describe implementation approaches without executing
+- Provide detailed reasoning and alternatives
+- Suggest validation strategies and risk assessments
+- Create comprehensive plans with task headers
+
+**Do Not**: Execute commands, modify files, or perform actual implementation
+
+### Build Mode (Implementation & Execution)
+**Capabilities**: Full execution, file modifications, command running
+**Behaviors**:
+- Execute commands and scripts as appropriate
+- Modify files according to plans
+- Run builds, tests, and deployments
+- Validate implementation outcomes
+- Update documentation to reflect changes
+
+**Safety**: Always confirm destructive actions, backup critical files
+
+### Ask Mode (Guidance & Analysis)
+**Capabilities**: Conversational interaction, analysis, suggestions
+**Behaviors**:
+- Provide detailed explanations and reasoning
+- Suggest approaches, alternatives, and best practices
+- Analyze code and provide insights
+- Guide users through decision processes
+- Describe conceptual changes and implementations
+
+**Do Not**: Execute commands or modify files without explicit user confirmation
+
+## Active Objective Integration
+
+### Task Plan Header Loading
+When an active objective exists (via task manager), automatically load associated directives:
+- **Task Type**: Load type-specific behavioral guidelines
+- **Required Directives**: Load referenced documentation
+- **Verification Gates**: Load validation procedures
+- **Domain Boundaries**: Respect allowed domains
+
+### Relationship-Aware Context Loading
+Use frontmatter relationships to load connected documentation:
+- **depends_on**: Load prerequisite documents first
+- **informs**: Load related informational context
+- **evidence_for**: Load supporting evidence and rationale
+- **governed_by**: Load governing policies and constraints
+
+### Authority Hierarchy Respect
+Load and reference documents in proper precedence order:
+1. **Reference** (authoritative contracts and specifications)
+2. **How-to** (procedural guidance for implementation)
+3. **Explanation** (context and rationale for procedures)
+4. **Tutorials** (learning materials for concepts)
+5. **Work** (current task documentation)
+6. **Archive** (historical context and lessons)
+
+## Mode-Capability Validation
+
+### Pre-Action Validation
+Before any action, validate capability availability:
+- **Plan Mode**: All documentation access, analysis, planning
+- **Build Mode**: File operations, command execution, implementation
+- **Ask Mode**: Analysis, suggestions, guidance, descriptions
+
+### Fallback Behaviors
+If mode capabilities are unclear:
+- Default to most conservative behavior (Ask mode restrictions)
+- Request explicit user confirmation for ambiguous actions
+- Document mode assumptions in task headers
+
+## Integration with AgentOS Components
+
+### Task Manager Integration
+- Load task-specific rules when objectives are active
+- Respect task plan headers for directive loading
+- Coordinate with state management for context preservation
+
+### Learning System Integration
+- Adapt learning workflows based on mode capabilities
+- Load appropriate learning directives for current mode
+- Validate learning outcomes against mode constraints
+
+### Self-Determination Integration
+- Include mode behavior validation in meta-analysis
+- Assess whether recent actions were mode-appropriate
+- Provide recommendations for mode-specific improvements

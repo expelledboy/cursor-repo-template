@@ -17,6 +17,7 @@
             # nodejs
             # nodejs.pkgs.pnpm
             python3
+            python3.pkgs.pyyaml
             bats
             # go
             # rustc
