@@ -10,6 +10,9 @@ DOE Declaration:
 - DOE_PRECEDENCE: 3
 """
 
+# @directive docs/reference/agentos/orchestration-layer.md
+# @directive docs/reference/agentos/learning-system.md
+
 import sys
 import json
 import argparse

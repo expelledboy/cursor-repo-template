@@ -12,6 +12,8 @@ DOE Declaration:
 - DOE_PRECEDENCE: 4
 """
 
+# @directive docs/reference/agentos/behavior-spec.md
+
 import sys
 import json
 from pathlib import Path
