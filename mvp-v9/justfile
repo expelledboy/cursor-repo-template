@@ -1,0 +1,120 @@
+# AgentOS v9 - Complete API Exposure via Just
+set dotenv-load := true
+set export := true
+set shell := ["bash", "-cu"]
+
+# Modular API organization
+mod evidence "scripts/evidence"
+mod tasks "scripts/tasks"
+mod system "scripts/system"
+
+# Default help
+default:
+  @echo "🎯 AgentOS v9 - Complete API Exposure"
+  @echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  @echo ""
+  @echo "📋 Available APIs:"
+  @echo "  just evidence     # Evidence collection and analysis"
+  @echo "  just tasks        # Task management and workflows"
+  @echo "  just system       # System health and API documentation"
+  @echo ""
+  @echo "🔍 Quick Commands:"
+  @echo "  just assess       # Start self-determination assessment"
+  @echo "  just health       # Basic system health check"
+  @echo "  just api          # Complete API reference"
+  @echo ""
+  @echo "📖 Help: just --help [module]"
+
+# Quick assessment workflow
+assess:
+  just evidence system
+  just tasks assess
+  just evidence alignment
+  @echo ""
+  @echo "🎉 Self-determination assessment initiated!"
+  @echo "📋 Created assessment task + collected evidence"
+  @echo "🎯 Next: just learn (add learning objectives)"
+
+# Quick health check
+health:
+  #!/usr/bin/env bash
+  echo "🏥 AgentOS System Health Check"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+  # Check core directories
+  echo "📁 Directory Structure:"
+  if [ -d "docs" ]; then
+    DOC_COUNT=$(find docs -name "*.md" 2>/dev/null | wc -l)
+    echo "  ✅ docs: ${DOC_COUNT} markdown files"
+  else
+    echo "  ❌ docs: directory missing"
+  fi
+
+  if [ -d "scripts" ]; then
+    SCRIPT_COUNT=$(find scripts -name "*.py" 2>/dev/null | wc -l)
+    echo "  ✅ scripts: ${SCRIPT_COUNT} Python files"
+  else
+    echo "  ❌ scripts: directory missing"
+  fi
+
+  if [ -d "src" ]; then
+    SRC_COUNT=$(find src -name "*.py" 2>/dev/null | wc -l)
+    echo "  ✅ src: ${SRC_COUNT} Python files"
+  else
+    echo "  ❌ src: directory missing"
+  fi
+
+  echo ""
+
+  # Check core files
+  echo "📄 Core Files:"
+  if [ -f "src/agentos.py" ]; then
+    echo "  ✅ src/agentos.py: present"
+  else
+    echo "  ❌ src/agentos.py: missing"
+  fi
+
+  if [ -f "README.md" ]; then
+    echo "  ✅ README.md: present"
+  else
+    echo "  ❌ README.md: missing"
+  fi
+
+  echo ""
+
+  # Basic syntax check
+  echo "🐍 Python Syntax Check:"
+  PYTHON_FILES=$(find . -name "*.py" -type f 2>/dev/null)
+  TOTAL_PY=$(echo "$PYTHON_FILES" | wc -l)
+  SYNTAX_ERRORS=0
+
+  for py_file in $PYTHON_FILES; do
+    if [ -f "$py_file" ]; then
+      if ! python3 -m py_compile "$py_file" 2>/dev/null; then
+        SYNTAX_ERRORS=$((SYNTAX_ERRORS + 1))
+      fi
+    fi
+  done
+
+  if [ $SYNTAX_ERRORS -eq 0 ]; then
+    echo "  ✅ ${TOTAL_PY} Python files: no syntax errors"
+  else
+    echo "  ⚠️  ${TOTAL_PY} Python files: ${SYNTAX_ERRORS} syntax errors found"
+  fi
+
+  echo ""
+  echo "🎯 Health check complete!"
+
+# Complete API reference
+api:
+  just system api
+
+# Self-determination workflow
+self-determine: assess
+  @echo ""
+  @echo "🔄 Self-determination workflow active"
+  @echo "📊 Evidence collected, assessment task created"
+  @echo ""
+  @echo "🔄 Self-determination workflow active"
+  @echo "📊 Evidence collected, task created"
+  @echo "🎯 Continue with: just learn, just improve, just reflect"
