@@ -18,6 +18,7 @@ DOE_PRECEDENCE = 4
 import sys
 import subprocess
 import json
+import argparse
 from pathlib import Path
 
 def run_command(cmd, cwd=None, timeout=30):
@@ -47,6 +48,34 @@ def run_command(cmd, cwd=None, timeout=30):
             "success": False,
             "error": str(e)
         }
+
+
+def print_help():
+    """Print help information."""
+    help_text = """
+AgentOS v9 Validation Suite
+
+Comprehensive validation of AgentOS v9 functionality and authenticity.
+Tests all core components and ensures system integrity.
+
+USAGE:
+    python3 scripts/validate.py [OPTIONS]
+
+OPTIONS:
+    --help, -h          Show this help message
+    --quiet, -q         Run in quiet mode (less verbose output)
+    --json              Output results in JSON format
+
+EXAMPLES:
+    python3 scripts/validate.py              # Run full validation
+    python3 scripts/validate.py --quiet      # Run with minimal output
+    python3 scripts/validate.py --json       # Output as JSON
+
+DOE Layer: Execution
+DOE Responsibility: System validation and authenticity verification
+"""
+    print(help_text)
+
 
 def validate_core_functionality():
     """Validate that core AgentOS functionality works."""

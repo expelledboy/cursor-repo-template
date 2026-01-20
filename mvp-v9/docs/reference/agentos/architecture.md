@@ -87,46 +87,11 @@ mvp-v9/
 
 ## Current Capabilities
 
-### Analysis
-- Directory structure scanning
-- File type distribution analysis
-- Basic structural metrics
-- Relationship graph orchestration
-- Self-determination analysis
-
-### Validation
-- Project file detection (README, package.json, etc.)
-- Basic structure checks
-- Existence validation
-- Directive orchestration validation
-- Core documentation presence checks
-
-### State Management
-- Lightweight context preservation
-- Metadata transfer across operations
-- Active context tracking
-- Cross-operation continuity
-- Enhanced snapshots for lossy scenarios
-- Context loss risk assessment
-
-### Learning System
-- Active task branching with navigation
-- State management for learning context
-- Workflow coordination for iterations
-- Deterministic validation of completion
-- AI agent analysis and content creation
-
-### Context Intelligence
-- Frontmatter relationship analysis
-- Intelligent directive loading based on document connections
-- Relationship gap detection
-- Context-aware document recommendations
-
-### Cursor Integration
-- Mode-aware behavior adaptation
-- Capability validation for different modes
-- Command adaptation based on constraints
-- Native Cursor environment detection
+| Component | Analysis | Validation | State | Learning | Context | Cursor |
+|-----------|----------|------------|-------|----------|---------|--------|
+| AgentOS Class | Directory/file scanning, metrics | Project structure checks | Lightweight preservation | Manual capture + AI analysis | Frontmatter analysis | Mode-aware adaptation |
+| Task Engine | - | - | Navigation state | Hierarchical branching | - | - |
+| Scripts | Raw data coordination | Deterministic operations | Context transfer | - | Relationship graphs | - |
 
 ## Core Components Integration
 

@@ -22,62 +22,14 @@ implementations: ["src/agentos.py"]
 - Python 3.8+ available
 - Basic understanding of DOE framework (Directive-Orchestration-Execution)
 
-## Codebase Analysis
+## Command Reference
 
-### Command Syntax
-```bash
-./src/agentos.py analyze [path]
-```
-
-### Parameters
-- `path`: Directory or file path to analyze (default: current directory)
-
-### Steps
-1. Execute analysis command on target path
-2. Review structural metrics in JSON output
-3. Identify file type distributions and patterns
-
-### Verification
-- Command completes without errors
-- JSON output contains file counts and type distributions
-- Path information matches target location
-
-## Project Validation
-
-### Command Syntax
-```bash
-./src/agentos.py validate [path]
-```
-
-### Parameters
-- `path`: Directory path to validate (default: current directory)
-
-### Steps
-1. Execute validation command on target path
-2. Review validation results in JSON output
-3. Confirm all required project files present
-
-### Verification
-- Command completes successfully
-- JSON output shows validation status
-- Core project files detected (README, docs structure)
-
-## Evidence Collection
-
-### Command Syntax
-```bash
-./src/agentos.py self-determination
-```
-
-### Steps
-1. Execute self-determination command
-2. Collect evidence from JSON output
-3. Provide evidence to orchestration layer for analysis
-
-### Verification
-- Command produces structured JSON evidence
-- Evidence meets DOE standards (timestamp, layer declaration)
-- Orchestration-ready flag set to true
+| Command | Purpose | Syntax | Key Parameters | Output |
+|---------|---------|--------|----------------|--------|
+| `analyze` | Codebase structure analysis | `./src/agentos.py analyze [path]` | path (default: .) | JSON with file metrics, distributions |
+| `validate` | Project configuration validation | `./src/agentos.py validate [path]` | path (default: .) | JSON validation status, detected files |
+| `self-determination` | Evidence collection for orchestration | `./src/agentos.py self-determination` | - | DOE-compliant JSON evidence |
+| `learn` | Manual observation capture | `./src/agentos.py learn "text"` | --file for files | Analysis + draft artifacts + alignment guidance |
 
 ## Learning Analysis
 
@@ -110,109 +62,19 @@ implementations: ["src/agentos.py"]
 4. Provide alignment feedback until complete
 ## Task Management
 
-### Create Learning Task Branch
-```bash
-python3 scripts/task_manager.py create "task_name" "learning_objective"
-```
-
-### Parameters
-- `task_name`: Identifier for the task
-- `learning_objective`: Description of what should be learned
-
-### Steps
-1. Execute create command with task name and objective
-2. Task branch created with context preservation
-3. Learning workflow initialized
-
-### Verification
-- Command completes successfully
-- Task appears in active task list
-- Context preservation confirmed
-
-### Switch Between Task Branches
-```bash
-python3 scripts/task_manager.py switch task-id
-```
-
-### Parameters
-- `task-id`: Identifier of task to switch to
-
-### Steps
-1. Execute switch command with target task ID
-2. Current context saved automatically
-3. Target task context loaded
-
-### Verification
-- Command completes without errors
-- Task switch confirmed in status output
-
-### Record Learning Iteration
-```bash
-python3 scripts/task_manager.py record-iteration task-id "iteration_data"
-```
-
-### Parameters
-- `task-id`: Task identifier
-- `iteration_data`: JSON string with observation, analysis, and feedback
-
-### Steps
-1. Execute record command with iteration details
-2. Learning progress tracked in task history
-
-### Verification
-- Iteration recorded successfully
-- Task history updated
-
-### Provide Learning Feedback
-```bash
-python3 scripts/task_manager.py feedback task-id --message "feedback text" --alignment pending|partial|complete
-```
-
-### Parameters
-- `task-id`: Task identifier
-- `--message`: User feedback text
-- `--alignment`: Current alignment status
-
-### Steps
-1. Execute feedback command with alignment assessment
-2. AI agent receives feedback for iteration
-3. Process continues until complete alignment achieved
-
-### Verification
-- Feedback recorded in task history
-- Alignment status updated appropriately
+| Command | Purpose | Syntax | Key Parameters |
+|---------|---------|--------|----------------|
+| `create` | Create learning task branch | `python3 scripts/task_manager.py create "name" "objective"` | task_name, learning_objective |
+| `switch` | Switch between task branches | `python3 scripts/task_manager.py switch task-id` | task-id |
+| `record-iteration` | Record learning progress | `python3 scripts/task_manager.py record-iteration task-id "data"` | task-id, iteration_data |
+| `feedback` | Provide alignment feedback | `python3 scripts/task_manager.py feedback task-id --message "text" --alignment status` | task-id, --message, --alignment |
 
 ## System Validation
 
-### Core Functionality Validation
-```bash
-python3 scripts/validate.py
-```
-
-### Steps
-1. Execute validation script
-2. Review all system component validations
-3. Confirm DOE framework compliance
-
-### Verification
-- All validation checks pass
-- System integrity confirmed
-- No critical errors reported
-
-### Self-Determination Evidence Collection
-```bash
-./src/agentos.py self-determination
-```
-
-### Steps
-1. Execute self-determination command
-2. Collect system evidence from output
-3. Use evidence for orchestration analysis
-
-### Verification
-- Structured evidence produced
-- DOE compliance maintained
-- Orchestration layer can consume output
+| Component | Command | Purpose | Output |
+|-----------|---------|---------|--------|
+| Core Validation | `python3 scripts/validate.py` | Comprehensive system checks | Pass/fail status for all components |
+| Evidence Collection | `./src/agentos.py self-determination` | DOE-compliant evidence gathering | JSON evidence for orchestration |
 
 Record user feedback during learning alignment process:
 
@@ -308,7 +170,7 @@ python3 scripts/state_manager.py save analyze '{"key_insights": ["found_patterns
 python3 scripts/state_manager.py list
 ```
 
-Shows currently active contexts with timestamps.
+Lists active contexts with timestamps.
 
 ### Transfer Context
 ```bash

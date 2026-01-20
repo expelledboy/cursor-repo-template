@@ -194,6 +194,60 @@ class AgentOS:
                     "validation_status": "evidence_unavailable"
                 }
 
+            # Collect meta-analysis with gap detection integration
+            gap_detector_script = Path(__file__).parent.parent / "scripts" / "gap_detector.py"
+            if gap_detector_script.exists():
+                gap_process = subprocess.run(
+                    [sys.executable, str(gap_detector_script), "status"],
+                    capture_output=True,
+                    text=True,
+                    cwd=Path(__file__).parent.parent
+                )
+
+                if gap_process.returncode == 0 and "System Active: True" in gap_process.stdout:
+                    result["meta_analysis"] = {
+                        "gap_detection_integration": {
+                            "status": "integrated",
+                            "gap_detector_available": True,
+                            "ai_agent_framework_ready": True,
+                            "analysis_types_supported": [
+                                "relationship_pattern_analysis",
+                                "impact_assessment",
+                                "prioritization_ranking",
+                                "root_cause_identification",
+                                "remediation_planning"
+                            ],
+                            "integration_timestamp": datetime.now().isoformat(),
+                            "evidence_collection_capable": True
+                        },
+                        "self_improvement_capabilities": {
+                            "learning_opportunities": "gap analysis results can feed learning system",
+                            "pattern_recognition": "recurring gap types inform system improvements",
+                            "validation_enhancement": "gap detection improves overall validation",
+                            "meta_analysis_ready": True
+                        }
+                    }
+                else:
+                    result["meta_analysis"] = {
+                        "gap_detection_integration": {
+                            "status": "degraded",
+                            "gap_detector_available": False,
+                            "error": "gap detector not responding",
+                            "integration_timestamp": datetime.now().isoformat(),
+                            "evidence_collection_capable": False
+                        }
+                    }
+            else:
+                result["meta_analysis"] = {
+                    "gap_detection_integration": {
+                        "status": "missing",
+                        "gap_detector_available": False,
+                        "error": "gap_detector.py script not found",
+                        "integration_timestamp": datetime.now().isoformat(),
+                        "evidence_collection_capable": False
+                    }
+                }
+
             # Mark orchestration ready
             result["orchestration_ready"] = True
 
