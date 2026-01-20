@@ -1,0 +1,80 @@
+spec_version: "agentos.active-state/v1"
+state_id: "AST-20260115-INSTALLED"
+updated_at: "2026-01-15T15:05:44Z"
+
+focus:
+  frame_id: "F-CONTEXT-CONTRACT"
+  objective_id: "OBJ-ROOT"
+  phase: "DISCOVER"
+  mode: "installed"
+
+objectives:
+  - id: "OBJ-ROOT"
+    parent_id: null
+    title: "Initial objective"
+    status: "active"
+    exit_reason: null
+    children: []
+    resume_hint: null
+
+frames:
+  - id: "F-ROOT"
+    title: "Initial context"
+    summary: "AgentOS state initialized and ready for use."
+    created_at: "2026-01-15T14:52:51Z"
+    anchors: []
+    decision_trace_ids: []
+    links:
+      - to: "F-CORRECTION-1"
+        kind: "shift_context"
+        note: "Corrected understanding: /agentos command does not exist"
+  - id: "F-CORRECTION-1"
+    title: "Command correction"
+    summary: "Learned that /agentos command does not exist. Available commands are /trace, /checkpoint, /resume, and /branch. Updated README.md to remove incorrect reference."
+    created_at: "2026-01-15T14:55:29Z"
+    anchors:
+      - "README.md"
+      - ".cursor/commands/trace.md"
+      - ".cursor/commands/checkpoint.md"
+      - ".cursor/commands/resume.md"
+      - ".cursor/commands/branch.md"
+    decision_trace_ids: []
+    links:
+      - to: "F-REASONING-IMPROVEMENT"
+        kind: "branch"
+        note: "Created decision graph for automatic state update checks"
+  - id: "F-REASONING-IMPROVEMENT"
+    title: "Reasoning improvement: state update automation"
+    summary: "Created state-update-check decision graph to automatically detect when objective conclusions are reached that warrant state updates. This addresses the gap where corrections and learnings weren't automatically persisted."
+    created_at: "2026-01-15T14:57:44Z"
+    anchors:
+      - ".agentos/decision-graphs/state-update-check.yaml"
+      - "docs/reference/agentos/spec-decision-graph.md"
+      - "docs/reference/agentos/spec-active-state.md"
+    decision_trace_ids: []
+    links:
+      - to: "F-CONTEXT-CONTRACT"
+        kind: "branch"
+        note: "Added explicit context contracts to decision graphs to prevent undefined context fields"
+  - id: "F-CONTEXT-CONTRACT"
+    title: "Decision graph context contract"
+    summary: "Updated decision-graph schema/spec to support `context_contract`, and updated state-update-check to declare/consume explicit `context.*` fields (no invented helpers/functions)."
+    created_at: "2026-01-15T15:05:44Z"
+    anchors:
+      - "schemas/decision-graph.yaml"
+      - "docs/reference/agentos/spec-decision-graph.md"
+      - ".agentos/decision-graphs/state-update-check.yaml"
+    decision_trace_ids: []
+    links: []
+
+navigation:
+  recent_focus:
+    - { frame_id: "F-CONTEXT-CONTRACT", at: "2026-01-15T15:05:44Z" }
+    - { frame_id: "F-REASONING-IMPROVEMENT", at: "2026-01-15T14:57:44Z" }
+    - { frame_id: "F-CORRECTION-1", at: "2026-01-15T14:55:29Z" }
+    - { frame_id: "F-ROOT", at: "2026-01-15T14:52:51Z" }
+
+rehydration:
+  required_rules: ["mvp-v7/core"]
+  required_docs: ["docs/reference/agentos/kernel.md"]
+  state_file_path: ".agentos/active-state.yaml"

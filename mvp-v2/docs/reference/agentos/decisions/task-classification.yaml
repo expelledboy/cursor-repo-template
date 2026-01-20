@@ -1,0 +1,40 @@
+# Task Classification Decision Graph
+
+name: task_classification
+description: Routes tasks to appropriate workflow type based on requirement structure
+
+steps:
+  - id: check_objective_clarity
+    question: Is the objective clear and unambiguous?
+    condition: "task.objective.length >= 10 and task.objective.length <= 200"
+    route: execution
+    load: docs/reference/agentos/workflows/execution.md
+    confidence: 0.95
+    terminal: false
+    fallback: check_stakeholders
+
+  - id: check_stakeholders
+    question: Are multiple stakeholders involved or coordination required?
+    condition: "task.scope.domains.length > 1 or 'coordination' in task.objective.lower()"
+    route: coordination
+    load: docs/reference/agentos/workflows/coordination.md
+    confidence: 0.90
+    terminal: false
+    fallback: check_complexity
+
+  - id: check_complexity
+    question: Does this involve architectural decisions or system-wide changes?
+    condition: "'architecture' in task.type or 'system' in task.objective.lower() or 'refactor' in task.objective.lower()"
+    route: architecture
+    load: docs/reference/agentos/workflows/architecture.md
+    confidence: 0.85
+    terminal: false
+    fallback: direct_execution
+
+  - id: direct_execution
+    question: Simple, isolated change?
+    condition: "task.scope.domains.length == 1 and task.constraints.risks.length == 0"
+    route: direct
+    load: docs/reference/agentos/workflows/direct.md
+    confidence: 0.95
+    terminal: true

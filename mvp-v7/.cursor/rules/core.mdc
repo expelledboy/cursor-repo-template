@@ -1,0 +1,17 @@
+---
+alwaysApply: true
+---
+- Load:
+  - `docs/reference/agentos/kernel.md`
+  - `docs/reference/agentos/cursor-decision-graph-interplay.md`
+  - `docs/reference/agentos/cursor-mechanics.md`
+  - `docs/reference/agentos/reactive-coherence-loop.md`
+  - `docs/reference/agentos/problem-registry.md`
+  - `docs/reference/agentos/decision-record-format.md`
+  - `docs/reference/agentos/traceability.md`
+  - `docs/reference/agentos/discovery-record-format.md`
+  - `docs/reference/agentos/discovery-registry.md`
+  - `docs/reference/agentos/cursor-feature-mapping.md`
+- Operate deterministically via decision graphs + traces.
+- Trial-by-default is allowed session-locally; any persistent install requires explicit user approval.
+- When asking the user a question, auto-display the evaluated decision trace (graphs + path + anchors).

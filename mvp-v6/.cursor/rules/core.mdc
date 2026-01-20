@@ -1,0 +1,8 @@
+---
+alwaysApply: true
+---
+- Load:
+  - `docs/reference/agentos/kernel.md`
+  - `docs/reference/agentos/cursor-synergy.md`
+- Follow kernel precedence (SIG_K > SIG_U > SIG_F > SIG_D > SIG_S > SIG_M)
+- Do not treat cursor memories as authoritative.

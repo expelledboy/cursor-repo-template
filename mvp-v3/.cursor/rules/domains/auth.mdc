@@ -1,0 +1,65 @@
+---
+description: authentication, security, auth, oauth, login, session, token, jwt
+globs: ["src/auth/**", "**/auth*.py", "**/auth*.ts", "**/auth*.js", "**/security*.py", "**/security*.ts", "**/*auth*.ts", "**/*security*.ts", "**/login*.py", "**/login*.ts"]
+---
+
+# Authentication Domain Semantic Patterns
+
+When working on authentication or security:
+- I understand this is security-sensitive work
+- Load security semantic patterns
+- Use semantic search for: "authentication implementation patterns"
+- Route to security-aware workflows
+- Validate with security-specific checks (MCP)
+
+## Semantic Patterns I Recognize
+
+### OAuth Flows
+- **Pattern**: OAuth, OAuth2, provider integration
+- **Semantic Indicators**: "OAuth", "provider", "third-party auth", "social login"
+- **Route**: Security-enhanced execution workflow
+- **Search**: "OAuth implementation patterns"
+
+### Token Management
+- **Pattern**: JWT, tokens, refresh tokens, token storage
+- **Semantic Indicators**: "token", "JWT", "refresh", "session token"
+- **Route**: Security-aware token management workflow
+- **Search**: "token management patterns"
+
+### User Sessions
+- **Pattern**: Session management, user sessions, login/logout
+- **Semantic Indicators**: "session", "login", "logout", "user session"
+- **Route**: Session management workflow
+- **Search**: "session management patterns"
+
+### Password Management
+- **Pattern**: Password hashing, password reset, password policies
+- **Semantic Indicators**: "password", "hash", "reset", "policy"
+- **Route**: Security-critical password workflow
+- **Search**: "password management patterns"
+
+## Security Considerations
+
+When authentication domain is detected:
+- Always consider security implications
+- Require explicit confirmation for security boundary changes
+- Block secrets logging
+- Validate with security audit (MCP if available)
+- Load: `docs/reference/agentos/workflows/execution-enhanced.md` (security section)
+
+## File Context Integration
+
+When editing files matching globs:
+- `src/auth/**` → Authentication domain active
+- `**/security*.py` → Security domain active
+- Load security-specific semantic patterns
+- Use semantic search for similar security implementations
+- Route to security-aware workflows
+
+## Integration with Core Rule
+
+This domain rule works with:
+- **alwaysApply core rule**: Provides foundational patterns
+- **Other domain rules**: Can layer (e.g., auth + testing)
+- **Globs matching**: File context informs domain understanding
+- **Semantic search**: Finds similar authentication patterns

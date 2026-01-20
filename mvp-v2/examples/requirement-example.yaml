@@ -1,0 +1,31 @@
+# Example Requirement
+# This shows the structured format for task requirements
+
+task:
+  type: execution
+  objective: Add user authentication with OAuth2 provider integration
+  scope:
+    files:
+      - "src/auth/**"
+      - "src/middleware/auth.py"
+    domains:
+      - auth
+      - security
+  constraints:
+    time: "2 days"
+    dependencies:
+      - "OAuth2 provider account setup"
+      - "Environment variables configuration"
+    risks:
+      - "Security vulnerabilities if not implemented correctly"
+      - "User data exposure risk"
+  success_criteria:
+    - OAuth2 flow works end-to-end
+    - User can authenticate via OAuth2 provider
+    - Authentication tokens are securely stored
+    - All tests pass
+    - Security audit passes
+  context:
+    background: "We need to add OAuth2 authentication to allow users to sign in with their existing accounts from popular providers."
+    related_tasks:
+      - "TASK-20260113-XYZ789"  # Previous auth work

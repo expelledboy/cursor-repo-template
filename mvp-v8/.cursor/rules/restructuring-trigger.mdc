@@ -1,0 +1,12 @@
+---
+description: "Documentation restructuring trigger - detects consolidation opportunities and provides restructuring context"
+file_patterns: ["docs/**/*.md"]
+---
+
+When working with documentation that may need restructuring, automatically include consolidation criteria and Diátaxis principles.
+
+@file docs/explanation/decisions/2026-01-16-restructuring-process-design.md
+@file docs/reference/docs/doc-authority.md
+@file docs/how-to/docs/restructuring-agent.md
+
+If you detect >70% content overlap between files serving the same purpose, consider running `/refine` to consolidate them according to Diátaxis authority order.

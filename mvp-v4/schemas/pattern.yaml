@@ -1,0 +1,98 @@
+# Pattern Library Schema
+# Defines the structure for learned patterns in the pattern library
+
+$schema: http://json-schema.org/draft-07/schema#
+type: object
+required:
+  - pattern
+properties:
+  pattern:
+    type: object
+    required:
+      - id
+      - type
+      - semantic_indicators
+      - orchestration_pattern
+      - workflow_used
+    properties:
+      id:
+        type: string
+        description: Unique pattern identifier
+        pattern: '^pattern-[a-z0-9-]+$'
+
+      type:
+        type: string
+        enum:
+          - execution
+          - coordination
+          - architecture
+          - direct
+        description: Task type pattern
+
+      domain:
+        type: string
+        description: Domain pattern (auth, testing, docs, etc.)
+
+      complexity_level:
+        type: integer
+        minimum: 1
+        maximum: 4
+        description: Complexity level pattern
+
+      semantic_indicators:
+        type: array
+        items:
+          type: string
+        minItems: 1
+        description: Semantic indicators that match this pattern
+
+      orchestration_pattern:
+        type: string
+        enum:
+          - Streamlined Orchestration
+          - Standard Orchestration
+          - Enhanced Orchestration
+          - Maximum Orchestration
+        description: Orchestration pattern used
+
+      subagents_launched:
+        type: array
+        items:
+          type: string
+        description: List of subagents launched for this pattern
+
+      rules_cascaded:
+        type: array
+        items:
+          type: string
+        description: List of rules that cascaded for this pattern
+
+      workflow_used:
+        type: string
+        description: Workflow used for this pattern
+
+      success_rate:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: Success rate of this pattern (0.0 to 1.0)
+
+      learned_from:
+        type: string
+        description: Task ID this pattern was learned from
+        pattern: '^TASK-[0-9]{8}-[A-Z0-9]{6}$'
+
+      date_learned:
+        type: string
+        format: date
+        description: Date pattern was learned (YYYY-MM-DD)
+
+      times_used:
+        type: integer
+        minimum: 0
+        description: Number of times this pattern has been used
+
+      last_used:
+        type: string
+        format: date
+        description: Date pattern was last used (YYYY-MM-DD)

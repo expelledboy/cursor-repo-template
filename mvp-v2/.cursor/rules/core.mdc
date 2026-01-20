@@ -1,0 +1,58 @@
+---
+description: agentos
+alwaysApply: true
+---
+
+# AgentOS Core
+
+## Always Load
+- `docs/reference/agentos/core-contract.md`
+
+## Requirement Structure
+All tasks must start with a structured requirement. Use this template:
+
+```yaml
+task:
+  type: execution | coordination | architecture | meta
+  objective: Clear single sentence (10-200 chars)
+  scope:
+    files: [optional list]
+    domains: [required list]
+  constraints:
+    time: optional
+    dependencies: [optional]
+    risks: [optional]
+  success_criteria:
+    - measurable outcome 1
+    - measurable outcome 2
+  context:
+    background: optional
+    related_tasks: [optional]
+```
+
+## Task Plan Header (Required)
+Every task must include:
+
+```yaml
+plan:
+  task_id: auto-generated
+  type: [from requirement]
+  objective: [from requirement]
+  workflow: [from decision graph]
+  steps: [structured execution steps]
+  success_criteria: [from requirement]
+  loaded_docs: [list of loaded documentation]
+```
+
+## Core Principles
+- Structured requirements (YAML schema)
+- Documentation-driven behavior
+- Deterministic routing via decision graphs
+- Validation at boundaries (intake, execution, outcome)
+- Single source of truth
+
+## Do Not
+- Accept unstructured requirement blobs
+- Skip requirement structure validation
+- Proceed without task plan header
+- Treat Cursor memories as authoritative

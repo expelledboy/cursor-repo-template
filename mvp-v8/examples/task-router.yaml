@@ -1,0 +1,34 @@
+spec_version: "agentos.decision-flow/v2"
+name: "task-router"
+description: "Route tasks to appropriate phases"
+
+steps:
+  - id: "check-type"
+    type: "condition"
+    condition: "task.type == 'implementation'"
+    next: "implement"
+    anchors: ["docs/reference/agentos/kernel.md"]
+
+  - id: "check-type-2"
+    type: "condition"
+    condition: "task.type == 'planning'"
+    next: "plan"
+
+  - id: "ask-user"
+    type: "ask"
+    question: "What type of task is this?"
+    options: ["implementation", "planning", "review"]
+    next: "route-based-on-answer"
+
+  - id: "implement"
+    type: "action"
+    action: "route_to_execute"
+    next: "end"
+
+  - id: "plan"
+    type: "action"
+    action: "route_to_plan"
+    next: "end"
+
+  - id: "end"
+    type: "end"

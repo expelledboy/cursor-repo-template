@@ -1,0 +1,18 @@
+---
+description: "Process guidance - provides context for structured decision-making processes during restructuring"
+file_patterns: ["docs/**/*.md"]
+---
+- Follow structured decision phases (Inventory → Analysis → Execution)
+- Record traces only when `/trace` is used or user is asked
+- Keep process execution focused and transparent
+
+When making decisions about documentation restructuring, follow the standard 6-phase restructuring process:
+1. **Inventory**: Assess current state
+2. **Batching**: Group related changes
+3. **Analysis**: Plan improvements
+4. **Decision**: Confirm approach
+5. **Execution**: Apply changes
+6. **Validation**: Verify results
+
+@file docs/explanation/architecture/restructuring-system-rationale.md
+@file docs/explanation/decisions/2026-01-16-restructuring-process-design.md

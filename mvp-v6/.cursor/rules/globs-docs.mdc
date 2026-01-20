@@ -1,0 +1,5 @@
+---
+globs: ["docs/**"]
+---
+- Log file context (SIG_F).
+- Load `docs/reference/agentos/decision-cards/validation.md`.

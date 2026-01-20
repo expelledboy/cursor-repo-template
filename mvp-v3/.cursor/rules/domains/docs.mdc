@@ -1,0 +1,65 @@
+---
+description: documentation, docs, readme, guide, tutorial, explain, document
+globs: ["docs/**/*.md", "**/*.md", "README.md", "**/README.md", "**/*.mdx", "docs/**"]
+---
+
+# Documentation Domain Semantic Patterns
+
+When working on documentation:
+- I understand this is knowledge capture and communication work
+- Load documentation semantic patterns
+- Use semantic search for: "documentation patterns", "doc structure examples"
+- Route to documentation-aware workflows
+- Validate with documentation structure checks (MCP if available)
+
+## Semantic Patterns I Recognize
+
+### Reference Documentation
+- **Pattern**: API docs, reference guides, technical specifications
+- **Semantic Indicators**: "reference", "API", "specification", "technical"
+- **Route**: Reference documentation workflow
+- **Search**: "reference documentation patterns"
+
+### How-To Guides
+- **Pattern**: Step-by-step guides, procedures, instructions
+- **Semantic Indicators**: "how-to", "guide", "steps", "procedure", "tutorial"
+- **Route**: How-to documentation workflow
+- **Search**: "how-to guide patterns"
+
+### Explanation Documentation
+- **Pattern**: Rationale, architecture decisions, explanations
+- **Semantic Indicators**: "explanation", "rationale", "why", "architecture"
+- **Route**: Explanation documentation workflow
+- **Search**: "explanation documentation patterns"
+
+### README Files
+- **Pattern**: Project README, module README, quick start
+- **Semantic Indicators**: "README", "quick start", "overview", "getting started"
+- **Route**: README documentation workflow
+- **Search**: "README patterns"
+
+## Documentation Considerations
+
+When documentation domain is detected:
+- Verify authority order compliance (reference > how-to > explanation > tutorials > work > archive)
+- Check for @implementation annotations
+- Validate documentation structure
+- Load: `docs/reference/agentos/workflows/execution-standard.md` (documentation section)
+
+## File Context Integration
+
+When editing files matching globs:
+- `docs/**/*.md` → Documentation domain active
+- `README.md` → README documentation active
+- `docs/reference/**` → Reference documentation active
+- Load documentation-specific semantic patterns
+- Use semantic search for similar documentation structures
+- Route to documentation-aware workflows
+
+## Integration with Core Rule
+
+This domain rule works with:
+- **alwaysApply core rule**: Provides foundational patterns
+- **Other domain rules**: Can layer (e.g., docs + testing for test documentation)
+- **Globs matching**: File context informs documentation domain understanding
+- **Semantic search**: Finds similar documentation patterns

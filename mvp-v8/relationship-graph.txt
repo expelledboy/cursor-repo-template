@@ -1,0 +1,231 @@
+================================================================================
+DOCUMENTATION RELATIONSHIP GRAPH
+================================================================================
+
+🔗 EVIDENCE FOR RELATIONSHIPS
+--------------------------------------------------
+  [agentos] Non-Deterministic Frontmatter Relationships
+    evidence_for → ✗ [unknown] docs/explanation/decisions/2026-01-18-deterministic-relationships.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+
+🔗 INFORMS RELATIONSHIPS
+--------------------------------------------------
+  [agentos] Non-Deterministic Frontmatter Relationships
+    informs → ✓ [docs] Frontmatter Schema Reference
+
+🔗 IMPLEMENTED BY RELATIONSHIPS
+--------------------------------------------------
+  [docs] Frontmatter Schema Reference
+    implemented_by → ✓ [external] scripts/docs/index.py
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+
+🔗 RELATED RELATIONSHIPS
+--------------------------------------------------
+  [docs] Decision Flow Improvements Summary
+    related → ✗ [unknown] docs/work/analysis/2026-01-17-refine-process-review.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [docs] Decision Flow Improvements Summary
+    related → ✗ [unknown] docs/work/proposals/2026-01-17-improved-restructuring-flow-v2.yaml
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [docs] Decision Flow Improvements Summary
+    related → ✗ [unknown] docs/work/proposals/2026-01-17-enhanced-decision-flow-execution.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [docs] Decision Flow Improvements Summary
+    related → ✓ [docs] Decision: Restructuring Process Design
+  [docs] Process Review: /refine Execution Analysis
+    related → ✗ [unknown] docs/reference/agentos/spec-restructuring-flow-v1.yaml
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [docs] Process Review: /refine Execution Analysis
+    related → ✗ [unknown] docs/how-to/agentos/decision-flow-execution.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Gap: Missing Task Plan Header Validation
+    related → ✗ [unknown] docs/reference/agentos/task-plan-spec.md (reference/1)
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Gap: Missing Task Plan Header Validation
+    related → ✗ [unknown] docs/reference/agentos/architecture.md#doe-integrated-flow (reference/1)
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Enhanced Decision Flow Execution Guide
+    related → ✓ [docs] Agent Restructuring Operations
+  [agentos] Enhanced Decision Flow Execution Guide
+    related → ✗ [unknown] docs/how-to/agentos/decision-flow-execution.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Enhanced Decision Flow Execution Guide
+    related → ✗ [unknown] docs/work/proposals/2026-01-17-improved-restructuring-flow-v2.yaml
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [docs] Runtime Execution Review: Decision Graph v2
+    related → ✗ [unknown] docs/work/analysis/2026-01-17-refine-process-review.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [docs] Runtime Execution Review: Decision Graph v2
+    related → ✗ [unknown] docs/work/proposals/2026-01-17-improved-restructuring-flow-v2.yaml
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] DOE Framework Execution Failure - Semantic Validation Gap
+    related → ✓ [agentos] AgentOS Architecture (DOE)
+  [agentos] DOE Framework Execution Failure - Semantic Validation Gap
+    related → ✓ [agentos] Validation Script Provides Inadequate Guidance
+  [docs] Cursor Mechanics Specification
+    related → ✓ [agentos] AgentOS v8 Design Rationale
+  [agentos] Validation Script Provides Inadequate Guidance
+    related → ✓ [agentos] Decision: Comprehensive Validation System Enhancement
+  [agentos] Restructuring Runtime Implementation Issues
+    related → ✓ [agentos] Rationale: Enhanced Restructuring Process (v2)
+  [agentos] Restructuring Runtime Implementation Issues
+    related → ✓ [docs] Runtime Execution Review: Decision Graph v2
+  [docs] Agent Restructuring Operations
+    related → ✓ [docs] Decision: Restructuring Process Design
+  [agentos] Decision: Semantic Search Integration
+    related → ✓ [agentos] Cursor Integration Depth
+  [agentos] Decision: Semantic Search Integration
+    related → ✗ [unknown] docs/work/discoveries/2026-01-16-search-priming.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Decision: Mandatory Behavioral Consistency Enforcement
+    related → ✓ [agentos] Evolution System Failure: Rules Don't Change Behavior
+  [agentos] Decision: Mandatory Behavioral Consistency Enforcement
+    related → ✓ [agentos] Incorrect Archiving of Work Files with Valuable Rationale
+  [agentos] Decision: Mandatory Behavioral Consistency Enforcement
+    related → ✓ [agentos] Cumulative Migration Errors in Documentation Operations
+  [docs] Decision: Restructuring Tool Architecture
+    related → ✓ [docs] Restructuring System Rationale
+  [docs] Decision: Documentation Registry System
+    related → ✓ [docs] Frontmatter Schema Reference
+  [docs] Decision: Documentation Registry System
+    related → ✓ [docs] Documentation Context Management
+  [docs] Decision: YAML Frontmatter Schema for Documentation
+    related → ✓ [docs] Frontmatter Schema Reference
+  [docs] Decision: YAML Frontmatter Schema for Documentation
+    related → ✓ [docs] Documentation Context Management
+  [docs] Decision: YAML Frontmatter Schema for Documentation
+    related → ✗ [unknown] docs/work/discoveries/2026-01-16-doc-lifecycle.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Decision: Documentation Doctor Pattern
+    related → ✓ [agentos] AgentOS Architecture (DOE)
+  [agentos] Decision: Documentation Doctor Pattern
+    related → ✓ [agentos] Documentation Doctor Pattern
+  [agentos] Decision: Dynamic Context Loading
+    related → ✓ [agentos] Cursor Integration Depth
+  [agentos] Decision: Dynamic Context Loading
+    related → ✗ [unknown] docs/work/discoveries/2026-01-16-rule-injection.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Decision: Interactive Trace Revelation & Evolution
+    related → ✓ [agentos] Reasoning Transparency for Evolution
+  [agentos] Decision: Interactive Trace Revelation & Evolution
+    related → ✗ [unknown] docs/work/discoveries/2026-01-16-trace-revelation.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Decision: Mandatory Scope Verification
+    related → ✓ [agentos] Agent fails to scope fixes correctly (Premature Optimization)
+  [agentos] Decision: Semantic Validation Mandate
+    related → ✗ [unknown] docs/work/problems/2026-01-18-doe-framework-execution-failure.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Decision: Semantic Validation Mandate
+    related → ✓ [agentos] Validation Script Provides Inadequate Guidance
+  [agentos] Decision: Comprehensive Validation System Enhancement
+    related → ✓ [agentos] Validation Script Provides Inadequate Guidance
+  [agentos] Decision: Comprehensive Validation System Enhancement
+    related → ✓ [docs] Doc authority + structure (v8, Reference)
+  [agentos] Decision: Comprehensive Validation System Enhancement
+    related → ✓ [docs] Frontmatter Schema Reference
+  [agentos] Decision: Diátaxis-Based External Source Classification
+    related → ✓ [agentos] Cursor Integration Depth
+  [agentos] Decision: Diátaxis-Based External Source Classification
+    related → ✗ [unknown] docs/work/discoveries/2026-01-16-external-classification.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Decision: External Resource Introduction Caching
+    related → ✓ [docs] Documentation Context Management
+  [agentos] Decision: External Resource Introduction Caching
+    related → ✗ [unknown] docs/work/discoveries/2026-01-16-caching-introductions.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Decision: YAML State Representation
+    related → ✓ [agentos] Context Window Drift Prevention
+  [agentos] Decision: YAML State Representation
+    related → ✗ [unknown] docs/work/discoveries/2026-01-16-yaml-efficiency.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [docs] Decision: Archived File Provenance
+    related → ✓ [agentos] Archived File Provenance
+  [docs] Decision: Archived File Provenance
+    related → ✓ [docs] Doc authority + structure (v8, Reference)
+  [docs] Decision: Restructuring Process Design
+    related → ✓ [docs] Restructuring System Rationale
+  [docs] Decision: Restructuring Process Design
+    related → ✗ [unknown] docs/reference/agentos/spec-restructuring-flow-v1.yaml
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Decision: Artifact Mention Incorporation
+    related → ✓ [agentos] Cursor Integration Depth
+  [agentos] Decision: Artifact Mention Incorporation
+    related → ✗ [unknown] docs/work/discoveries/2026-01-16-mention-incorporation.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [docs] Decision: Dual Documentation Architecture
+    related → ✓ [docs] Documentation Context Management
+  [docs] Decision: Dual Documentation Architecture
+    related → ✗ [unknown] docs/work/discoveries/2026-01-16-doc-lifecycle.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Decision: Command-Based UX Enhancement
+    related → ✓ [agentos] Cursor Integration Depth
+  [agentos] Decision: Command-Based UX Enhancement
+    related → ✗ [unknown] docs/work/discoveries/2026-01-16-command-control.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Decision: Tool Evidence Integration
+    related → ✓ [agentos] Cursor Integration Depth
+  [agentos] Decision: Tool Evidence Integration
+    related → ✗ [unknown] docs/work/discoveries/2026-01-16-mcp-anchoring.md
+    ⚠️  TARGET DOCUMENT DOES NOT EXIST
+  [agentos] Decision: Mandatory Migration Validation Gates
+    related → ✓ [agentos] Cumulative Migration Errors in Documentation Operations
+  [agentos] Decision: Mandatory Schema Compliance Enforcement
+    related → ✓ [agentos] Inconsistent Adherence to System Schemas and Patterns
+  [agentos] Decision: Mandatory Schema Compliance Enforcement
+    related → ✓ [docs] Frontmatter Schema Reference
+  [docs] Restructuring System Rationale
+    related → ✓ [docs] Decision: Restructuring Process Design
+  [docs] Restructuring System Rationale
+    related → ✓ [docs] Decision: Restructuring Tool Architecture
+  [agentos] Rationale: Enhanced Restructuring Process (v2)
+    related → ✓ [docs] Agent Restructuring Operations
+  [agentos] Rationale: Enhanced Restructuring Process (v2)
+    related → ✓ [docs] Decision: Restructuring Process Design
+
+================================================================================
+RELATIONSHIP STATISTICS
+================================================================================
+
+Total relationships: 71
+
+Relationships by type:
+  related: 68
+  implemented_by: 1
+  informs: 1
+  evidence_for: 1
+
+Cross-domain relationships:
+  docs → unknown: 11
+  docs → agentos: 2
+  agentos → unknown: 15
+  agentos → docs: 9
+
+Authority violations (higher authority referencing lower):
+  ⚠️  Reference 'docs/reference/agentos/cursor-mechanics.md' → Explanation 'docs/explanation/agentos/design-rationale.md'
+  ⚠️  Work 'docs/work/problems/2026-01-18-restructuring-runtime-issues.md' → Archive 'docs/archive/2026-01-17-runtime-execution-review.md'
+  ⚠️  How-to 'docs/how-to/docs/restructuring-agent.md' → Explanation 'docs/explanation/decisions/2026-01-16-restructuring-process-design.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-16-search-integration.md' → Work 'docs/work/problems/2026-01-16-cursor-integration.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-18-behavioral-consistency-enforcement.md' → Work 'docs/work/problems/2026-01-18-evolution-system-failure.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-18-behavioral-consistency-enforcement.md' → Work 'docs/work/problems/2026-01-18-work-file-archiving-mistakes.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-18-behavioral-consistency-enforcement.md' → Work 'docs/work/problems/2026-01-18-cumulative-migration-errors.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-16-doc-registry-system.md' → Work 'docs/work/problems/2026-01-16-doc-management.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-16-frontmatter-schema.md' → Work 'docs/work/problems/2026-01-16-doc-management.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-18-docs-doctor-pattern.md' → Work 'docs/work/discoveries/2026-01-18-docs-doctor-pattern.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-16-dynamic-context.md' → Work 'docs/work/problems/2026-01-16-cursor-integration.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-16-trace-revelation.md' → Work 'docs/work/problems/2026-01-16-reasoning-transparency.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-18-scope-validation.md' → Work 'docs/work/problems/2026-01-18-premature-optimization-failure.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-18-semantic-validation-mandate.md' → Work 'docs/work/problems/2026-01-18-validation-script-inadequate.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-18-validation-system-enhancement.md' → Work 'docs/work/problems/2026-01-18-validation-script-inadequate.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-16-external-classification.md' → Work 'docs/work/problems/2026-01-16-cursor-integration.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-16-resource-introductions.md' → Work 'docs/work/problems/2026-01-16-doc-management.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-16-yaml-state.md' → Work 'docs/work/problems/2026-01-16-context-drift.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-18-archived-file-provenance.md' → Work 'docs/work/discoveries/2026-01-18-archived-file-provenance.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-16-artifact-mention.md' → Work 'docs/work/problems/2026-01-16-cursor-integration.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-16-doc-structure.md' → Work 'docs/work/problems/2026-01-16-doc-management.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-16-command-ux.md' → Work 'docs/work/problems/2026-01-16-cursor-integration.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-16-tool-evidence.md' → Work 'docs/work/problems/2026-01-16-cursor-integration.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-18-migration-validation-gates.md' → Work 'docs/work/problems/2026-01-18-cumulative-migration-errors.md'
+  ⚠️  Explanation 'docs/explanation/decisions/2026-01-18-schema-compliance-enforcement.md' → Archive 'docs/archive/2026-01-18-inconsistent-schema-adherence.md'
+
+Bidirectional consistency:
+  ⚠️  Missing reverse: docs/work/problems/2026-01-18-nondeterministic-relationships.md informs docs/reference/docs/frontmatter-schema.md but docs/reference/docs/frontmatter-schema.md doesn't depend_on docs/work/problems/2026-01-18-nondeterministic-relationships.md

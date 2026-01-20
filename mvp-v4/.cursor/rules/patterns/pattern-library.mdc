@@ -1,0 +1,196 @@
+---
+description: pattern library, learned patterns, pattern reuse
+alwaysApply: false
+---
+
+# Pattern Library
+
+## Purpose
+Learned patterns from past tasks become reusable rule components, enabling faster routing and better orchestration.
+
+## Pattern Structure
+
+Each pattern includes:
+- **Pattern ID**: Unique identifier
+- **Pattern Type**: Task type, complexity, workflow, domain, orchestration
+- **Semantic Indicators**: Key semantic patterns that match
+- **Orchestration Pattern**: Which orchestration pattern was used
+- **Subagents Used**: Which subagents were launched
+- **Rules Cascaded**: Which rules were triggered
+- **Workflow Used**: Which workflow was selected
+- **Success Rate**: How often this pattern led to success
+
+## Pattern Types
+
+### Task Type Patterns
+Patterns for different task types:
+- Execution patterns
+- Coordination patterns
+- Architecture patterns
+- Direct patterns
+
+### Complexity Patterns
+Patterns for different complexity levels:
+- Level 1 patterns (streamlined)
+- Level 2 patterns (standard)
+- Level 3 patterns (enhanced)
+- Level 4 patterns (maximum)
+
+### Workflow Patterns
+Patterns for workflow selection:
+- Execution workflow patterns
+- Coordination workflow patterns
+- Architecture workflow patterns
+
+### Domain Patterns
+Patterns for different domains:
+- Auth domain patterns
+- Testing domain patterns
+- Documentation domain patterns
+- Security domain patterns
+
+### Orchestration Patterns
+Patterns for feature orchestration:
+- Parallel pattern discovery patterns
+- Cascading rule enrichment patterns
+- Command workflow chaining patterns
+- Two-layer validation patterns
+- Context-aware orchestration patterns
+- Meta-orchestration patterns
+
+## Pattern Matching
+
+When a new requirement comes in:
+1. Extract semantic indicators from requirement
+2. Search pattern library for similar patterns
+3. Match patterns by:
+   - Semantic similarity
+   - Domain match
+   - Task type match
+   - Complexity match
+4. Use matched patterns to inform:
+   - Orchestration pattern selection
+   - Subagent launches
+   - Rule cascading
+   - Workflow selection
+
+## Pattern Learning
+
+### When to Learn Patterns (Level 3+)
+- Task completed successfully
+- Orchestration pattern was effective
+- Semantic understanding was accurate
+- Workflow selection was appropriate
+
+### How to Learn Patterns
+1. Extract successful orchestration metadata from task
+2. Identify semantic indicators that led to success
+3. Create pattern entry with:
+   - Pattern characteristics
+   - Orchestration used
+   - Success indicators
+4. Add to pattern library
+5. Update pattern success rate
+
+### Pattern Learning Process
+```yaml
+pattern:
+  id: pattern-oauth-auth-level3
+  type: execution
+  domain: auth
+  complexity_level: 3
+  semantic_indicators:
+    - "OAuth authentication"
+    - "security-sensitive"
+    - "implementation-focused"
+  orchestration_pattern: "Enhanced Orchestration"
+  subagents_launched:
+    - /pattern-searcher
+    - /code-pattern-searcher
+    - /complexity-assessor
+    - /workflow-selector
+  rules_cascaded:
+    - alwaysApply: core.mdc
+    - description: auth
+    - globs: ["src/auth/**"]
+  workflow_used: execution-enhanced
+  success_rate: 1.0
+  learned_from: "TASK-20260114-ABC123"
+  date_learned: "2026-01-14"
+```
+
+## Pattern Reuse
+
+### When to Reuse Patterns
+- New requirement matches pattern semantic indicators
+- Similar domain and complexity
+- Pattern has high success rate
+
+### How to Reuse Patterns
+1. Match requirement to pattern library
+2. Use pattern's orchestration metadata
+3. Launch pattern's subagents
+4. Cascade pattern's rules
+5. Select pattern's workflow
+6. Adapt pattern to current context
+
+## Pattern Library Location
+
+Patterns are stored in:
+- `.cursor/rules/patterns/pattern-library.mdc` (rule file)
+- `docs/reference/agentos/pattern-library.md` (documentation)
+- MCP server can validate patterns against schema
+
+## Integration
+
+- Used by `/agentos` command for pattern matching (Level 3+)
+- Used by orchestration rule for pattern-based orchestration
+- Updated by `/agentos-complete` command when learning patterns
+- Consulted by subagents for pattern-informed decisions
+
+## Best Practices
+
+1. **Learn from success**: Only learn patterns from successful tasks
+2. **Match semantically**: Match patterns by meaning, not just keywords
+3. **Update success rates**: Track pattern success over time
+4. **Prune low-success patterns**: Remove patterns with low success rates
+5. **Document patterns**: Document pattern characteristics clearly
+6. **Adapt patterns**: Adapt patterns to current context, don't copy blindly
+
+## Example Patterns
+
+### OAuth Authentication Pattern (Level 3)
+```yaml
+pattern:
+  id: oauth-auth-level3
+  type: execution
+  domain: auth
+  complexity_level: 3
+  semantic_indicators: ["OAuth", "authentication", "security"]
+  orchestration_pattern: "Enhanced Orchestration"
+  workflow_used: execution-enhanced
+```
+
+### Testing Pattern (Level 2)
+```yaml
+pattern:
+  id: testing-level2
+  type: execution
+  domain: testing
+  complexity_level: 2
+  semantic_indicators: ["test", "testing", "coverage"]
+  orchestration_pattern: "Standard Orchestration"
+  workflow_used: execution-standard
+```
+
+### Documentation Pattern (Level 1)
+```yaml
+pattern:
+  id: docs-level1
+  type: execution
+  domain: docs
+  complexity_level: 1
+  semantic_indicators: ["documentation", "docs", "readme"]
+  orchestration_pattern: "Streamlined Orchestration"
+  workflow_used: execution-minimal
+```

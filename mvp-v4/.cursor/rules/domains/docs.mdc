@@ -1,0 +1,85 @@
+---
+description: documentation, docs, readme, guide, tutorial, explain, document
+globs: ["docs/**/*.md", "**/*.md", "README.md", "**/README.md", "**/*.mdx", "docs/**"]
+---
+
+# Documentation Domain Semantic Patterns
+
+When working on documentation:
+- I understand this is knowledge capture and communication work
+- Load documentation semantic patterns
+- Use semantic search for: "documentation patterns", "doc structure examples"
+- Route to documentation-aware workflows
+- Validate with documentation structure checks (MCP if available)
+
+## Cascading Rule Triggers
+
+This rule triggers related rules:
+- **Coherence rule** (if exists): Triggers coherence-specific patterns
+- **Reference rule** (if exists): Triggers reference documentation patterns
+- **Standard workflow rule**: Triggers standard documentation workflows
+
+## Semantic Patterns I Recognize
+
+### Reference Documentation
+- **Pattern**: API docs, reference guides, technical specifications
+- **Semantic Indicators**: "reference", "API", "specification", "technical"
+- **Route**: Reference documentation workflow
+- **Search**: "reference documentation patterns"
+- **Subagent**: Launch `/doc-pattern-searcher` for reference patterns (Level 2+)
+
+### How-To Guides
+- **Pattern**: Step-by-step guides, procedures, instructions
+- **Semantic Indicators**: "how-to", "guide", "steps", "procedure", "tutorial"
+- **Route**: How-to documentation workflow
+- **Search**: "how-to guide patterns"
+- **Subagent**: Launch `/doc-pattern-searcher` for how-to patterns (Level 2+)
+
+### Explanation Documentation
+- **Pattern**: Rationale, architecture decisions, explanations
+- **Semantic Indicators**: "explanation", "rationale", "why", "architecture"
+- **Route**: Explanation documentation workflow
+- **Search**: "explanation documentation patterns"
+
+### README Files
+- **Pattern**: Project README, module README, quick start
+- **Semantic Indicators**: "README", "quick start", "overview", "getting started"
+- **Route**: README documentation workflow
+- **Search**: "README patterns"
+
+## Documentation Considerations
+
+When documentation domain is detected:
+- Verify authority order compliance (reference > how-to > explanation > tutorials > work > archive)
+- Check for @implementation annotations
+- Validate documentation structure
+- Load: `docs/reference/agentos/workflows/execution-standard.md` (documentation section)
+- **Orchestration**: Use Standard Orchestration (Level 2) for documentation tasks
+
+## File Context Integration
+
+When editing files matching globs:
+- `docs/**/*.md` → Documentation domain active
+- `README.md` → README documentation active
+- `docs/reference/**` → Reference documentation active
+- Load documentation-specific semantic patterns
+- Use semantic search for similar documentation structures
+- Route to documentation-aware workflows
+- **Trigger cascading**: File context triggers this rule, which triggers coherence patterns
+
+## Integration with Orchestration
+
+This domain rule works with:
+- **alwaysApply core rule**: Provides foundational patterns
+- **Orchestration rule**: Triggers Standard Orchestration for documentation tasks
+- **Other domain rules**: Can layer (e.g., docs + testing for test documentation)
+- **Globs matching**: File context informs documentation domain understanding
+- **Semantic search**: Finds similar documentation patterns
+- **Subagents**: Launches `/doc-pattern-searcher` for documentation patterns (Level 2+)
+
+## Pattern Library Integration
+
+When documentation domain detected (Level 3+):
+- Consult pattern library for documentation patterns
+- Learn new documentation patterns from successful tasks
+- Reuse documentation orchestration patterns

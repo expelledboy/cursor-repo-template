@@ -1,0 +1,31 @@
+---
+description: documentation, docs, readme, guide, tutorial
+globs: ["docs/**/*.md", "mvp/docs/**/*.md", "**/*.md"]
+---
+
+# AgentOS Documentation Task Instructions
+
+## Load Documentation Directives
+- `mvp/docs/reference/agentos/alignment-mechanisms.md` (registry mapping)
+- `mvp/docs/reference/agentos/evolution-framework.md` (ADR format, if applicable)
+- `mvp/docs/reference/agentos/coherence-contract.md` (authority order)
+
+## Documentation Protocol
+1. **Verify Authority Order**: reference > how-to > explanation > tutorials > work > archive
+2. **Check Registry Mappings**: Verify `@implementation` annotations for code references
+3. **Validate Structure**: Ensure documentation follows standards
+4. **Update Registry**: Update registry mappings if documentation changes affect code
+
+## Authority Order Compliance
+- **Reference**: Stable, evergreen facts
+- **How-to**: Repeatable procedures
+- **Explanation**: Rationale and architecture
+- **Tutorials**: Learning materials
+- **Work**: Drafts and notes
+- **Archive**: Superseded material
+
+## Registry Mapping
+- Code references in docs: `@implementation path/to/file.py`
+- Doc references in code: `# @directive docs/path.md`
+- Validate bidirectional links
+- Update mappings when files change

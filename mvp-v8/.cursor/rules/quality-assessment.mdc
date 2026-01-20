@@ -1,0 +1,12 @@
+---
+description: "Documentation quality assessment - provides validation context and authority analysis for restructuring decisions"
+file_patterns: ["docs/**/*.md"]
+---
+
+When evaluating documentation quality or making restructuring decisions, include validation frameworks and authority assessment tools.
+
+@file docs/reference/docs/frontmatter-schema.md
+@file docs/how-to/docs/restructuring-tools.md
+@file docs/explanation/decisions/2026-01-16-doc-structure.md
+
+Remember: Authority order is reference → how-to → explanation → tutorials → work → archive. Always validate link resolution and Diátaxis compliance.

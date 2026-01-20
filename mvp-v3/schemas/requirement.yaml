@@ -1,0 +1,92 @@
+# Requirement Schema
+# Defines the structure for task requirements
+
+$schema: http://json-schema.org/draft-07/schema#
+type: object
+required:
+  - task
+properties:
+  task:
+    type: object
+    required:
+      - type
+      - objective
+      - scope
+      - success_criteria
+    properties:
+      id:
+        type: string
+        description: Auto-generated task ID
+        pattern: '^TASK-[0-9]{8}-[A-Z0-9]{6}$'
+
+      type:
+        type: string
+        enum:
+          - execution
+          - coordination
+          - architecture
+          - meta
+        description: Task type classification
+
+      objective:
+        type: string
+        minLength: 10
+        maxLength: 200
+        description: Clear, single-sentence objective
+
+      scope:
+        type: object
+        required:
+          - domains
+        properties:
+          files:
+            type: array
+            items:
+              type: string
+            description: List of affected files or glob patterns
+
+          domains:
+            type: array
+            items:
+              type: string
+            minItems: 1
+            description: List of affected domains
+
+      constraints:
+        type: object
+        properties:
+          time:
+            type: string
+            description: Time constraint (e.g., "2 hours", "1 day")
+
+          dependencies:
+            type: array
+            items:
+              type: string
+            description: List of task dependencies
+
+          risks:
+            type: array
+            items:
+              type: string
+            description: List of identified risks
+
+      success_criteria:
+        type: array
+        items:
+          type: string
+        minItems: 1
+        description: Measurable success criteria
+
+      context:
+        type: object
+        properties:
+          background:
+            type: string
+            description: Background information
+
+          related_tasks:
+            type: array
+            items:
+              type: string
+            description: Related task IDs

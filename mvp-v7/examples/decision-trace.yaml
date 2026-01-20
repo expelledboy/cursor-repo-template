@@ -1,0 +1,56 @@
+spec_version: "agentos.decision-trace/v1"
+trace_id: "DT-EXAMPLE"
+created_at: "2026-01-15T00:00:00Z"
+
+state_ref:
+  state_id: "AST-20260115-EXAMPLE"
+  frame_id: "F-ROOT"
+  objective_id: "OBJ-ROOT"
+
+decision:
+  id: "DP-ROUTING-1"
+  kind: "routing"
+  question: "Which role should I take?"
+  output:
+    value: "DISCOVER"
+    confidence: 0.6
+    mode: "trial"
+
+anchors:
+  - id: "A-KERNEL-1"
+    type: "doc"
+    ref: { kind: "path", value: "docs/reference/agentos/kernel.md" }
+    note: "Kernel constraints."
+  - id: "A-USER-1"
+    type: "user"
+    ref: { kind: "message", value: "turn-1" }
+    note: "User asked to explore."
+
+graph_stack:
+  - name: "routing"
+    source:
+      source_kind: "kernel_default"
+      source_ref: "docs/reference/agentos/kernel.md"
+      source_anchor_ids: ["A-KERNEL-1"]
+      anchors: []
+
+graphs:
+  - name: "routing"
+    source_ref: { kind: "path", value: "docs/reference/agentos/decision-graphs/routing.md" }
+    inputs_digest: "task.objective=explore decision graphs"
+    inputs:
+      task.objective: "explore decision graphs"
+    path:
+      - node_id: "start"
+        condition: "true"
+        result: true
+        anchors_used: ["A-USER-1"]
+    output:
+      route: "DISCOVER"
+      confidence: 0.6
+
+user_gate:
+  asked: false
+  question_id: null
+  options: []
+

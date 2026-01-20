@@ -1,0 +1,68 @@
+spec_version: "agentos.decision-graph/v1"
+name: "state-update-check"
+description: "Reason through whether an objective conclusion has been reached that warrants updating active state"
+expression_language: "string"
+
+# This graph is still “reasoning-driven”, but the *inputs to that reasoning* must be explicit.
+# We do that via a `context_contract`, and then evaluate deterministic rules against `context`.
+
+context_contract:
+  required:
+    - path: "context.conclusion.type"
+      description: "What kind of conclusion was reached?"
+      type: "string"
+      enum: ["correction", "learning", "task_complete", "objective_reached", "none"]
+      example: "correction"
+  optional:
+    - path: "context.task.significance"
+      description: "Significance of the completion (if applicable)."
+      type: "string"
+      enum: ["high", "medium", "low"]
+      example: "high"
+  notes: "If you add new context fields in conditions, update this contract too."
+
+nodes:
+  - id: "start"
+    type: "decision_table"
+    hit_policy: "first"
+    question: "Reason through: Have I reached an objective conclusion that warrants updating state?"
+    rules:
+      - id: "r_correction"
+        when: "context.conclusion.type == 'correction'"
+        output:
+          should_update: true
+          update_kind: "shift_context"
+          confidence: 0.95
+          reasoning: "Correction of misunderstanding should be persisted"
+
+      - id: "r_learning"
+        when: "context.conclusion.type == 'learning'"
+        output:
+          should_update: true
+          update_kind: "shift_context"
+          confidence: 0.85
+          reasoning: "New learning should be persisted"
+
+      - id: "r_task_complete"
+        when: "context.conclusion.type == 'task_complete' and context.task.significance == 'high'"
+        output:
+          should_update: true
+          update_kind: "branch"
+          confidence: 0.8
+          reasoning: "Significant task completion should be checkpointed"
+
+      - id: "r_objective_reached"
+        when: "context.conclusion.type == 'objective_reached'"
+        output:
+          should_update: true
+          update_kind: "branch"
+          confidence: 0.9
+          reasoning: "Objective conclusion should be persisted"
+
+      - id: "r_default"
+        when: "true"
+        output:
+          should_update: false
+          update_kind: null
+          confidence: 0.7
+          reasoning: "No objective conclusion reached"

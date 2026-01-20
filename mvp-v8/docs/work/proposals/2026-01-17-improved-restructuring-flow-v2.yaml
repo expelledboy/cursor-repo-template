@@ -1,0 +1,291 @@
+spec_version: "agentos.decision-flow/v2"
+name: "documentation-restructuring-v2"
+description: "Enhanced documentation restructuring with validation analysis, opportunity prioritization, and comprehensive metrics"
+
+runtime:
+  # Runtime metadata (convention; not schema-validated).
+  # Purpose: make execution systematic + inspectable without requiring deterministic batching.
+  invariants:
+    coverage:
+      include_glob: "docs/**/*.md"
+      exclude_names: ["index.md"]
+      rule: "Every included file MUST be assigned to exactly one batch OR explicitly skipped with reason."
+    completion:
+      rule: "Flow MUST NOT reach end until all batches are marked complete."
+    metrics:
+      rule: "Baseline metrics MUST be captured at inventory-assessment and final metrics at restructuring-completion."
+  artifacts:
+    inventory_file_pattern: "docs-inventory-YYYYMMDD.txt"
+    batches_dir: "batches/"
+    state_file: ".docs-state.yaml"
+    metrics_file: "docs/local/docs-metrics.yaml"
+  cleanup_policy:
+    per_batch: "docs-cleanup-batch <batch>"
+    on_success: "docs-cleanup-all (only when run is complete)"
+  progress_output_contract:
+    doc: "docs/how-to/agentos/decision-flow-execution.md"
+    format: "Emit step/result/next per executed step; never claim actions ran if they didn't."
+  user_approval_criteria:
+    always_require:
+      - ">5 changes per batch"
+      - "structural changes (section additions/deletions)"
+      - "cross-reference modifications affecting >3 files"
+      - "implementation field additions without @directive verification"
+    auto_apply:
+      - "single-file, low-risk frontmatter additions (<3 changes)"
+      - "broken link path corrections (file exists, wrong path)"
+
+steps:
+  # Phase 1: Analysis (Automated)
+  - id: "init-analysis"
+    type: "action"
+    action: "initialize_restructuring_session"
+    next: "inventory-assessment"
+    anchors: ["docs/reference/agentos/semantic-restructuring-guide.md"]
+
+  - id: "inventory-assessment"
+    type: "action"
+    action: "analyze_documentation_inventory_capture_baseline_metrics"
+    next: "determine-scope"
+    anchors: ["docs/explanation/decisions/2026-01-16-restructuring-process-design.md"]
+    # Must capture: validation error count, cross-reference completeness, implementation traceability, required section completeness
+
+  - id: "determine-scope"
+    type: "condition"
+    condition: "scope_assessment"
+    next_small: "batch-creation"
+    next_medium: "batch-creation"
+    next_large: "comprehensive-planning"
+    anchors: ["docs/reference/docs/glossary.md#cognitive-limits"]
+
+  # Phase 2: Strategy (Automated with User Input)
+  - id: "comprehensive-planning"
+    type: "ask"
+    question: "Large documentation set detected. Choose restructuring approach:"
+    options: ["full-semantic-analysis", "prioritize-critical-issues", "focus-specific-domains"]
+    next: "strategy-implementation"
+    anchors: ["docs/explanation/architecture/restructuring-system-rationale.md"]
+
+  - id: "strategy-implementation"
+    type: "action"
+    action: "implement_chosen_strategy"
+    next: "batch-creation"
+
+  - id: "batch-creation"
+    type: "action"
+    action: "create_optimized_batches"
+    next: "batch-iteration-setup"
+
+  # Phase 3: Batch Processing (Core Loop)
+  - id: "batch-iteration-setup"
+    type: "action"
+    action: "select_first_batch"
+    next: "batch-context-loading"
+
+  - id: "batch-context-loading"
+    type: "action"
+    action: "load_batch_files_and_references"
+    next: "validation-error-analysis"
+
+  # NEW: Pre-analysis validation
+  - id: "validation-error-analysis"
+    type: "action"
+    action: "run_validation_categorize_errors_by_severity"
+    next: "semantic-comprehension"
+    # Categorize: critical (missing required sections), warning (missing optional sections), info (broken links)
+    # Include validation errors as restructuring opportunities
+
+  - id: "semantic-comprehension"
+    type: "action"
+    action: "analyze_content_semantics_quality_and_relationships"
+    next: "identify-opportunities"
+    # Must analyze: content duplication, gaps, completeness, cross-reference integrity, implementation traceability
+
+  - id: "identify-opportunities"
+    type: "condition"
+    condition: "restructuring_opportunities_exist"
+    next_true: "prioritize-opportunities"
+    next_false: "batch-cleanup"
+
+  # NEW: Opportunity prioritization
+  - id: "prioritize-opportunities"
+    type: "action"
+    action: "score_opportunities_by_impact_risk_effort_value"
+    next: "generate-suggestions"
+    # Score each opportunity: Impact (files affected) × Value (goal alignment) / (Risk × Effort)
+    # Sort by priority score, group by category
+
+  - id: "generate-suggestions"
+    type: "action"
+    action: "create_structured_restructuring_suggestions_with_priorities"
+    next: "bidirectional-link-verification"
+
+  # NEW: Bidirectional link verification
+  - id: "bidirectional-link-verification"
+    type: "action"
+    action: "verify_bidirectional_links_for_implementation_references"
+    next: "impact-assessment"
+    # For each implementations: field addition, verify @directive exists in code file
+    # If missing: flag for user approval or auto-add if safe
+    # Run just docs::validate-registry to verify integrity
+
+  - id: "impact-assessment"
+    type: "action"
+    action: "evaluate_changes_link_content_and_downstream_impact"
+    next: "user-approval-gate"
+    # Must check: downstream effects (other docs referencing modified files), registry validation, content consistency
+
+  # Phase 4: User Approval Integration
+  - id: "user-approval-gate"
+    type: "condition"
+    condition: "user_approval_required"
+    next_true: "present-suggestions-for-approval"
+    next_false: "auto-apply-safe-changes"
+    # Use explicit criteria from runtime.user_approval_criteria
+
+  - id: "present-suggestions-for-approval"
+    type: "ask"
+    question: "Review restructuring suggestions for current batch (grouped by priority):"
+    options: ["approve-all", "approve-selected", "approve-high-priority-only", "modify-suggestions", "reject-batch"]
+    next: "process-user-decision"
+
+  - id: "process-user-decision"
+    type: "condition"
+    condition: "user_response"
+    next_approve-all: "apply-approved-changes"
+    next_approve-selected: "apply-selected-changes"
+    next_approve-high-priority-only: "apply-high-priority-changes"
+    next_modify-suggestions: "suggestion-modification"
+    next_reject-batch: "batch-cleanup"
+
+  - id: "suggestion-modification"
+    type: "ask"
+    question: "Specify modifications to suggestions:"
+    next: "apply-modified-suggestions"
+
+  - id: "apply-modified-suggestions"
+    type: "action"
+    action: "implement_modified_suggestions"
+    next: "incremental-validation"
+
+  - id: "apply-selected-changes"
+    type: "action"
+    action: "apply_user_selected_changes"
+    next: "incremental-validation"
+
+  - id: "apply-high-priority-changes"
+    type: "action"
+    action: "apply_high_priority_changes_only"
+    next: "incremental-validation"
+
+  - id: "auto-apply-safe-changes"
+    type: "action"
+    action: "apply_low_risk_changes_automatically"
+    next: "incremental-validation"
+
+  # Phase 5: Application & Validation
+  - id: "apply-approved-changes"
+    type: "action"
+    action: "execute_restructuring_with_comprehensive_link_updates"
+    next: "incremental-validation"
+
+  # NEW: Incremental validation with checkpoints
+  - id: "incremental-validation"
+    type: "action"
+    action: "validate_after_each_change_with_checkpoint"
+    next: "validation-result-routing"
+    # Apply changes one at a time, validate after each, checkpoint on success, rollback on failure
+
+  - id: "validation-phase"
+    type: "action"
+    action: "validate_changes_link_integrity_content_consistency"
+    next: "validation-result-routing"
+    # Full validation suite: just docs::validate, just docs::validate-registry, downstream effects
+
+  - id: "validation-result-routing"
+    type: "condition"
+    condition: "validation_passed"
+    next_true: "update-batch-metrics"
+    next_false: "error-handling"
+
+  # NEW: Metrics tracking per batch
+  - id: "update-batch-metrics"
+    type: "action"
+    action: "update_batch_metrics_error_reduction_completeness"
+    next: "batch-cleanup"
+    # Track: errors fixed, links added, traceability improved, content quality scores
+
+  - id: "error-handling"
+    type: "condition"
+    condition: "error_severity"
+    next_recoverable: "attempt-error-recovery"
+    next_critical: "user-error-intervention"
+    next_warning: "log-warning-continue"
+
+  # NEW: Warning handling (non-blocking)
+  - id: "log-warning-continue"
+    type: "action"
+    action: "log_warning_continue_processing"
+    next: "update-batch-metrics"
+
+  - id: "attempt-error-recovery"
+    type: "action"
+    action: "implement_error_recovery_within_flow_node"
+    next: "validation-phase"
+    # Auto-fix recoverable errors: broken link path corrections, missing optional sections
+
+  - id: "user-error-intervention"
+    type: "ask"
+    question: "Critical error encountered. Options:"
+    options: ["rollback-batch", "manual-intervention", "skip-batch", "fix-and-continue"]
+    next: "error-resolution-routing"
+
+  - id: "error-resolution-routing"
+    type: "condition"
+    condition: "error_resolution_choice"
+    next_rollback-batch: "rollback-changes"
+    next_manual-intervention: "await-manual-intervention"
+    next_skip-batch: "batch-cleanup"
+    next_fix-and-continue: "attempt-error-recovery"
+
+  - id: "rollback-changes"
+    type: "action"
+    action: "rollback_failed_changes"
+    next: "batch-cleanup"
+
+  - id: "await-manual-intervention"
+    type: "ask"
+    question: "Describe manual intervention needed:"
+    next: "batch-cleanup"
+
+  # Phase 6: Iteration & Completion
+  - id: "batch-cleanup"
+    type: "action"
+    action: "cleanup_batch_artifacts_update_progress"
+    next: "check-remaining-batches"
+
+  - id: "check-remaining-batches"
+    type: "condition"
+    condition: "more_batches_exist"
+    next_true: "select-next-batch"
+    next_false: "restructuring-completion"
+
+  - id: "select-next-batch"
+    type: "action"
+    action: "choose_next_optimal_batch_based_on_dependencies"
+    next: "batch-context-loading"
+
+  - id: "restructuring-completion"
+    type: "action"
+    action: "generate_comprehensive_restructuring_summary_with_metrics"
+    next: "final-cleanup"
+    # Must include: baseline vs final metrics, error reduction, completeness improvement, processing efficiency
+
+  - id: "final-cleanup"
+    type: "action"
+    action: "cleanup_global_artifacts_finalize_session"
+    next: "end"
+
+  - id: "end"
+    type: "end"
+    result: "restructuring_complete"

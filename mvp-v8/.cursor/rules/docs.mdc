@@ -1,0 +1,19 @@
+---
+description: "Documentation context injection - provides comprehensive documentation system context for informed decision-making"
+file_patterns: ["docs/**/*.md"]
+---
+- Follow doc authority order (reference → how-to → explanation → tutorials → work → archive).
+- Load:
+  - `docs/reference/docs/doc-authority.md`
+  - `docs/explanation/architecture/doc-system-rationale.md`
+- When adding/moving canonical docs, update `docs/index.md`.
+- Keep docs lean; prefer anchors/links to artifacts over copying large text.
+
+When working with documentation, automatically include the complete documentation system context to ensure informed, Diátaxis-compliant decisions.
+
+@file docs/index.md
+@file docs/reference/docs/frontmatter-schema.md
+@file docs/explanation/decisions/2026-01-16-doc-structure.md
+@file docs/how-to/docs/writing-effective-docs.md
+
+Use `/refine` for intelligent restructuring with PR-like review and `/trace` for current decision context transparency.

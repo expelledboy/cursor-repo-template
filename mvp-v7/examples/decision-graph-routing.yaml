@@ -1,0 +1,15 @@
+spec_version: "agentos.decision-graph/v1"
+name: "routing"
+description: "choose primary role + loads"
+expression_language: "string"
+nodes:
+  - id: "start"
+    type: "decision_table"
+    hit_policy: "first"
+    rules:
+      - id: "r_default"
+        when: "true"
+        output:
+          route: "DISCOVER"
+          confidence: 0.6
+

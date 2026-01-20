@@ -1,0 +1,8 @@
+---
+description: route, routing, classify, plan, ambiguous, unclear
+---
+- Load decision cards:
+  - `docs/reference/agentos/decision-cards/command-role-selection.md`
+  - `docs/reference/agentos/decision-cards/task-classification.md`
+  - `docs/reference/agentos/decision-cards/complexity.md`
+- Use semantic search as routing context when unclear.

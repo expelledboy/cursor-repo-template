@@ -1,0 +1,28 @@
+---
+alwaysApply: true
+---
+# @directive docs/explanation/decisions/2026-01-18-behavioral-consistency-enforcement.md
+# @directive docs/explanation/decisions/2026-01-18-semantic-validation-mandate.md
+- Follow structured decision phases for routing and planning
+- Maintain active state for resumability
+- Record traces only when requested or on user questions (`/trace` for context dump)
+- Prefer simple anchors over complex provenance
+- Follow Hybrid Diátaxis + Domain for documentation (see `docs/index.md`)
+- Use `/refine` for AI-guided documentation restructuring following the standard 6-phase process
+- Use `/distill` for semantic compression of verbose documentation (removing scaffolding, keeping structure)
+- Use `/learn` to capture ephemeral observations as formal Discoveries or Problems
+- Use `/evolve` to update system behavior (Rules/Commands) based on validated learnings
+- **Scope Verification Mandate**: Before applying any fix, you MUST validate the scope: 1) Is this a local patch or a systemic pattern? 2) Does the user want a specific or generic solution? 3) Explicitly confirm scope with the user if ambiguous. NEVER apply a focused fix to a general problem without confirmation.
+- **Metadata Preservation**: When modifying files (archiving, migrating, restructuring), you MUST preserve ALL original metadata. NEVER delete fields like `created_date`, `purpose`, `domain`, `tags`, or `related` unless explicitly authorized. Information loss is unacceptable.
+- **Migration Validation Gates**: When performing multi-step file operations (migrations, bulk edits), you MUST validate after each step. Run `just docs::validate` or equivalent validation after every operation to prevent cumulative errors. NEVER apply the next operation until the previous one validates successfully.
+- **Document Schema Compliance**: When creating or modifying documentation, you MUST ensure schema compliance: 1) Include all required frontmatter fields per document type. 2) Add `implementations:` fields for decisions with code realizations. 3) Add `@directive` annotations to implementation files. 4) Run `just docs::validate-registry` after modifications. NEVER complete a document operation without full schema validation.
+- **DOE Integrated Flow**: For medium/high-risk tasks, run `/retrospect` pre-execution and post-failure. Follow the audit checklist to ensure directive compliance, safety confirmation, and verification readiness.
+- **Behavioral Consistency Enforcement**: When performing any operation, you MUST explicitly follow established DOE patterns: 1) Verify you have the correct directive before starting. 2) Follow documented workflows exactly. 3) Validate against rules at each step. 4) Never skip validation or schema requirements. 5) Archive only truly obsolete material, preserve rationale-rich work files.
+- **Semantic Validation Mandate**: Before executing any operation, you MUST validate both form AND intent: 1) Form validation (syntax, schema compliance). 2) Semantic validation (should this operation happen according to documented policies?). 3) Work files are permanent rationale - NEVER archive them as "superseded". 4) Only archive canonical docs that are truly obsolete.
+- **Safe Execution Protocol**: Destructive actions require explicit user confirmation + rollback plan recorded in task header. Hard error if missing confirmation.
+- Apply [Cursor mechanics constraints](docs/reference/docs/glossary.md#cursor-mechanics-constraints) for evidence anchoring and provenance tracking
+- **Context Loading Awareness**: You MUST understand and account for Cursor's hierarchical rule loading (Always-Applied → Description-Based → Glob-Based → Manual), token-based limits, and context compression triggers. Monitor actual rule loading events and token usage rather than assuming content availability.
+- **Intelligence-First Design**: You MUST recognize that cognitive capabilities (meta-analysis, judgment, pattern recognition) cannot be delegated to automation. Scripts provide guidance frameworks, but intelligence remains in AI reasoning phases.
+- **Guidance vs Automation Boundaries**: Scripts excel at structure and checklists; AI agents excel at analysis and judgment. Design systems that leverage both while respecting their fundamental differences.
+- **Cognitive Framework Architecture**: Self-aware systems combine guidance automation with cognitive intelligence. Intelligence cannot be scripted - it must be performed by the reasoning agent.
+- **Temporary Files**: All temporary working files (state, inventories, batches) MUST be stored in `docs/local/`. Never pollute the project root.

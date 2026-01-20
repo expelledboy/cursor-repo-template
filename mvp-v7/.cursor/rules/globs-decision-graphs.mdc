@@ -1,0 +1,7 @@
+---
+globs: ["**/decision-graphs/**"]
+---
+- Load:
+  - `docs/reference/agentos/spec-decision-graph.md`
+  - `docs/reference/agentos/spec-decision-trace.md`
+- Prefer small, composable graphs; record provenance for graph introduction.

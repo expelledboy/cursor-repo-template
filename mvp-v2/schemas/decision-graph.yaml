@@ -1,0 +1,65 @@
+# Decision Graph Schema
+# Defines the structure for decision graphs (routing logic)
+
+$schema: http://json-schema.org/draft-07/schema#
+type: object
+required:
+  - name
+  - steps
+properties:
+  name:
+    type: string
+    description: Decision graph name
+
+  description:
+    type: string
+    description: What this graph determines
+
+  steps:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required:
+        - id
+        - condition
+        - route
+      properties:
+        id:
+          type: string
+          description: Step identifier
+
+        question:
+          type: string
+          description: Human-readable question for this step
+
+        condition:
+          type: string
+          description: Condition expression (evaluated against requirement)
+          # Examples:
+          # - "task.type == 'execution'"
+          # - "task.scope.domains.length > 1"
+          # - "task.constraints.risks.length > 0"
+
+        route:
+          type: string
+          description: Route identifier if condition is true
+
+        load:
+          type: string
+          description: Documentation to load for this route
+
+        confidence:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Confidence level (0-1)
+
+        terminal:
+          type: boolean
+          default: false
+          description: If true, stop after this step
+
+        fallback:
+          type: string
+          description: Route if condition is false (optional, continues to next step if not set)

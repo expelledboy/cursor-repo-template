@@ -1,0 +1,85 @@
+---
+description: authentication, security, auth, oauth, login, session, token, jwt
+globs: ["src/auth/**", "**/auth*.py", "**/auth*.ts", "**/auth*.js", "**/security*.py", "**/security*.ts", "**/*auth*.ts", "**/*security*.ts", "**/login*.py", "**/login*.ts"]
+---
+
+# Authentication Domain Semantic Patterns
+
+When working on authentication or security:
+- I understand this is security-sensitive work
+- Load security semantic patterns
+- Use semantic search for: "authentication implementation patterns"
+- Route to security-aware workflows
+- Validate with security-specific checks (MCP)
+
+## Cascading Rule Triggers
+
+This rule triggers related rules:
+- **Security rule** (if exists): Triggers security-specific patterns
+- **Testing rule**: Can layer with testing for auth tests
+- **Enhanced workflow rule** (Level 3+): Triggers enhanced security workflows
+
+## Semantic Patterns I Recognize
+
+### OAuth Flows
+- **Pattern**: OAuth, OAuth2, provider integration
+- **Semantic Indicators**: "OAuth", "provider", "third-party auth", "social login"
+- **Route**: Security-enhanced execution workflow
+- **Search**: "OAuth implementation patterns"
+- **Subagent**: Launch `/code-pattern-searcher` for OAuth code patterns (Level 2+)
+
+### Token Management
+- **Pattern**: JWT, tokens, refresh tokens, token storage
+- **Semantic Indicators**: "token", "JWT", "refresh", "session token"
+- **Route**: Security-aware token management workflow
+- **Search**: "token management patterns"
+- **Subagent**: Launch `/pattern-searcher` for token patterns (Level 2+)
+
+### User Sessions
+- **Pattern**: Session management, user sessions, login/logout
+- **Semantic Indicators**: "session", "login", "logout", "user session"
+- **Route**: Session management workflow
+- **Search**: "session management patterns"
+
+### Password Management
+- **Pattern**: Password hashing, password reset, password policies
+- **Semantic Indicators**: "password", "hash", "reset", "policy"
+- **Route**: Security-critical password workflow
+- **Search**: "password management patterns"
+
+## Security Considerations
+
+When authentication domain is detected:
+- Always consider security implications
+- Require explicit confirmation for security boundary changes
+- Block secrets logging
+- Validate with security audit (MCP if available)
+- Load: `docs/reference/agentos/workflows/execution-enhanced.md` (security section)
+- **Orchestration**: Use Enhanced Orchestration (Level 3+) for security-sensitive tasks
+
+## File Context Integration
+
+When editing files matching globs:
+- `src/auth/**` → Authentication domain active
+- `**/security*.py` → Security domain active
+- Load security-specific semantic patterns
+- Use semantic search for similar security implementations
+- Route to security-aware workflows
+- **Trigger cascading**: File context triggers this rule, which triggers security patterns
+
+## Integration with Orchestration
+
+This domain rule works with:
+- **alwaysApply core rule**: Provides foundational patterns
+- **Orchestration rule**: Triggers Enhanced Orchestration for security tasks
+- **Other domain rules**: Can layer (e.g., auth + testing)
+- **Globs matching**: File context informs domain understanding
+- **Semantic search**: Finds similar authentication patterns
+- **Subagents**: Launches `/code-pattern-searcher` and `/pattern-searcher` for auth patterns (Level 2+)
+
+## Pattern Library Integration
+
+When auth domain detected (Level 3+):
+- Consult pattern library for auth patterns
+- Learn new auth patterns from successful tasks
+- Reuse auth orchestration patterns

@@ -1,0 +1,27 @@
+---
+description: security, auth, encrypt, authentication, authorization, secret, credential, password, token
+---
+
+# AgentOS Security Task Instructions
+
+## Load Security Directives
+- `mvp/docs/reference/agentos/coherence-contract.md` (safety policy section)
+- `mvp/docs/reference/agentos/decision-graphs/validation-strategy.md`
+
+## Security Protocol
+1. **Secrets Detection**: Block and alert if secrets detected in code
+2. **Confirmation Required**: Explicit confirmation for security boundary changes
+3. **Threat Modeling**: Consider security implications before implementation
+4. **Validation**: Security audit required for Level 3+ tasks
+
+## Safety Constraints
+- Do not log secrets or credentials
+- Do not commit secrets to version control
+- Require explicit user confirmation for security-related changes
+- Validate against safety policy constraints
+
+## Validation Gates
+- Security audit (OAuth flow, token handling, session management)
+- Secrets scanning
+- Authentication flow validation
+- Security best practices compliance

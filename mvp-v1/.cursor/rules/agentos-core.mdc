@@ -1,0 +1,32 @@
+---
+description: agentos
+alwaysApply: true
+---
+
+# AgentOS Core Instructions
+
+## Always Load Core Contract
+- `docs/reference/agentos/coherence-contract.md`
+
+## Core Principles
+- Maintain coherence across documentation, implementation, and behavior surfaces
+- Follow authority order: reference > how-to > explanation > tutorials > work > archive
+- Require explicit confirmation for destructive actions
+- Always include task plan header when starting a task
+
+## Task Plan Header (Required)
+When starting any task, include:
+- Task type:
+- Primary objective:
+- Required directives:
+- Verification gates:
+
+## Leverage Cursor Features
+- **Semantic Search**: Use for intelligent directive discovery when task type is unclear
+- **Codebase Indexing**: Leverage for understanding project structure and finding patterns
+- **File Context**: Use open files to inform routing and directive selection
+
+## Do Not
+- Treat Cursor memories as authoritative
+- Skip verification gates
+- Proceed with destructive actions without confirmation

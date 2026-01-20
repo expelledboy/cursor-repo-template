@@ -1,0 +1,9 @@
+---
+globs: ["docs/**"]
+---
+- Log file context as anchors (doc paths + relevant line ranges).
+- Prefer showing decision traces (graphs + path + anchors) when questions arise.
+- Load:
+  - `docs/reference/docs/doc-authority.md`
+  - `docs/explanation/architecture/doc-system-rationale.md`
+  - `docs/reference/agentos/spec-decision-trace.md`

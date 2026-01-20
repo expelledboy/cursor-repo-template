@@ -1,0 +1,132 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: AgentOS Decision Trace v1
+type: object
+required: [spec_version, trace_id, created_at, state_ref, decision, anchors, graph_stack, graphs, user_gate]
+properties:
+  spec_version:
+    type: string
+    const: "agentos.decision-trace/v1"
+  trace_id: { type: string }
+  created_at: { type: string }
+  state_ref:
+    type: object
+    required: [state_id, frame_id, objective_id]
+    properties:
+      state_id: { type: string }
+      frame_id: { type: string }
+      objective_id: { type: string }
+  decision:
+    type: object
+    required: [id, kind, question, output]
+    properties:
+      id: { type: string }
+      kind: { type: string, enum: ["routing", "scope", "validation", "install_gate"] }
+      question: { type: string }
+      output:
+        type: object
+        required: [value, confidence, mode]
+        properties:
+          value: { type: string }
+          confidence: { type: number, minimum: 0, maximum: 1 }
+          mode: { type: string, enum: ["trial", "installed", "ask_user"] }
+  anchors:
+    type: array
+    items:
+      type: object
+      required: [id, type, ref]
+      properties:
+        id: { type: string }
+        type:
+          type: string
+          enum: ["kernel", "user", "rule", "file", "doc", "search", "tool", "memory_hint"]
+        ref:
+          type: object
+          required: [kind, value]
+          properties:
+            kind: { type: string, enum: ["path", "message", "query", "command"] }
+            value: { type: string }
+        lines:
+          type: array
+          minItems: 2
+          maxItems: 2
+          items: { type: integer, minimum: 1 }
+        note: { type: string }
+        hash: { type: string }
+        hits:
+          type: array
+          description: "Optional list of search hits (only meaningful when type=search)."
+          items:
+            type: object
+            required: [path]
+            properties:
+              path: { type: string }
+              lines:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items: { type: integer, minimum: 1 }
+              note: { type: string }
+  graph_stack:
+    type: array
+    items:
+      type: object
+      required: [name, source]
+      properties:
+        name: { type: string }
+        source:
+          type: object
+          required: [source_kind]
+          properties:
+            source_kind:
+              type: string
+              enum: ["kernel_default", "rule", "user_mention", "manual_insert", "search_suggested", "command", "skill"]
+            source_ref:
+              type: string
+              description: "Deprecated: prefer source_anchor_ids to point at concrete anchors."
+            source_anchor_ids:
+              type: array
+              description: "Anchor IDs that justify how/why this graph entered the chain (preferred over source_ref)."
+              items: { type: string }
+  graphs:
+    type: array
+    items:
+      type: object
+      required: [name, path, output]
+      properties:
+        name: { type: string }
+        source_ref:
+          type: object
+          properties:
+            kind: { type: string, enum: ["path"] }
+            value: { type: string }
+        inputs_digest:
+          type: string
+          description: "Compact, stable summary of inputs used (preferred for diffability)."
+        inputs:
+          type: object
+          description: "Optional structured inputs; use sparingly to avoid drift."
+        path:
+          type: array
+          items:
+            type: object
+            required: [node_id, condition, result]
+            properties:
+              node_id: { type: string }
+              condition: { type: string }
+              result: { type: boolean }
+              anchors_used: { type: array, items: { type: string } }
+        output:
+          type: object
+          required: [route, confidence]
+          properties:
+            route: { type: string }
+            load: { type: array, items: { type: string } }
+            confidence: { type: number, minimum: 0, maximum: 1 }
+  user_gate:
+    type: object
+    required: [asked, question_id, options]
+    properties:
+      asked: { type: boolean }
+      question_id: { type: ["string", "null"] }
+      options: { type: array, items: { type: string } }
+

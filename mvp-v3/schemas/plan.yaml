@@ -1,0 +1,93 @@
+# Plan Schema
+# Defines the structure for execution plans
+
+$schema: http://json-schema.org/draft-07/schema#
+type: object
+required:
+  - plan
+properties:
+  plan:
+    type: object
+    required:
+      - task_id
+      - type
+      - objective
+      - workflow
+      - steps
+      - success_criteria
+    properties:
+      task_id:
+        type: string
+        pattern: '^TASK-[0-9]{8}-[A-Z0-9]{6}$'
+
+      semantic_understanding:
+        type: object
+        properties:
+          requirement_meaning:
+            type: string
+            description: What was understood from the requirement
+          patterns_matched:
+            type: array
+            items:
+              type: string
+            description: Semantic patterns recognized
+          similar_patterns_found:
+            type: string
+            description: Results from semantic search
+          context_used:
+            type: array
+            items:
+              type: string
+            description: File patterns and domain rules used
+
+      type:
+        type: string
+        enum:
+          - execution
+          - coordination
+          - architecture
+          - meta
+          - direct
+
+      objective:
+        type: string
+
+      complexity:
+        type: integer
+        minimum: 1
+        maximum: 4
+
+      workflow:
+        type: string
+
+      steps:
+        type: array
+        items:
+          type: object
+          required:
+            - id
+            - action
+          properties:
+            id:
+              type: string
+            action:
+              type: string
+            validation:
+              type: string
+            output:
+              type: string
+
+      success_criteria:
+        type: array
+        items:
+          type: string
+
+      loaded_docs:
+        type: array
+        items:
+          type: string
+
+      rules_loaded:
+        type: array
+        items:
+          type: string

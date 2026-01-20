@@ -1,0 +1,157 @@
+---
+description: orchestration, feature synergy, subagents, parallel execution
+alwaysApply: false
+---
+
+# Feature Orchestration Patterns
+
+## Purpose
+Defines how to orchestrate Cursor features together for maximum synergy and power.
+
+## Orchestration Pattern Selection
+
+Select orchestration pattern based on task complexity and context:
+
+### Pattern 1: Parallel Pattern Discovery
+**When**: Pattern discovery needed (Level 2+)
+**Flow**:
+1. Command launches subagents in parallel:
+   - `/pattern-searcher` "Find similar requirements to: [requirement]"
+   - `/code-pattern-searcher` "Find code patterns for: [requirement]"
+   - `/doc-pattern-searcher` "Find documentation patterns for: [requirement]"
+2. Wait for all subagents to complete
+3. Synthesize results from all subagents
+4. Route based on synthesized patterns
+
+**Power**: 3x faster pattern discovery
+
+### Pattern 2: Cascading Rule Enrichment
+**When**: Context enrichment needed (all levels)
+**Flow**:
+1. `alwaysApply` rule loads → Foundation context
+2. User mentions keyword → `description` rule loads → Domain context
+3. User opens file → `globs` rule loads → File-specific context
+4. Domain rule triggers → Related rule loads → Cascading enrichment
+5. All rules layer → Exponential context enrichment
+
+**Power**: Exponential context loading
+
+### Pattern 3: Command Workflow Chaining
+**When**: Structured workflow needed (all levels)
+**Flow**:
+1. `/agentos` → Orchestrates features → Routes to `/agentos-start`
+2. `/agentos-start` → Orchestrates features → Routes to `/agentos-plan`
+3. `/agentos-plan` → Orchestrates features → Routes to `/agentos-execute`
+4. `/agentos-execute` → Orchestrates features → Routes to `/agentos-verify`
+5. `/agentos-verify` → Orchestrates features → Routes to `/agentos-complete`
+
+**Power**: Structured, orchestrated workflows
+
+### Pattern 4: Two-Layer Validation
+**When**: Validation needed (Level 2+)
+**Flow**:
+1. Semantic understanding → Routes task semantically
+2. MCP validates structure → Validates plan structure
+3. Subagent `/validator` → Validates coherence
+4. All validations → Comprehensive validation
+
+**Power**: Multi-layer validation
+
+### Pattern 5: Context-Aware Orchestration
+**When**: File context available (all levels)
+**Flow**:
+1. File context → Triggers `globs` rules → Domain awareness
+2. Domain awareness → Triggers domain rules → Domain context
+3. Domain context → Launches domain-specific subagents → Specialized execution
+
+**Power**: Context-aware specialization
+
+### Pattern 6: Meta-Orchestration
+**When**: Complexity assessed (all levels)
+**Flow**:
+1. Task complexity assessed → Selects orchestration pattern
+2. Orchestration pattern → Determines feature usage
+3. Feature usage → Optimized for complexity level
+4. System orchestrates itself → Maximum efficiency
+
+**Power**: Self-optimizing system
+
+## Complexity-Based Pattern Selection
+
+### Level 1: Streamlined
+- Use: Pattern 2 (Cascading Rules), Pattern 3 (Command Chaining)
+- Skip: Parallel subagents, extensive validation
+- Focus: Speed and simplicity
+
+### Level 2: Standard
+- Use: Pattern 1 (Parallel Discovery), Pattern 2, Pattern 3, Pattern 4
+- Include: 2-3 subagents, standard validation
+- Focus: Balanced orchestration
+
+### Level 3: Enhanced
+- Use: All patterns
+- Include: 3+ subagents, cascading rules, comprehensive validation
+- Focus: Comprehensive orchestration
+
+### Level 4: Maximum
+- Use: All patterns with maximum intensity
+- Include: All relevant subagents, full cascading, multi-layer validation
+- Focus: Maximum power and rigor
+
+## Rule Cascading Triggers
+
+### Domain Rules Trigger Related Rules
+- `auth.mdc` → Triggers `security.mdc` (if exists)
+- `testing.mdc` → Triggers `quality.mdc` (if exists)
+- `docs.mdc` → Triggers `coherence.mdc` (if exists)
+
+### Complexity Rules Trigger Workflow Rules
+- Complexity Level 3+ → Triggers `enhanced-workflow.mdc` (if exists)
+- Complexity Level 4 → Triggers `maximum-workflow.mdc` (if exists)
+
+### File Context Triggers Domain Rules
+- `src/auth/**` → Triggers `auth.mdc`
+- `tests/**` → Triggers `testing.mdc`
+- `docs/**` → Triggers `docs.mdc`
+
+## Subagent Launch Patterns
+
+### Parallel Launch (Recommended)
+Launch multiple subagents simultaneously:
+```
+Launch: /pattern-searcher, /code-pattern-searcher, /doc-pattern-searcher
+Wait for all → Synthesize
+```
+
+### Sequential Launch (When Dependencies Exist)
+Launch subagents in sequence when one depends on another:
+```
+Launch: /complexity-assessor → Wait
+Launch: /workflow-selector (with complexity result) → Wait
+Launch: /validator → Wait
+```
+
+### Conditional Launch (When Context-Dependent)
+Launch subagents based on context:
+```
+If file context available → Launch /code-pattern-searcher
+If documentation needed → Launch /doc-pattern-searcher
+If validation needed → Launch /validator
+```
+
+## Integration with Pattern Library
+
+When pattern library available:
+1. Consult pattern library for similar tasks
+2. Use learned patterns to inform orchestration
+3. Learn new patterns from current task
+4. Update pattern library with successful patterns
+
+## Best Practices
+
+1. **Always orchestrate**: Don't use features in isolation
+2. **Parallel when possible**: Launch subagents in parallel
+3. **Cascade rules**: Let rules trigger other rules
+4. **Adapt to complexity**: Select patterns based on complexity level
+5. **Learn patterns**: Capture successful orchestration patterns
+6. **Context-aware**: Use file context to inform orchestration

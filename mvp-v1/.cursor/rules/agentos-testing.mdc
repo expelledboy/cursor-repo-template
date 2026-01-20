@@ -1,0 +1,27 @@
+---
+description: test, testing, spec, validate, verify, coverage, unit test, integration test
+---
+
+# AgentOS Testing Task Instructions
+
+## Load Testing Directives
+- `mvp/docs/reference/agentos/validation-contract.md`
+- `mvp/docs/reference/agentos/decision-graphs/validation-strategy.md`
+
+## Testing Protocol
+1. **Determine Test Strategy**: Use validation strategy decision graph
+2. **Check CI Integration**: Prefer CI as primary validation
+3. **Verify Coverage**: Ensure appropriate test coverage for complexity level
+4. **Validate Test Quality**: Tests must be deterministic and maintainable
+
+## Validation Strategy
+- **Level 1**: Basic smoke tests
+- **Level 2**: Standard test suite
+- **Level 3**: Comprehensive test suite + coverage requirements
+- **Level 4**: Full test suite + coverage + performance testing
+
+## Test Requirements
+- Tests must be deterministic (same inputs → same outputs)
+- Tests must be maintainable and well-documented
+- Tests must align with CI standards
+- Test failures must provide clear remediation guidance

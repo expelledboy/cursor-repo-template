@@ -1,0 +1,127 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: AgentOS Active State v1
+type: object
+required: [spec_version, state_id, updated_at, focus, objectives, frames, navigation, rehydration]
+properties:
+  spec_version:
+    type: string
+    const: "agentos.active-state/v1"
+  state_id: { type: string }
+  updated_at: { type: string }
+  anchor_registry:
+    type: array
+    description: "Optional registry of anchors for frames (recommended to avoid dangling anchor IDs)."
+    items:
+      type: object
+      required: [id, type, ref]
+      properties:
+        id: { type: string }
+        type:
+          type: string
+          enum: ["kernel", "user", "rule", "file", "doc", "search", "tool", "memory_hint"]
+        ref:
+          type: object
+          required: [kind, value]
+          properties:
+            kind: { type: string, enum: ["path", "message", "query", "command"] }
+            value: { type: string }
+        lines:
+          type: array
+          minItems: 2
+          maxItems: 2
+          items: { type: integer, minimum: 1 }
+        note: { type: string }
+        hash: { type: string }
+        hits:
+          type: array
+          items:
+            type: object
+            required: [path]
+            properties:
+              path: { type: string }
+              lines:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items: { type: integer, minimum: 1 }
+              note: { type: string }
+  focus:
+    type: object
+    required: [frame_id, objective_id, phase, mode]
+    properties:
+      frame_id: { type: string }
+      objective_id: { type: string }
+      phase: { type: string, enum: ["DISCOVER", "SHAPE", "ACT", "CHECK", "CLOSE"] }
+      mode: { type: string, enum: ["trial", "installed", "ask_user"] }
+  objectives:
+    type: array
+    items:
+      type: object
+      required: [id, parent_id, title, status, children]
+      properties:
+        id: { type: string }
+        parent_id: { type: ["string", "null"] }
+        title: { type: string }
+        status: { type: string, enum: ["active", "paused", "done", "abandoned"] }
+        exit_reason:
+          type: ["string", "null"]
+          enum: ["deprioritized", "blocked", "not_worth_it", "superseded", null]
+        children: { type: array, items: { type: string } }
+        resume_hint: { type: ["string", "null"] }
+  frames:
+    type: array
+    items:
+      type: object
+      required: [id, title, summary, created_at, anchors, decision_trace_ids, links]
+      properties:
+        id: { type: string }
+        title: { type: string }
+        summary: { type: string }
+        created_at: { type: string }
+        anchors: { type: array, items: { type: string } }
+        decision_trace_ids: { type: array, items: { type: string } }
+        links:
+          type: array
+          items:
+            type: object
+            required: [to, kind]
+            properties:
+              to: { type: string }
+              kind:
+                type: string
+                enum: ["branch", "resume", "shift_context", "supersede", "depends_on"]
+              note: { type: string }
+              effect:
+                type: object
+                properties:
+                  objective_change:
+                    type: ["string", "null"]
+                    enum: ["pause", "abandon", "supersede", null]
+                  from_objective_id: { type: ["string", "null"] }
+                  to_objective_id: { type: ["string", "null"] }
+  navigation:
+    type: object
+    required: [recent_focus]
+    properties:
+      recent_focus:
+        type: array
+        items:
+          type: object
+          required: [frame_id, at]
+          properties:
+            frame_id: { type: string }
+            at: { type: string }
+  rehydration:
+    type: object
+    required: [required_rules, required_docs, state_file_path]
+    properties:
+      required_rules: { type: array, items: { type: string } }
+      required_docs: { type: array, items: { type: string } }
+      state_file_path: { type: string }
+      trace_store_path:
+        type: string
+        description: "Optional directory path where decision traces are persisted (e.g. `.agentos/traces/`)."
+      trace_filename_template:
+        type: string
+        description: "Optional filename template for persisted traces (e.g. `{trace_id}.yaml`)."
+

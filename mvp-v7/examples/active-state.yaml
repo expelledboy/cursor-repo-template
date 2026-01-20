@@ -1,0 +1,41 @@
+spec_version: "agentos.active-state/v1"
+state_id: "AST-20260115-EXAMPLE"
+updated_at: "2026-01-15T00:00:00Z"
+
+anchor_registry: []
+
+focus:
+  frame_id: "F-ROOT"
+  objective_id: "OBJ-ROOT"
+  phase: "DISCOVER"
+  mode: "trial"
+
+objectives:
+  - id: "OBJ-ROOT"
+    parent_id: null
+    title: "Example objective"
+    status: "active"
+    exit_reason: null
+    children: []
+    resume_hint: null
+
+frames:
+  - id: "F-ROOT"
+    title: "Initial context"
+    summary: "This is a resumable frame with anchors only."
+    created_at: "2026-01-15T00:00:00Z"
+    anchors: []
+    decision_trace_ids: ["DT-EXAMPLE"]
+    links: []
+
+navigation:
+  recent_focus:
+    - { frame_id: "F-ROOT", at: "2026-01-15T00:00:00Z" }
+
+rehydration:
+  required_rules: ["core"]
+  required_docs: ["docs/reference/agentos/kernel.md"]
+  state_file_path: ".agentos/active-state.yaml"
+  trace_store_path: ".agentos/traces/"
+  trace_filename_template: "{trace_id}.yaml"
+

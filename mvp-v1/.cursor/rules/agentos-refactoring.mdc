@@ -1,0 +1,29 @@
+---
+description: refactor, refactoring, restructure, migrate, modernize
+---
+
+# AgentOS Refactoring Task Instructions
+
+## Load Refactoring Directives
+- `mvp/docs/reference/agentos/architectural-patterns.md` (registry mapping section)
+- `mvp/docs/reference/agentos/alignment-mechanisms.md` (registry mapping)
+- `mvp/docs/reference/agentos/validation-contract.md` (validation gates)
+
+## Refactoring Protocol
+1. **Assess Impact**: Evaluate impact on registry mappings
+2. **Determine Complexity**: Use complexity assessment decision graph
+3. **Select Validation**: Use validation strategy decision graph
+4. **Update Registry**: Update docs↔code mappings after refactoring
+5. **Verify Coherence**: Run validation to confirm coherence maintained
+
+## Registry Mapping Requirements
+- Check for `@directive` annotations in code
+- Verify `@implementation` annotations in docs
+- Update mappings when files move or change
+- Validate registry integrity after refactoring
+
+## Validation Gates
+- Registry mapping validation
+- Backward compatibility testing (if applicable)
+- Integration testing
+- Documentation updates

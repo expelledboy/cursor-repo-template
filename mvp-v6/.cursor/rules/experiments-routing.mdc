@@ -1,0 +1,8 @@
+---
+description: theory, hypothesis, experiment, probe, whitepaper, operating model, meta
+---
+- Load:
+  - `docs/reference/agentos/operating-model-whitepaper.md`
+  - `docs/reference/agentos/theory-registry.md`
+  - `docs/reference/agentos/interplay-probes.md`
+- When proposing changes, follow `/evolve` and `docs/reference/agentos/evolution-guardrails.md`.

@@ -1,0 +1,9 @@
+---
+description: route, routing, classify, decision graph, decision tree, trace, show trace, ambiguity, unclear
+---
+- Load:
+  - `docs/reference/agentos/spec-decision-graph.md`
+  - `docs/reference/agentos/spec-decision-trace.md`
+  - `docs/reference/agentos/decision-graphs/routing.md`
+- Use decision graphs for routing and produce a decision trace with anchors.
+- If ambiguity remains, ask the user and auto-display the trace.

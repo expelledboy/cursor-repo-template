@@ -1,0 +1,8 @@
+---
+globs: [".agentos/active-state.yaml"]
+---
+- Load:
+  - `docs/reference/agentos/spec-active-state.md`
+  - `docs/reference/agentos/spec-decision-trace.md`
+- Treat `.agentos/active-state.yaml` as the resumability substrate (not memory).
+- Prefer anchors (file+lines) over copied excerpts.

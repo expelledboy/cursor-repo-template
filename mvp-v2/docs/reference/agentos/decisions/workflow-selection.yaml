@@ -1,0 +1,46 @@
+# Workflow Selection Decision Graph
+
+name: workflow_selection
+description: Selects specific workflow based on task type and complexity level
+
+steps:
+  - id: execution_workflows
+    condition: "task_type == 'execution'"
+    routes:
+      - condition: "complexity == 1"
+        workflow: execution-minimal
+        load: docs/reference/agentos/workflows/execution-minimal.md
+      - condition: "complexity == 2"
+        workflow: execution-standard
+        load: docs/reference/agentos/workflows/execution-standard.md
+      - condition: "complexity == 3"
+        workflow: execution-enhanced
+        load: docs/reference/agentos/workflows/execution-enhanced.md
+      - condition: "complexity == 4"
+        workflow: execution-maximum
+        load: docs/reference/agentos/workflows/execution-maximum.md
+
+  - id: coordination_workflows
+    condition: "task_type == 'coordination'"
+    routes:
+      - condition: "complexity <= 2"
+        workflow: coordination-standard
+        load: docs/reference/agentos/workflows/coordination-standard.md
+      - condition: "complexity >= 3"
+        workflow: coordination-enhanced
+        load: docs/reference/agentos/workflows/coordination-enhanced.md
+
+  - id: architecture_workflows
+    condition: "task_type == 'architecture'"
+    routes:
+      - condition: "complexity <= 2"
+        workflow: architecture-standard
+        load: docs/reference/agentos/workflows/architecture-standard.md
+      - condition: "complexity >= 3"
+        workflow: architecture-enhanced
+        load: docs/reference/agentos/workflows/architecture-enhanced.md
+
+  - id: direct_workflows
+    condition: "task_type == 'direct'"
+    workflow: direct-minimal
+    load: docs/reference/agentos/workflows/direct-minimal.md

@@ -1,0 +1,15 @@
+spec_version: "agentos.active-state/v2"
+state_id: "AST-20260116-001"
+updated_at: "2026-01-16T10:00:00Z"
+
+focus:
+  frame_id: "F-001"
+  objective: "Explore agent system"
+  phase: "discover"
+
+frames:
+  - id: "F-001"
+    title: "Initial exploration"
+    summary: "Starting to understand the agent system requirements"
+    created_at: "2026-01-16T10:00:00Z"
+    anchors: ["docs/reference/agentos/kernel.md"]

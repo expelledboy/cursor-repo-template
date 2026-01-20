@@ -1,0 +1,100 @@
+# Settings
+set dotenv-load := true
+set export := true
+set shell := ["bash", "-cu"]
+
+mod docs "scripts/docs"
+
+# Default Recipe
+default:
+  @just --list --unsorted --list-submodules
+
+# Development
+# ============
+
+# Install project dependencies
+init:
+  @echo "No dependencies to install"
+
+# Start development server
+run:
+  @echo "No development server"
+
+# Build for production
+build:
+  @echo "Nothing to build"
+
+# Preview build
+preview: build
+  @echo "Nothing to preview"
+
+# Code Quality
+# ============
+
+# Lint codebase
+lint:
+  just docs::lint
+
+# Format code
+format:
+  @echo "No formatter configured"
+
+# Type check
+typecheck:
+  @echo "No type checker configured"
+
+# Testing
+# =======
+
+# Run tests
+test:
+  just docs::validate
+
+# Run tests in watch mode
+test-watch:
+  just docs::validate
+
+# Diagnostics
+# ===========
+
+# Run documentation doctor
+docs-doctor:
+  just docs::doctor
+
+# Generate coverage
+test-coverage:
+  @echo "No test coverage configured"
+
+# Documentation Restructuring
+# ===========================
+
+# Generate documentation inventory
+docs-inventory:
+  just docs::docs-inventory
+
+# Create a batch file
+docs-create-batch BATCH_NAME FILES:
+  just docs::docs-create-batch {{BATCH_NAME}} "{{FILES}}"
+
+# Track processing state
+docs-state BATCH_NAME STATUS:
+  just docs::docs-state {{BATCH_NAME}} "{{STATUS}}"
+
+# Validate batch completion
+docs-validate-batch BATCH_NAME:
+  just docs::docs-validate-batch {{BATCH_NAME}}
+
+# Clean up batch artifacts
+docs-cleanup-batch BATCH_NAME:
+  just docs::docs-cleanup-batch {{BATCH_NAME}}
+
+# Clean up all restructuring artifacts (run only on complete success)
+docs-cleanup-all:
+  just docs::docs-cleanup-all
+
+# Cleanup
+# =======
+
+# Remove build artifacts
+clean:
+  @echo "Nothing to clean"

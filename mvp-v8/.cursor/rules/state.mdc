@@ -1,0 +1,15 @@
+---
+description: "State management for complex workflows - provides context for checkpoint, trace, and resume operations during restructuring"
+file_patterns: ["docs/**/*.md"]
+---
+- Load active state from `docs/local/active-state.yaml`
+- Use frames for resumable context
+- Prefer simple anchors over complex references
+
+When managing complex restructuring workflows, include state management context and decision tracing capabilities.
+
+@file docs/reference/agentos/spec-active-state.md
+@file docs/reference/agentos/spec-decision-trace.md
+@file docs/explanation/decisions/2026-01-16-trace-revelation.md
+
+Use `/checkpoint` to save progress, `/trace` to understand current reasoning state, and `/resume` to continue interrupted workflows. Decision traces provide transparency without requiring full audit trails.

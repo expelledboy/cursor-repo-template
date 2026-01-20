@@ -1,0 +1,85 @@
+---
+description: test, testing, spec, validate, verify, coverage, unit test, integration test, e2e
+globs: ["tests/**", "**/*test*.py", "**/*test*.ts", "**/*test*.js", "**/*spec*.py", "**/*spec*.ts", "**/*spec*.js", "**/__tests__/**", "**/*.test.ts", "**/*.test.py"]
+---
+
+# Testing Domain Semantic Patterns
+
+When working on testing:
+- I understand this is validation and quality work
+- Load testing semantic patterns
+- Use semantic search for: "testing patterns", "test implementation examples"
+- Route to testing-aware workflows
+- Validate with test coverage checks (MCP if available)
+
+## Cascading Rule Triggers
+
+This rule triggers related rules:
+- **Quality rule** (if exists): Triggers quality-specific patterns
+- **Documentation rule**: Can layer with docs for test documentation
+- **Standard workflow rule**: Triggers standard testing workflows
+
+## Semantic Patterns I Recognize
+
+### Unit Testing
+- **Pattern**: Unit tests, component tests, isolated testing
+- **Semantic Indicators**: "unit test", "component test", "isolated", "mock"
+- **Route**: Testing workflow with unit test focus
+- **Search**: "unit testing patterns"
+- **Subagent**: Launch `/code-pattern-searcher` for unit test patterns (Level 2+)
+
+### Integration Testing
+- **Pattern**: Integration tests, API tests, system integration
+- **Semantic Indicators**: "integration test", "API test", "system test"
+- **Route**: Integration testing workflow
+- **Search**: "integration testing patterns"
+- **Subagent**: Launch `/pattern-searcher` for integration test patterns (Level 2+)
+
+### End-to-End Testing
+- **Pattern**: E2E tests, acceptance tests, user flows
+- **Semantic Indicators**: "e2e", "end-to-end", "acceptance", "user flow"
+- **Route**: E2E testing workflow
+- **Search**: "e2e testing patterns"
+
+### Test Coverage
+- **Pattern**: Coverage requirements, coverage reports, coverage goals
+- **Semantic Indicators**: "coverage", "coverage report", "coverage goal"
+- **Route**: Coverage-focused workflow
+- **Search**: "test coverage patterns"
+
+## Testing Considerations
+
+When testing domain is detected:
+- Determine appropriate test strategy (unit/integration/e2e)
+- Verify test coverage requirements
+- Check CI integration
+- Load: `docs/reference/agentos/workflows/execution-standard.md` (testing section)
+- **Orchestration**: Use Standard Orchestration (Level 2) for testing tasks
+
+## File Context Integration
+
+When editing files matching globs:
+- `tests/**` → Testing domain active
+- `**/*test*.py` → Python testing active
+- `**/*spec*.ts` → TypeScript testing active
+- Load testing-specific semantic patterns
+- Use semantic search for similar test implementations
+- Route to testing-aware workflows
+- **Trigger cascading**: File context triggers this rule, which triggers quality patterns
+
+## Integration with Orchestration
+
+This domain rule works with:
+- **alwaysApply core rule**: Provides foundational patterns
+- **Orchestration rule**: Triggers Standard Orchestration for testing tasks
+- **Other domain rules**: Can layer (e.g., testing + auth for auth tests)
+- **Globs matching**: File context informs testing domain understanding
+- **Semantic search**: Finds similar testing patterns
+- **Subagents**: Launches `/code-pattern-searcher` and `/pattern-searcher` for test patterns (Level 2+)
+
+## Pattern Library Integration
+
+When testing domain detected (Level 3+):
+- Consult pattern library for testing patterns
+- Learn new testing patterns from successful tasks
+- Reuse testing orchestration patterns
