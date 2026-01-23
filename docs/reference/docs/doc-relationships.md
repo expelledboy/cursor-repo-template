@@ -1,6 +1,8 @@
 ---
+status: stable
+purpose: Define semantics for frontmatter relationships.
 governed_by:
-  "docs/reference/docs/system-governance.md": "System governance"
+  docs/reference/docs/system-governance.md: System governance
 ---
 
 # Doc Relationships

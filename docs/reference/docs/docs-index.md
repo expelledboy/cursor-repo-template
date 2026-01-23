@@ -1,15 +1,13 @@
 ---
+status: stable
+purpose: Define the contract for `just docs-index` output.
 governed_by:
-  "docs/reference/docs/system-governance.md": "System governance"
+  docs/reference/docs/system-governance.md: System governance
 implemented_by:
-  "scripts/docs/index_generator.py": "Docs index generator"
+  scripts/docs/docs_index.py: Docs index generator
 ---
 
 # docs-index (Reference)
-
-Status: Stable
-Date: 2026-01-23
-Purpose: Define the contract for `just docs-index` output and behavior.
 
 ## What It Does
 `just docs-index` prints a precedence tree of docs using `governed_by` links.

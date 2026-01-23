@@ -1,6 +1,9 @@
 ---
+status: stable
+purpose: Onboard users into the documentation system.
 governed_by:
-  "docs/domains/docs.md": "Docs domain governance"
+  docs/domains/docs.md: Docs domain governance
+  docs/reference/docs/system-governance.md: System governance
 ---
 
 # Getting Started

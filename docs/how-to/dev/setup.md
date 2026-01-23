@@ -1,8 +1,10 @@
 ---
+status: stable
+purpose: Provide steps to set up the dev environment.
 governed_by:
-  "docs/domains/dev.md": "Dev domain governance"
+  docs/domains/dev.md: Dev domain governance
 implements:
-  "docs/reference/dev/tool-stack.md": "Tool stack facts"
+  docs/reference/dev/tool-stack.md: Tool stack facts
 ---
 
 # Development Environment Setup

@@ -1,6 +1,8 @@
 ---
+status: stable
+purpose: Define non-negotiable values that govern the documentation system.
 governs:
-  "docs/reference/docs/system-governance.md": "System-wide governance rules"
+  docs/reference/docs/system-governance.md: System-wide governance rules
 ---
 
 # Core Values

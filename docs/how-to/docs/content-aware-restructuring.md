@@ -1,6 +1,9 @@
 ---
+status: stable
+purpose: Procedure for restructuring docs via the precedence graph.
 governed_by:
-  "docs/domains/docs.md": "Docs domain governance"
+  docs/domains/docs.md: Docs domain governance
+  docs/reference/docs/system-governance.md: System governance
 ---
 
 # Content-Aware Documentation Restructuring

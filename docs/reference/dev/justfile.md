@@ -1,8 +1,11 @@
 ---
+status: stable
+purpose: Define justfile syntax and behavior used in this repo.
 governed_by:
-  "docs/domains/dev.md": "Dev domain governance"
+  docs/domains/dev.md: Dev domain governance
 implemented_by:
-  "justfile": "Project justfile"
+  docs/how-to/dev/just-quickstart.md: Quickstart procedure
+  justfile: Project justfile
 ---
 
 # `justfile` Reference

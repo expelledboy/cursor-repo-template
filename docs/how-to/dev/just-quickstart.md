@@ -1,8 +1,10 @@
 ---
+status: stable
+purpose: Provide minimal justfile usage steps.
 governed_by:
-  "docs/domains/dev.md": "Dev domain governance"
+  docs/domains/dev.md: Dev domain governance
 implements:
-  "docs/reference/dev/justfile.md": "Justfile spec"
+  docs/reference/dev/justfile.md: Justfile spec
 ---
 
 # `justfile` Quickstart

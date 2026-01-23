@@ -1,6 +1,8 @@
 ---
+status: stable
+purpose: Explain the rationale for the dev tool stack.
 governed_by:
-  "docs/domains/dev.md": "Dev domain governance"
+  docs/domains/dev.md: Dev domain governance
 ---
 
 # Tool Stack Rationale

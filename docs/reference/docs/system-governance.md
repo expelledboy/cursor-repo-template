@@ -1,15 +1,17 @@
 ---
+status: stable
+purpose: Define global rules for doc structure and precedence.
 governed_by:
-  "docs/reference/docs/core-values.md": "System core values"
+  docs/reference/docs/core-values.md: System core values
 governs:
-  "docs/reference/docs/doc-relationships.md": "Relationship semantics"
-  "docs/reference/docs/docs-index.md": "Docs index contract"
-  "docs/reference/docs/rules-system.md": "Rules system reference"
-  "docs/domains/dev.md": "Dev domain governance"
-  "docs/domains/docs.md": "Docs domain governance"
-  "docs/how-to/docs/content-aware-restructuring.md": "Restructuring procedure"
-  "docs/explanation/docs/system-rationale.md": "System rationale"
-  "docs/tutorials/getting-started.md": "System onboarding"
+  docs/reference/docs/doc-relationships.md: Relationship semantics
+  docs/reference/docs/docs-index.md: Docs index contract
+  docs/reference/docs/rules-system.md: Rules system reference
+  docs/domains/dev.md: Dev domain governance
+  docs/domains/docs.md: Docs domain governance
+  docs/how-to/docs/content-aware-restructuring.md: Restructuring procedure
+  docs/explanation/docs/system-rationale.md: System rationale
+  docs/tutorials/getting-started.md: System onboarding
 ---
 
 # System Governance

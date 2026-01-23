@@ -1,11 +1,12 @@
 ---
+status: stable
+purpose: Define governance constraints for the docs domain.
 governed_by:
-  "docs/reference/docs/core-values.md": "System core values"
-  "docs/reference/docs/system-governance.md": "System governance"
+  docs/reference/docs/system-governance.md: System governance
 governs:
-  "docs/how-to/docs/content-aware-restructuring.md": "Restructuring procedure"
-  "docs/explanation/docs/system-rationale.md": "System rationale"
-  "docs/tutorials/getting-started.md": "System onboarding"
+  docs/how-to/docs/content-aware-restructuring.md: Restructuring procedure
+  docs/explanation/docs/system-rationale.md: System rationale
+  docs/tutorials/getting-started.md: System onboarding
 ---
 
 # Docs Domain

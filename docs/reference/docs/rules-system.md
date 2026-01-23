@@ -1,13 +1,11 @@
 ---
+status: stable
+purpose: Define Cursor rule behavior and repo usage.
 governed_by:
-  "docs/reference/docs/system-governance.md": "System governance"
+  docs/reference/docs/system-governance.md: System governance
 ---
 
 # Rules System (Reference)
-
-Status: Stable
-Date: 2026-01-23
-Purpose: Defines Cursor rule behavior and how this repo uses rules to load context deterministically.
 
 ## 1. Rule types and scope
 - Project rules under `.cursor/rules/`.

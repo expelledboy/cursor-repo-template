@@ -1,9 +1,11 @@
 ---
+status: stable
+purpose: Define facts and constraints for the dev tool stack.
 governed_by:
-  "docs/domains/dev.md": "Dev domain governance"
+  docs/domains/dev.md: Dev domain governance
 implemented_by:
-  "scripts/setup.py": "Setup automation"
-  "justfile": "Task runner config"
+  docs/how-to/dev/setup.md: Setup procedure
+  justfile: Task runner config
 ---
 
 # Development Tool Stack

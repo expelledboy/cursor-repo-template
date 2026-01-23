@@ -90,12 +90,12 @@ test-coverage:
 # Generate comprehensive documentation index
 [group('docs')]
 docs-index *ARGS:
-  python3 scripts/docs/index_generator.py {{ARGS}}
+  python3 scripts/docs/docs_index.py {{ARGS}}
 
 # Validate documentation frontmatter
 [group('docs')]
 docs-validate:
-  python3 scripts/docs/index_generator.py --validate
+  python3 scripts/docs/docs_validate.py
 
 # Cleanup
 # =======

@@ -1,6 +1,9 @@
 ---
+status: stable
+purpose: Explain the rationale for the documentation system structure.
 governed_by:
-  "docs/domains/docs.md": "Docs domain governance"
+  docs/domains/docs.md: Docs domain governance
+  docs/reference/docs/system-governance.md: System governance
 ---
 
 # System Rationale
