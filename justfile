@@ -84,6 +84,19 @@ test-coverage:
   @echo "Generate test coverage here"
   # Example: pnpm test:coverage, npm test -- --coverage, cargo tarpaulin, etc.
 
+# Documentation
+# =============
+
+# Generate comprehensive documentation index
+[group('docs')]
+docs-index *ARGS:
+  python3 scripts/docs/index_generator.py {{ARGS}}
+
+# Validate documentation frontmatter
+[group('docs')]
+docs-validate:
+  python3 scripts/docs/index_generator.py --validate
+
 # Cleanup
 # =======
 

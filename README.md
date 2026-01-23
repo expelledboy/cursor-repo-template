@@ -9,14 +9,14 @@ A documentation structure that routes context intelligently, maintains single so
 ## Quick Start
 
 1. Copy this template to your project
-2. Read `docs/index.md` (the doc map)
+2. Run `just docs-index` (the doc map)
 3. Customize `AGENTS.md` for your project
-4. Add your first domain to `docs/index.md` and create a corresponding `.cursor/rules/*.mdc`
+4. Add your first domain docs and create a corresponding `.cursor/rules/*.mdc` (verify with `just docs-index`)
 
 ## Key Insight
 
 The documentation system is **software**, not just text files. When you add a domain, you must update both:
-- `docs/index.md` (the Map)
+- `just docs-index` output (the Map)
 - `.cursor/rules/*.mdc` (the Router)
 
 This bidirectional linking ensures agents can find and maintain context correctly.

@@ -23,6 +23,8 @@
             # just  # Task runner (if not using system just)
             # git
             # jq
+            python3
+            python3.pkgs.pyyaml
           ];
         };
       }

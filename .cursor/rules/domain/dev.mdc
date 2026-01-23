@@ -1,0 +1,17 @@
+---
+description: Dev domain routing for tooling and setup
+alwaysApply: false
+globs:
+  - "justfile"
+  - ".envrc"
+  - "flake.nix"
+  - "scripts/**"
+  - "docs/reference/dev/**"
+  - "docs/how-to/dev/**"
+  - "docs/explanation/dev/**"
+---
+
+- Load `docs/domains/dev.md` first for dev constraints.
+- Then load `docs/reference/dev/tool-stack.md` and `docs/reference/dev/justfile.md`.
+- Use `docs/how-to/dev/setup.md` and `docs/how-to/dev/just-quickstart.md` for procedures.
+- Use `docs/explanation/dev/tool-stack-rationale.md` only when rationale is needed.

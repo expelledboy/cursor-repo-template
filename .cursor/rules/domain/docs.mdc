@@ -1,0 +1,11 @@
+---
+description: Docs domain routing and maintenance
+alwaysApply: false
+globs:
+  - "docs/**"
+---
+
+- Load `docs/reference/docs/core-values.md` and `docs/reference/docs/system-governance.md` first.
+- Then load `docs/domains/docs.md` and the relevant doc under `docs/`.
+- Use `docs/reference/docs/doc-relationships.md` when changing or adding frontmatter relationships.
+- Do not use `AGENTS.md` as a governor for canonicals.

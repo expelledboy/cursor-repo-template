@@ -1,0 +1,9 @@
+---
+description: System-level rules for precedence, docs-index, and AGENTS role
+alwaysApply: true
+---
+
+- Use `just docs-index` first to understand the governing graph.
+- Precedence is inferred from `governs` and `governed_by`. Follow the `governed_by` chain for conflicts.
+- `AGENTS.md` is implementation-layer alignment and does not govern canonicals.
+- Keep docs aligned to their governing docs and propagate changes downward.
