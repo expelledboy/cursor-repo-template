@@ -10,16 +10,89 @@ sys.path.insert(0, str(ROOT))
 
 from scripts.docs.docs_api import DocsRepository
 from scripts.docs.utils import normalize_filter_path, repo_path_exists
+from scripts.docs.contract_specs import (
+    ALLOWED_DOC_STATUS,
+    ALLOWED_INTENTS,
+    DECISION_STATUS_VALUES,
+    TASK_VALUES,
+    INTENT_TASK_MATRIX,
+)
 
 
 def validate_required_frontmatter(repo):
     errors = []
     for path, data in repo.get_docs().items():
         fm = data["frontmatter"]
-        if "status" not in fm or not str(fm.get("status")).strip():
-            errors.append(f"{path}: missing frontmatter field 'status'")
+        if "doc_status" not in fm or not str(fm.get("doc_status")).strip():
+            errors.append(f"{path}: missing frontmatter field 'doc_status'")
         if "purpose" not in fm or not str(fm.get("purpose")).strip():
             errors.append(f"{path}: missing frontmatter field 'purpose'")
+        if "intent" not in fm or not str(fm.get("intent")).strip():
+            errors.append(f"{path}: missing frontmatter field 'intent'")
+    return errors
+
+
+def validate_doc_status(repo):
+    errors = []
+    for path, data in repo.get_docs().items():
+        value = str(data["frontmatter"].get("doc_status", "")).strip().lower()
+        if value and value not in ALLOWED_DOC_STATUS:
+            errors.append(f"{path}: invalid doc_status '{value}'")
+    return errors
+
+
+def validate_intent(repo):
+    errors = []
+    for path, data in repo.get_docs().items():
+        value = str(data["frontmatter"].get("intent", "")).strip().lower()
+        if value and value not in ALLOWED_INTENTS:
+            errors.append(f"{path}: invalid intent '{value}'")
+    return errors
+
+
+def validate_decision_frontmatter(repo):
+    errors = []
+    for path, data in repo.get_docs().items():
+        fm = data["frontmatter"]
+        if str(fm.get("intent", "")).strip().lower() != "decision":
+            continue
+        status = str(fm.get("decision_status", "")).strip().lower()
+        if not status:
+            errors.append(f"{path}: missing frontmatter field 'decision_status'")
+        elif status not in DECISION_STATUS_VALUES:
+            errors.append(f"{path}: invalid decision_status '{status}'")
+        decision_date = str(fm.get("decision_date", "")).strip()
+        if not decision_date:
+            errors.append(f"{path}: missing frontmatter field 'decision_date'")
+        else:
+            parts = decision_date.split("-")
+            if len(parts) != 3 or any(len(p) != l for p, l in zip(parts, (4, 2, 2))):
+                errors.append(f"{path}: decision_date must be YYYY-MM-DD")
+    return errors
+
+
+def validate_task_values(repo):
+    errors = []
+    for path, data in repo.get_docs().items():
+        if path != "docs/system/task-model.md":
+            continue
+        content = Path(ROOT / path).read_text(encoding="utf-8")
+        for task in TASK_VALUES:
+            if f"`{task}`" not in content:
+                errors.append(f"{path}: missing task '{task}' in body")
+    return errors
+
+
+def validate_intent_task_matrix(repo):
+    errors = []
+    path = "docs/system/intent-task-matrix.md"
+    if path not in repo.get_docs():
+        return errors
+    content = Path(ROOT / path).read_text(encoding="utf-8")
+    for task, intents in INTENT_TASK_MATRIX.items():
+        for intent in intents:
+            if f"`{task}`" in content and f"`{intent}`" not in content:
+                errors.append(f"{path}: missing intent '{intent}' for task '{task}'")
     return errors
 
 
@@ -76,6 +149,11 @@ def main():
 
     errors = []
     errors.extend(validate_required_frontmatter(repo))
+    errors.extend(validate_doc_status(repo))
+    errors.extend(validate_intent(repo))
+    errors.extend(validate_decision_frontmatter(repo))
+    errors.extend(validate_task_values(repo))
+    errors.extend(validate_intent_task_matrix(repo))
     errors.extend(validate_paths_exist(repo))
     errors.extend(validate_bidirectional(repo))
 

@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Generate a precedence tree for docs based on governed_by relationships."""
+"""Render a governed_by graph as a branching tree."""
 
 import argparse
-from datetime import datetime
 import sys
 from pathlib import Path
 
@@ -13,42 +12,8 @@ from scripts.docs.docs_api import DocsRepository
 from scripts.docs.utils import format_size_kb, normalize_filter_path
 
 
-def select_parent(repo, parents):
-    if not parents:
-        return None
-    if len(parents) == 1:
-        return parents[0]
-    non_root = [p for p in parents if repo.governed_by_targets(p)]
-    if non_root:
-        return sorted(non_root)[0]
-    return sorted(parents)[0]
-
-
-def build_parent_map(repo):
-    parent_map = {}
-    for doc_path in repo.get_docs().keys():
-        parents = repo.governed_by_targets(doc_path)
-        parent_map[doc_path] = select_parent(repo, parents)
-    return parent_map
-
-
-def build_children_map(parent_map):
-    children = {doc_path: [] for doc_path in parent_map.keys()}
-    for doc_path, parent in parent_map.items():
-        if parent:
-            children[parent].append(doc_path)
-    for parent in children:
-        children[parent] = sorted(children[parent])
-    return children
-
-
-def find_roots(parent_map):
-    roots = [doc for doc, parent in parent_map.items() if parent is None]
-    return sorted(roots)
-
-
-def render_implemented_by(repo, doc_path, prefix, is_last):
-    implemented_by = repo.get_docs()[doc_path]["relationships"].get("implemented_by", [])
+def render_implemented_by(repo, node, prefix, is_last):
+    implemented_by = repo.get_docs()[node]["relationships"].get("implemented_by", [])
     if not implemented_by:
         return []
     lines = []
@@ -62,19 +27,43 @@ def render_implemented_by(repo, doc_path, prefix, is_last):
     return lines
 
 
-def render_tree(repo, root, children_map, prefix="", seen=None):
-    if seen is None:
-        seen = set()
-    lines = []
+def render_child(repo, node, prefix, is_last, stack, child_map):
+    branch = "└──" if is_last else "├──"
+    line_prefix = f"{prefix}{branch} "
+    size = format_size_kb(repo.get_docs()[node]["file_size"])
+
+    if node in stack:
+        return [f"{line_prefix}{node} ({size}) [cycle]"]
+
+    lines = [f"{line_prefix}{node} ({size})"]
+    stack.add(node)
+
+    children = sorted(child_map.get(node, []))
+    has_impl = bool(repo.get_docs()[node]["relationships"].get("implemented_by"))
+    entries = []
+    if has_impl:
+        entries.append(("implemented_by", None))
+    for child in children:
+        entries.append(("child", child))
+
+    child_prefix = f"{prefix}{'    ' if is_last else '│   '}"
+    for idx, (kind, child) in enumerate(entries):
+        child_is_last = idx == len(entries) - 1
+        if kind == "implemented_by":
+            lines.extend(render_implemented_by(repo, node, child_prefix, child_is_last))
+            continue
+        lines.extend(render_child(repo, child, child_prefix, child_is_last, stack, child_map))
+
+    stack.remove(node)
+    return lines
+
+
+def render_tree(repo, root, child_map):
     size = format_size_kb(repo.get_docs()[root]["file_size"])
-    lines.append(f"{prefix}{root} ({size})")
+    lines = [f"{root} ({size})"]
+    stack = {root}
 
-    if root in seen:
-        lines.append(f"{prefix}└── [cycle]")
-        return lines
-    seen.add(root)
-
-    children = children_map.get(root, [])
+    children = sorted(child_map.get(root, []))
     has_impl = bool(repo.get_docs()[root]["relationships"].get("implemented_by"))
     entries = []
     if has_impl:
@@ -84,94 +73,43 @@ def render_tree(repo, root, children_map, prefix="", seen=None):
 
     for idx, (kind, child) in enumerate(entries):
         is_last = idx == len(entries) - 1
-        branch = "└──" if is_last else "├──"
-        child_prefix = f"{prefix}{'    ' if is_last else '│   '}"
-
         if kind == "implemented_by":
-            lines.extend(render_implemented_by(repo, root, child_prefix, True))
+            lines.extend(render_implemented_by(repo, root, "", is_last))
             continue
-
-        size_child = format_size_kb(repo.get_docs()[child]["file_size"])
-        lines.append(f"{prefix}{branch} {child} ({size_child})")
-        subtree_prefix = f"{prefix}{'    ' if is_last else '│   '}"
-        lines.extend(render_tree(repo, child, children_map, subtree_prefix, seen.copy())[1:])
+        lines.extend(render_child(repo, child, "", is_last, stack, child_map))
 
     return lines
-
-
-def render_tree_with_branch(repo, root, children_map, prefix, branch):
-    lines = render_tree(repo, root, children_map, prefix + ("    " if branch == "└──" else "│   "))
-    if not lines:
-        return []
-    root_line = lines[0].lstrip()
-    lines[0] = f"{prefix}{branch} {root_line}"
-    return lines
-
-
-def generate_index(repo, file_filter=None):
-    output = [""]
-
-    parent_map = build_parent_map(repo)
-    children_map = build_children_map(parent_map)
-    roots = find_roots(parent_map)
-
-    if file_filter:
-        roots = [file_filter] if file_filter in repo.get_docs() else []
-
-    reachable = set()
-    if len(roots) == 1:
-        root = roots[0]
-        lines = render_tree(repo, root, children_map)
-        output.extend(lines)
-        output.append("")
-        stack = [root]
-        while stack:
-            node = stack.pop()
-            if node in reachable:
-                continue
-            reachable.add(node)
-            for child in children_map.get(node, []):
-                stack.append(child)
-    elif len(roots) > 1:
-        output.append("ROOT")
-        for idx, root in enumerate(roots):
-            is_last = idx == len(roots) - 1
-            branch = "└──" if is_last else "├──"
-            output.extend(render_tree_with_branch(repo, root, children_map, "", branch))
-        output.append("")
-        for root in roots:
-            stack = [root]
-            while stack:
-                node = stack.pop()
-                if node in reachable:
-                    continue
-                reachable.add(node)
-                for child in children_map.get(node, []):
-                    stack.append(child)
-
-    if not file_filter:
-        unlinked = sorted([p for p in repo.get_docs().keys() if p not in reachable])
-        if unlinked:
-            output.append("Unlinked")
-            for doc_path in unlinked:
-                size = format_size_kb(repo.get_docs()[doc_path]["file_size"])
-                output.append(f"- {doc_path} ({size})")
-            output.append("")
-
-    output.append(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    return "\n".join(output)
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate documentation index")
-    parser.add_argument("--filter", help="Filter to show contexts for specific file")
+    parser = argparse.ArgumentParser(description="Render governed_by graph from entrypoint")
+    parser.add_argument("--from", dest="entry", help="Entrypoint doc path")
     args = parser.parse_args()
 
     repo = DocsRepository()
     repo.load_docs(include_drafts=False)
 
-    normalized = normalize_filter_path(args.filter)
-    print(generate_index(repo, normalized))
+    if args.entry:
+        entry = normalize_filter_path(args.entry)
+        if entry not in repo.get_docs():
+            print(f"Entry not found in docs: {entry}")
+            sys.exit(1)
+        child_map = {}
+        for doc_path in repo.get_docs().keys():
+            child_map[doc_path] = repo.governed_by_targets(doc_path)
+        print("\n".join(render_tree(repo, entry, child_map)))
+        return
+
+    reverse_map = {path: [] for path in repo.get_docs().keys()}
+    for path in repo.get_docs().keys():
+        for parent in repo.governed_by_targets(path):
+            reverse_map[parent].append(path)
+
+    roots = [path for path in repo.get_docs().keys() if not repo.governed_by_targets(path)]
+    for idx, root in enumerate(sorted(roots)):
+        if idx:
+            print("")
+        print("\n".join(render_tree(repo, root, reverse_map)))
 
 
 if __name__ == "__main__":

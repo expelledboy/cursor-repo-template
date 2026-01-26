@@ -1,9 +1,9 @@
 ---
-description: System-level rules for precedence, docs-index, and AGENTS role
+description: System-level rules for precedence and docs-index
 alwaysApply: true
 ---
 
-- Use `just docs-index` first to understand the governing graph.
-- Precedence is inferred from `governs` and `governed_by`. Follow the `governed_by` chain for conflicts.
+- Use `just docs-index --from <path>` to inspect the governed_by graph for a specific doc.
+- Use `just docs-index` to scan the full governed_by DAG.
+- Precedence is inferred from `governs` and `governed_by`. Resolve conflicts by walking `governed_by` upward.
 - `AGENTS.md` is implementation-layer alignment and does not govern canonicals.
-- Keep docs aligned to their governing docs and propagate changes downward.

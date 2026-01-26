@@ -38,10 +38,10 @@ def normalize_filter_path(file_filter):
     return cleaned
 
 
-def is_draft(status):
-    if status is None:
-        return False
-    return str(status).strip().lower() == "draft"
+def is_active(doc_status):
+    if doc_status is None:
+        return True
+    return str(doc_status).strip().lower() == "stable"
 
 
 def repo_path_exists(path):

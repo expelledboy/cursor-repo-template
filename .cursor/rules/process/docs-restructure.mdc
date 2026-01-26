@@ -1,8 +1,0 @@
----
-description: Use when refactoring or restructuring docs
-alwaysApply: false
----
-
-- Follow `docs/how-to/docs/content-aware-restructuring.md`.
-- Use `just docs-index` to identify governing docs.
-- Resolve conflicts by walking `governed_by` upward.

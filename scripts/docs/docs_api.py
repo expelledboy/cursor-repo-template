@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 import yaml
 
-from .utils import extract_rels, is_draft
+from .utils import extract_rels, is_active
 
 
 class DocsRepository:
@@ -17,8 +17,8 @@ class DocsRepository:
             frontmatter = self._parse_frontmatter(md_file)
             if not frontmatter:
                 continue
-            status = frontmatter.get("status")
-            if not include_drafts and is_draft(status):
+            doc_status = frontmatter.get("doc_status")
+            if not include_drafts and not is_active(doc_status):
                 continue
             rel_path = str(md_file.relative_to(self.docs_root.parent))
             self.docs[rel_path] = {
