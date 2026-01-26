@@ -11,7 +11,9 @@ governs:
   docs/system/intent-task-matrix.md: Load to verify task mapping follows governance
   docs/system/model/docs-index-output.md: Load to ensure the docs-index contract follows governance
   docs/system/model/docs-domains-output.md: Load to ensure the docs-domains contract follows governance
+  docs/system/model/docs-skills-output.md: Load to ensure the docs-skills contract follows governance
   docs/system/model/domain-doc.md: Load to ensure domain doc contracts follow governance
+  docs/system/model/reference-doc.md: Load to ensure reference doc contracts follow governance
   docs/system/model/problem-doc.md: Load to ensure problem contracts follow governance
   docs/system/model/decision-doc.md: Load to ensure decision contracts follow governance
   docs/system/model/procedure-doc.md: Load to ensure procedure contracts follow governance
@@ -76,6 +78,10 @@ Contract docs define required fields and sections for a doc type and must govern
 the docs that implement them. Each problem, decision, or procedure doc must
 include a `governed_by` link to its contract doc.
 
+## External Sources
+- Prefer links to authoritative sources instead of duplicating their content.
+- Use `related` to surface external references that inform the current doc.
+
 ## Metadata Rules
 - Use `doc_status` for document lifecycle (`stable`, `draft`, `deprecated`).
 - Use domain specific fields for content state, for example `decision_status`
@@ -112,6 +118,10 @@ include a `governed_by` link to its contract doc.
 - Every domain has `docs/domains/<domain>.md` as a domain definition and index entry.
 - Domain docs define scope and boundaries and do not govern other docs.
 - Use `just docs-domains` to list indexed domains.
+
+## Agent Skills
+- Skills live under `agent/skills/` and use `SKILL.md` per skill.
+- Use `just docs-skills` to list skills visible to the system.
 
 ## Intent Rule
 - Intent describes how a document is used, not its authority.

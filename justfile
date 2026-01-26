@@ -97,10 +97,35 @@ docs-index *ARGS:
 docs-domains:
   python3 scripts/docs/docs_domains.py
 
+# Render a deterministic skills index
+[group('docs')]
+docs-skills:
+  python3 scripts/docs/docs_skills.py
+
 # Validate documentation frontmatter
 [group('docs')]
 docs-validate:
   python3 scripts/docs/docs_validate.py
+
+agent_runtimes := "cursor codex"
+
+# Link skills directories for agent tooling
+[group('docs')]
+@link-skills:
+  mkdir -p agent/skills
+  for runtime in {{agent_runtimes}}; do \
+    mkdir -p ".${runtime}"; \
+    [ -L ".${runtime}/skills" ] && continue; \
+    [ -e ".${runtime}/skills" ] && [ ! -L ".${runtime}/skills" ] && { echo ".${runtime}/skills exists and is not a symlink"; exit 1; }; \
+    ln -sfn ../agent/skills ".${runtime}/skills"; \
+  done
+
+# Sync skills into .cursor for tools that ignore symlinks
+[group('docs')]
+sync-skills:
+  @mkdir -p agent/skills .cursor/skills
+  @rsync -a --delete agent/skills/ .cursor/skills/
+  @echo "Synced agent/skills to .cursor/skills"
 
 # Cleanup
 # =======

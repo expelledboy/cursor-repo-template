@@ -13,6 +13,8 @@ ALLOWED_INTENTS = {
     "decision",
     "examples",
     "glossary",
+    "skill",
+    "reference",
 }
 
 DECISION_STATUS_VALUES = {"accepted", "rejected", "superseded", "reversed"}

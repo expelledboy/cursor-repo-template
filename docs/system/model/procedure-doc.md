@@ -17,7 +17,10 @@ governs:
   docs/system/procedure/creating-procedure-docs.md: Load to verify this procedure follows the contract
   docs/system/procedure/validating-doc-contracts.md: Load to verify this procedure follows the contract
   docs/system/procedure/creating-domain-docs.md: Load to verify this procedure follows the contract
+  docs/system/procedure/creating-agent-skills.md: Load to verify this procedure follows the contract
   docs/system/loading-policy.md: Load to verify this procedure follows the contract
+  docs/dev/procedure/creating-discovery-procedures.md: Load to verify this procedure follows the contract
+  docs/dev/procedure/caching-external-references.md: Load to verify this procedure follows the contract
 ---
 
 # Procedure Doc Model

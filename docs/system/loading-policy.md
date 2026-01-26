@@ -57,6 +57,7 @@ implemented_by:
 - `just docs-index --from docs/system/problem/context-limits-break-correctness.md`
 - `just docs-index`
 - `just docs-domains`
+- `just docs-skills`
 
 ## docs-index Output Interpretation
 - The output is a governed_by DAG rendered as a branching tree.

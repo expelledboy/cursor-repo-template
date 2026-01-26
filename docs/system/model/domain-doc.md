@@ -14,6 +14,7 @@ related:
   docs/system/decision/introduce-domain-index.md: Load if you need the decision that mandates domain indexing
 governs:
   docs/domains/system.md: Load to verify this domain doc follows the contract
+  docs/domains/dev.md: Load to verify this domain doc follows the contract
 ---
 
 # Domain Doc Model

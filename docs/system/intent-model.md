@@ -24,6 +24,8 @@ Intent describes how a document is used. `intent` does not grant authority.
 - `decision`: the choice and its outcome.
 - `examples`: illustrative usage.
 - `glossary`: definitions of terms.
+- `skill`: reusable capability packages with explicit triggers.
+- `reference`: external sources or cached upstream material.
 
 ## Management Rules
 - The intent list is a controlled vocabulary.

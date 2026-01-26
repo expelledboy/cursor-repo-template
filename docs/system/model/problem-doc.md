@@ -11,6 +11,7 @@ related:
   docs/system/loading-policy.md: Load if you need the loading rules that require this contract
 governs:
   docs/system/problem/context-limits-break-correctness.md: Load to verify this problem follows the contract
+  docs/dev/problem/external-knowledge-drift.md: Load to verify this problem follows the contract
 ---
 
 # Problem Doc Model
