@@ -5,7 +5,6 @@ intent: decision
 decision_status: accepted
 decision_date: 2026-01-26
 governed_by:
-  docs/domains/system.md: Load if you need domain constraints for this decision
   docs/system/model/decision-doc.md: Load if you need the required fields for decision docs
 related:
   docs/system/problem/context-limits-break-correctness.md: Load if you need the motivating problem for this decision

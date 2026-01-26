@@ -3,11 +3,12 @@ doc_status: stable
 purpose: Define the structure and rules for procedure docs.
 intent: contract
 governed_by:
-  docs/domains/system.md: Load if you need domain rules that constrain procedure contracts
+  docs/system/governance.md: Load if you need global rules that govern procedure contracts
 implemented_by:
   scripts/docs/docs_validate.py: Load if you need to see enforcement of procedure doc requirements
   docs/system/procedure/creating-procedure-docs.md: Load if you need the procedure that implements this contract
   docs/system/procedure/validating-doc-contracts.md: Load if you need the procedure that validates contracts
+  docs/system/procedure/creating-domain-docs.md: Load if you need the procedure that creates domain docs
 related:
   docs/system/loading-policy.md: Load if you need the loading rules that require this contract
 governs:
@@ -15,6 +16,8 @@ governs:
   docs/system/procedure/creating-decision-docs.md: Load to verify this procedure follows the contract
   docs/system/procedure/creating-procedure-docs.md: Load to verify this procedure follows the contract
   docs/system/procedure/validating-doc-contracts.md: Load to verify this procedure follows the contract
+  docs/system/procedure/creating-domain-docs.md: Load to verify this procedure follows the contract
+  docs/system/loading-policy.md: Load to verify this procedure follows the contract
 ---
 
 # Procedure Doc Model

@@ -5,7 +5,17 @@ intent: contract
 governed_by:
   docs/system/core-values.md: Load if you need the non-negotiable values that constrain these rules
 governs:
-  docs/domains/system.md: Load to apply global rules within the system domain
+  docs/system/authority-model.md: Load to ensure authority rules follow governance
+  docs/system/intent-model.md: Load to align intent vocabulary with governance rules
+  docs/system/task-model.md: Load to align task vocabulary with governance rules
+  docs/system/intent-task-matrix.md: Load to verify task mapping follows governance
+  docs/system/model/docs-index-output.md: Load to ensure the docs-index contract follows governance
+  docs/system/model/docs-domains-output.md: Load to ensure the docs-domains contract follows governance
+  docs/system/model/domain-doc.md: Load to ensure domain doc contracts follow governance
+  docs/system/model/problem-doc.md: Load to ensure problem contracts follow governance
+  docs/system/model/decision-doc.md: Load to ensure decision contracts follow governance
+  docs/system/model/procedure-doc.md: Load to ensure procedure contracts follow governance
+  docs/system/system-rationale.md: Load to ensure rationale aligns with governance
 implemented_by:
   scripts/docs/docs_validate.py: Load if you need to see enforcement of governance constraints
   scripts/docs/contract_specs.py: Load if you need the constants used by validation
@@ -99,8 +109,9 @@ include a `governed_by` link to its contract doc.
 
 ## Domain Rule
 - Canonical docs live under `docs/<domain>/` or `docs/system/`.
-- Every domain has `docs/domains/<domain>.md`.
-- Domain docs govern all canonical docs in that domain.
+- Every domain has `docs/domains/<domain>.md` as a domain definition and index entry.
+- Domain docs define scope and boundaries and do not govern other docs.
+- Use `just docs-domains` to list indexed domains.
 
 ## Intent Rule
 - Intent describes how a document is used, not its authority.

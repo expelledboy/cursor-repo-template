@@ -3,13 +3,15 @@ doc_status: stable
 purpose: Define the context loading procedure for docs.
 intent: procedure
 governed_by:
-  docs/domains/system.md: Load if you need domain constraints for loading behavior
+  docs/system/model/procedure-doc.md: Load if you need the contract for procedure docs
   docs/system/authority-model.md: Load if you need authority rules this procedure must obey
 implements:
   docs/system/authority-model.md: Load if you need the authority rules this procedure enforces
 related:
   docs/system/intent-task-matrix.md: Load if you need the required intents for the task
   docs/system/model/docs-index-output.md: Load if you need the output contract for docs-index
+  docs/system/model/domain-doc.md: Load if you need the domain doc contract for scope definitions
+  docs/system/model/docs-domains-output.md: Load if you need the domain index output contract
   docs/system/model/problem-doc.md: Load if you need the contract for problem docs you create or validate
   docs/system/model/decision-doc.md: Load if you need the contract for decision docs you create or validate
   docs/system/model/procedure-doc.md: Load if you need the contract for procedure docs you create or validate
@@ -30,8 +32,8 @@ implemented_by:
 - `task`
 
 ## Procedure
-1) Load the domain governance doc for the target domain.
-2) Load the `governed_by` chain up to the root.
+1) Load the domain doc to understand scope and boundaries.
+2) Load the `governed_by` chain up to the root for the target doc.
 3) Determine the task from the user request.
 4) Load docs whose `intent` is required by the task to intent mapping.
 5) Validate that all required governing docs are present.
@@ -54,8 +56,10 @@ implemented_by:
 - `just docs-index --from docs/system/governance.md`
 - `just docs-index --from docs/system/problem/context-limits-break-correctness.md`
 - `just docs-index`
+- `just docs-domains`
 
 ## docs-index Output Interpretation
 - The output is a governed_by DAG rendered as a branching tree.
 - Repeated nodes appear multiple times to preserve all paths.
 - `implemented_by` branches show enforcement or operationalization links.
+- Output includes only active docs (`doc_status: stable`) by default.

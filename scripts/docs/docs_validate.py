@@ -12,6 +12,7 @@ from scripts.docs.docs_api import DocsRepository
 from scripts.docs.utils import normalize_filter_path, repo_path_exists
 from scripts.docs.contract_specs import (
     ALLOWED_DOC_STATUS,
+    ALLOWED_DOMAIN_STATUS,
     ALLOWED_INTENTS,
     DECISION_STATUS_VALUES,
     TASK_VALUES,
@@ -96,6 +97,32 @@ def validate_intent_task_matrix(repo):
     return errors
 
 
+def validate_domain_docs(repo):
+    errors = []
+    for path, data in repo.get_docs().items():
+        if not path.startswith("docs/domains/"):
+            continue
+        fm = data["frontmatter"]
+        intent = str(fm.get("intent", "")).strip().lower()
+        if intent != "facts":
+            errors.append(f"{path}: domain docs must use intent 'facts'")
+        domain_id = str(fm.get("domain_id", "")).strip()
+        if not domain_id:
+            errors.append(f"{path}: missing frontmatter field 'domain_id'")
+        domain_scope = str(fm.get("domain_scope", "")).strip()
+        if not domain_scope:
+            errors.append(f"{path}: missing frontmatter field 'domain_scope'")
+        domain_status = str(fm.get("domain_status", "")).strip().lower()
+        if not domain_status:
+            errors.append(f"{path}: missing frontmatter field 'domain_status'")
+        elif domain_status not in ALLOWED_DOMAIN_STATUS:
+            errors.append(f"{path}: invalid domain_status '{domain_status}'")
+        governed_by = data["relationships"].get("governed_by", [])
+        if "docs/system/model/domain-doc.md" not in governed_by:
+            errors.append(f"{path}: missing governed_by docs/system/model/domain-doc.md")
+    return errors
+
+
 def validate_paths_exist(repo):
     errors = []
     for path, data in repo.get_docs().items():
@@ -154,6 +181,7 @@ def main():
     errors.extend(validate_decision_frontmatter(repo))
     errors.extend(validate_task_values(repo))
     errors.extend(validate_intent_task_matrix(repo))
+    errors.extend(validate_domain_docs(repo))
     errors.extend(validate_paths_exist(repo))
     errors.extend(validate_bidirectional(repo))
 

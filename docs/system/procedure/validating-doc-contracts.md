@@ -3,7 +3,6 @@ doc_status: stable
 purpose: Define how to validate doc contracts and resolve validation errors.
 intent: procedure
 governed_by:
-  docs/domains/system.md: Load if you need domain constraints for this procedure
   docs/system/model/procedure-doc.md: Load if you need the contract for procedure docs
 implements:
   docs/system/model/procedure-doc.md: Load if you need the contract this procedure must satisfy

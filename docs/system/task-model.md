@@ -3,7 +3,7 @@ doc_status: stable
 purpose: Define the task vocabulary for docs.
 intent: contract
 governed_by:
-  docs/domains/system.md: Load if you need the domain rules that constrain task vocabulary
+  docs/system/governance.md: Load if you need global rules that govern task vocabulary
 implemented_by:
   scripts/docs/docs_validate.py: Load if you need to see enforcement of allowed tasks
   scripts/docs/contract_specs.py: Load if you need the allowed task list used by validation

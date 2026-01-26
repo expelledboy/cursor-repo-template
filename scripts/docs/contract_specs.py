@@ -1,6 +1,7 @@
 """Contract specifications for docs validation."""
 
 ALLOWED_DOC_STATUS = {"stable", "draft", "deprecated"}
+ALLOWED_DOMAIN_STATUS = {"active", "deprecated"}
 
 ALLOWED_INTENTS = {
     "facts",

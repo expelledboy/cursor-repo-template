@@ -5,5 +5,6 @@ alwaysApply: true
 
 - Use `just docs-index --from <path>` to inspect the governed_by graph for a specific doc.
 - Use `just docs-index` to scan the full governed_by DAG.
+- Use `just docs-domains` to list domain scopes.
 - Precedence is inferred from `governs` and `governed_by`. Resolve conflicts by walking `governed_by` upward.
 - `AGENTS.md` is implementation-layer alignment and does not govern canonicals.

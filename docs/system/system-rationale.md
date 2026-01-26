@@ -3,7 +3,7 @@ doc_status: stable
 purpose: Explain why docs separates `intent` from authority.
 intent: rationale
 governed_by:
-  docs/domains/system.md: Load if you need domain constraints for this rationale
+  docs/system/governance.md: Load if you need global rules that this rationale must align with
 ---
 
 # System Rationale

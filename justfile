@@ -92,6 +92,11 @@ test-coverage:
 docs-index *ARGS:
   python3 scripts/docs/docs_index.py {{ARGS}}
 
+# Render a deterministic domain index
+[group('docs')]
+docs-domains:
+  python3 scripts/docs/docs_domains.py
+
 # Validate documentation frontmatter
 [group('docs')]
 docs-validate:

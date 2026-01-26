@@ -3,7 +3,7 @@ doc_status: stable
 purpose: Define the contract for `just docs-index` output.
 intent: contract
 governed_by:
-  docs/domains/system.md: Load if you need domain rules that constrain this contract
+  docs/system/governance.md: Load if you need global rules that govern this contract
 implemented_by:
   scripts/docs/docs_index.py: Load if you need the renderer that implements this contract
 related:
@@ -21,17 +21,22 @@ Define the expected output of `just docs-index`.
 - Relationships: `governed_by`, `governs`, `implements`, `implemented_by`, `related`.
 
 ## Output
-- Render the full `governed_by` DAG as a branching tree.
+- Render the `governed_by` DAG for active docs as a branching tree.
 - Render `implemented_by` as a child branch under the source doc.
 - Include file sizes in KB.
 
+## Output Format
+- Unicode tree glyphs are allowed.
+- Output is deterministic for a given docs state.
+
 ## Flags
 - `--from <path>`: render the graph starting from a specific entrypoint.
+  Use only active docs unless the loader is configured otherwise.
 
 ## Interpretation
 - Repeated nodes appear multiple times to preserve all paths.
 - `implemented_by` branches indicate enforcement or operationalization.
+- `[cycle]` indicates a detected cycle during traversal.
 
 ## Constraints
-- Output must be ASCII.
 - Ordering must be deterministic.

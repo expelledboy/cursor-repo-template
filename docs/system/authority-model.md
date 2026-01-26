@@ -3,7 +3,7 @@ doc_status: stable
 purpose: Define authority and precedence for docs.
 intent: contract
 governed_by:
-  docs/domains/system.md: Load if you need domain constraints for authority rules
+  docs/system/governance.md: Load if you need global rules that govern authority
 governs:
   docs/system/loading-policy.md: Load to apply authority rules within loading steps
 implemented_by:

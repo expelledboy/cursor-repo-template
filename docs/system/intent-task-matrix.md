@@ -3,7 +3,7 @@ doc_status: stable
 purpose: Map tasks to required intents for context loading.
 intent: contract
 governed_by:
-  docs/domains/system.md: Load if you need the domain rules that constrain this mapping
+  docs/system/governance.md: Load if you need global rules that govern this mapping
 implemented_by:
   scripts/docs/docs_validate.py: Load if you need to see enforcement of the task mapping
   scripts/docs/contract_specs.py: Load if you need the mapping used by validation

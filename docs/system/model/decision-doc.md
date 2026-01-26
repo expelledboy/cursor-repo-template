@@ -3,7 +3,7 @@ doc_status: stable
 purpose: Define the structure and rules for decision docs.
 intent: contract
 governed_by:
-  docs/domains/system.md: Load if you need domain rules that constrain decision contracts
+  docs/system/governance.md: Load if you need global rules that govern decision contracts
 implemented_by:
   scripts/docs/docs_validate.py: Load if you need to see enforcement of decision doc requirements
   docs/system/procedure/creating-decision-docs.md: Load if you need the procedure that implements this contract
@@ -14,6 +14,7 @@ governs:
   docs/system/decision/domain-first-organization.md: Load to verify this decision follows the contract
   docs/system/decision/automate-governed-by-graph.md: Load to verify this decision follows the contract
   docs/system/decision/enforce-doc-contracts.md: Load to verify this decision follows the contract
+  docs/system/decision/introduce-domain-index.md: Load to verify this decision follows the contract
 ---
 
 # Decision Doc Model

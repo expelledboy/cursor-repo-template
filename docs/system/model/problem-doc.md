@@ -3,7 +3,7 @@ doc_status: stable
 purpose: Define the structure and rules for problem docs.
 intent: contract
 governed_by:
-  docs/domains/system.md: Load if you need domain rules that constrain problem contracts
+  docs/system/governance.md: Load if you need global rules that govern problem contracts
 implemented_by:
   scripts/docs/docs_validate.py: Load if you need to see enforcement of problem doc requirements
   docs/system/procedure/creating-problem-docs.md: Load if you need the procedure that implements this contract
