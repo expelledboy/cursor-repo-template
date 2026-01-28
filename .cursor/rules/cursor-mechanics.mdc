@@ -1,0 +1,17 @@
+---
+description: Maintain awareness of Cursor runtime constraints
+globs: "**/*"
+alwaysApply: true
+---
+
+# Cursor Mechanics Awareness
+
+## Context is Finite
+You are running in a runtime with a hard token limit.
+
+1.  **Constraint:** Loading unused context is a correctness failure.
+2.  **Directive:** Continuously evaluate your context window. If you are loading a rule or doc you don't use, unload it.
+3.  **Compaction:** Assume your history will be compressed. Externalize state to `docs/work/objective-graph.yaml`.
+
+## Reference
+- Physics: `docs/dev/facts/cursor-mechanics.md`

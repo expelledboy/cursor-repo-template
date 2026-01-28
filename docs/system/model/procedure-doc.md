@@ -23,6 +23,7 @@ governs:
   docs/dev/procedure/caching-external-references.md: Load to verify this procedure follows the contract
   docs/system/procedure/maintaining-objective-graph.md: Load to verify this procedure follows the contract
   docs/system/procedure/objective-graph-realignment.md: Load to verify this procedure follows the contract
+  docs/system/procedure/promoting-operational-findings.md: Load to verify this procedure follows the contract
   docs/system/procedure/objective-graph-behavior-guide.md: Load to verify this procedure follows the contract
   docs/system/procedure/defining-evaluation-frameworks.md: Load to verify this procedure follows the contract
   docs/system/procedure/implementing-from-doc-deltas.md: Load to verify this procedure follows the contract

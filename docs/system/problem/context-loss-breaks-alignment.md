@@ -6,6 +6,7 @@ governed_by:
   docs/system/model/problem-doc.md: Load if you need the required fields for problem docs
 related:
   docs/system/decision/introduce-objective-graph.md: Load if you need the decision that resolves this problem
+  docs/system/problem/context-loss-breaks-governance-executability.md: Load if you need the problem focused on governance execution
 ---
 
 # Problem: Context Loss Breaks Alignment

@@ -1,0 +1,23 @@
+---
+description: Enforce governance awareness on file modification
+globs: "**/*"
+alwaysApply: false
+---
+
+# Governance Enforcement
+
+## Trigger
+- Applied manually or via high-confidence edit triggers.
+- SHOULD be checked before any file modification.
+
+## Behavior
+STOP. You are in a governed ecosystem.
+
+1.  **Identify Authority:** Before editing any file, you MUST identify its governing authority.
+2.  **Trace Chain:** Run `just docs-index --from [file]` to see the `governed_by` chain.
+3.  **Verify Compliance:** Ensure your changes respect the intent and constraints of the governing doc.
+4.  **Blocker:** If you cannot find the authority, you are BLOCKED. Do not guess.
+
+## Reference
+- Authority Model: `docs/system/authority-model.md`
+- Governance: `docs/system/governance.md`

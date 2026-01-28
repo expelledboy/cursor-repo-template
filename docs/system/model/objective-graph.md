@@ -10,6 +10,7 @@ related:
   docs/system/decision/introduce-objective-graph.md: Load if you need the decision that mandates objective graphs
   docs/system/procedure/maintaining-objective-graph.md: Load if you need steps to maintain objective graphs
   docs/system/procedure/objective-graph-realignment.md: Load if you need the realignment procedure
+  docs/system/procedure/promoting-operational-findings.md: Load if you need the promotion procedure
   docs/system/procedure/defining-evaluation-frameworks.md: Load if you need evaluation framework guidance
   docs/system/examples/objective-graph.example.md: Load if you need a full example of the schema
   docs/system/procedure/objective-graph-behavior-guide.md: Load if you need behavioral guidance for fields
@@ -52,6 +53,7 @@ context pointers, and evaluation criteria. It is not an authoritative doc.
 - `current_step: <string>`
 - `next_action: <string>`
 - `trace_links: [<trace_link>...]`
+- `operational_findings: [<string>...]`
 
 ## Context Link Schema
 - `type: doc|code|mcp|external`
@@ -99,6 +101,7 @@ context pointers, and evaluation criteria. It is not an authoritative doc.
 - Every subtask must re-load the objective graph and run the objective's `entry_check`.
 - Entry checks must include objective restatement and scope confirmation.
 - Required context must include `load_condition` and `authority`.
+- Operational findings must be processed (promoted or discarded) before marking the Root Objective as done.
 
 ## Scope Rules
 - Objective graphs live under `docs/work/` and are not committed.

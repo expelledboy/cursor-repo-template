@@ -3,9 +3,10 @@ doc_status: stable
 purpose: Define how to create a problem doc.
 intent: procedure
 governed_by:
-  docs/system/model/procedure-doc.md: Load if you need the contract for procedure docs
+  docs/system/model/procedure-doc.md: Load if you need the procedure contract
+  docs/system/governance.md: Load if you need the authority
 implements:
-  docs/system/model/problem-doc.md: Load if you need the contract this procedure must satisfy
+  docs/system/model/problem-doc.md: Load if you need the contract this procedure implements
 related:
   docs/system/decision/separate-intent-from-authority.md: Load if you need the decision that motivates explicit problem docs
   docs/system/loading-policy.md: Load if you need the system loading rules this procedure should align with

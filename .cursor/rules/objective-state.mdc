@@ -1,0 +1,23 @@
+---
+description: Enforce objective graph state management for complex tasks
+globs: "docs/work/**, *.yaml"
+alwaysApply: false
+---
+
+# Objective State Management
+
+## Trigger
+- Complex intent keywords: "plan", "refactor", "migrate", "debug", "multi-step".
+- Editing files in `docs/work/`.
+- Detection of context window pressure (compaction).
+
+## Behavior
+You have a Persistent Memory at `docs/work/objective-graph.yaml`.
+
+1.  **Load Game:** If starting a task, load the graph. Check `active_objective`. Run `entry_check`.
+2.  **Save Game:** If stuck, switching contexts, or compacting, update `current_step` and `next_action`.
+3.  **No Amnesia:** Never rely on chat history for task state. It is ephemeral.
+
+## Reference
+- Schema: `docs/system/model/objective-graph.md`
+- Procedure: `docs/system/procedure/maintaining-objective-graph.md`
