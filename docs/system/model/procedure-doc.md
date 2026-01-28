@@ -28,6 +28,8 @@ governs:
   docs/system/procedure/defining-evaluation-frameworks.md: Load to verify this procedure follows the contract
   docs/system/procedure/implementing-from-doc-deltas.md: Load to verify this procedure follows the contract
   docs/system/procedure/resolving-conflicts.md: Load to verify this procedure follows the contract
+  docs/system/procedure/kernel-evaluation.md: Load to verify this procedure follows the contract
+  docs/system/procedure/agent-bootup.md: Load to verify this procedure follows the contract
 ---
 
 # Procedure Doc Model

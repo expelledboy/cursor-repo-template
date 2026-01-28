@@ -8,7 +8,9 @@ domain_status: active
 governed_by:
   docs/system/model/domain-doc.md: Load if you need the domain doc contract
 governs:
-  docs/dev/facts/cursor-mechanics.md: Load if you need facts about the runtime environment
+  docs/dev/facts/agent-mechanics.md: Load if you need universal agent runtime constraints
+  docs/dev/facts/cursor-mechanics.md: Load if you need Cursor-specific mechanics
+  docs/dev/facts/opencode-mechanics.md: Load if you need OpenCode-specific mechanics
 ---
 
 # Dev Domain

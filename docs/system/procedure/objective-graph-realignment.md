@@ -11,6 +11,7 @@ related:
   docs/system/loading-policy.md: Load if you need the loading rules that invoke realignment
   docs/system/examples/objective-graph.example.md: Load if you need a full example of the objective graph
   docs/system/procedure/objective-graph-behavior-guide.md: Load if you need behavioral guidance for fields
+  docs/system/procedure/agent-bootup.md: Load if you need the bootup procedure that invokes realignment
 ---
 
 # Objective Graph Realignment

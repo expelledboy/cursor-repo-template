@@ -10,8 +10,13 @@ implemented_by:
   .cursor/rules/governance-enforcement.mdc: Load for Cursor-specific injection of governance
   .cursor/rules/objective-state.mdc: Load for Cursor-specific injection of state
   .cursor/rules/cursor-mechanics.mdc: Load for Cursor-specific injection of mechanics
+  AGENTS.md: Load for runtime-agnostic baseline alignment
+  agent/skills/system-governance/SKILL.md: Load for on-demand governance skill
+  agent/skills/system-objective-state/SKILL.md: Load for on-demand state management skill
+  agent/skills/system-context-mechanics/SKILL.md: Load for on-demand context mechanics skill
 related:
   docs/system/problem/context-loss-breaks-governance-executability.md: The problem this decision resolves
+  docs/system/decision/require-bootup-and-awareness-maintenance.md: Decision that extends this with bootup verification
 ---
 
 # Decision: Require Continuous Context Injection

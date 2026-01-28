@@ -6,6 +6,7 @@ governed_by:
   docs/system/model/problem-doc.md: Load if you need the required fields for problem docs
 related:
   docs/system/decision/require-doc-code-linking.md: Load if you need the decision that resolves this problem
+  docs/system/problem/governed-edits-not-verified.md: Related problem on edit-time governance verification
 ---
 
 # Problem: Missing Doc-Code Links

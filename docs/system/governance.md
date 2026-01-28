@@ -19,6 +19,7 @@ governs:
   docs/system/model/problem-doc.md: Load to ensure problem contracts follow governance
   docs/system/model/decision-doc.md: Load to ensure decision contracts follow governance
   docs/system/model/procedure-doc.md: Load to ensure procedure contracts follow governance
+  docs/system/model/system-kernel-bootup.md: Load to ensure kernel bootup contract follows governance
   docs/system/procedure/creating-problem-docs.md: Load if you need the procedure for creating problem docs
   docs/system/procedure/promoting-operational-findings.md: Load if you need the procedure for promoting findings
   docs/system/system-rationale.md: Load to ensure rationale aligns with governance

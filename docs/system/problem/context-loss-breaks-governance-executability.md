@@ -7,6 +7,9 @@ governed_by:
 related:
   docs/system/decision/require-continuous-context-injection.md: Decision that addresses this problem
   docs/system/problem/context-loss-breaks-alignment.md: Related problem focused on objective drift
+  docs/system/problem/injection-doesnt-guarantee-internalization.md: Related problem extending injection verification
+  docs/system/problem/awareness-degrades-without-recovery.md: Related problem extending awareness maintenance
+  docs/system/decision/require-bootup-and-awareness-maintenance.md: Decision extending injection with bootup/maintenance
 ---
 
 # Problem: Context Loss Breaks Governance Executability

@@ -87,6 +87,11 @@ test-coverage:
 # Documentation
 # =============
 
+# Agent OS status - run at session start
+[group('docs')]
+status:
+  @python3 scripts/status.py
+
 # Generate comprehensive documentation index
 [group('docs')]
 docs-index *ARGS:
@@ -107,7 +112,7 @@ docs-skills:
 docs-validate:
   python3 scripts/docs/docs_validate.py
 
-agent_runtimes := "cursor codex"
+agent_runtimes := "cursor codex opencode"
 
 # Link skills directories for agent tooling
 [group('docs')]

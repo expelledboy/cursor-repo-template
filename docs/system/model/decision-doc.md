@@ -19,6 +19,7 @@ governs:
   docs/system/decision/introduce-objective-graph.md: Load to verify this decision follows the contract
   docs/system/decision/require-doc-code-linking.md: Load to verify this decision follows the contract
   docs/system/decision/require-continuous-context-injection.md: Load to verify this decision follows the contract
+  docs/system/decision/require-bootup-and-awareness-maintenance.md: Load to verify this decision follows the contract
 ---
 
 # Decision Doc Model

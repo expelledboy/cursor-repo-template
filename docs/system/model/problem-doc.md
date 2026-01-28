@@ -15,6 +15,9 @@ governs:
   docs/system/problem/context-loss-breaks-alignment.md: Load to verify this problem follows the contract
   docs/system/problem/doc-code-links-missing.md: Load to verify this problem follows the contract
   docs/system/problem/context-loss-breaks-governance-executability.md: Load to verify this problem follows the contract
+  docs/system/problem/injection-doesnt-guarantee-internalization.md: Load to verify this problem follows the contract
+  docs/system/problem/awareness-degrades-without-recovery.md: Load to verify this problem follows the contract
+  docs/system/problem/governed-edits-not-verified.md: Load to verify this problem follows the contract
 ---
 
 # Problem Doc Model
