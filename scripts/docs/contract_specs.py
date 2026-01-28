@@ -1,4 +1,10 @@
-"""Contract specifications for docs validation."""
+"""Contract specifications for docs validation.
+
+@implements docs/system/governance.md
+@implements docs/system/intent-model.md
+@implements docs/system/intent-task-matrix.md
+@implements docs/system/task-model.md
+"""
 
 ALLOWED_DOC_STATUS = {"stable", "draft", "deprecated"}
 ALLOWED_DOMAIN_STATUS = {"active", "deprecated"}

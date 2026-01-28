@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Render a deterministic domain index from docs/domains."""
+"""Render a deterministic domain index from docs/domains.
+
+@implements docs/system/model/docs-domains-output.md
+@implements docs/system/model/domain-doc.md
+@implements docs/system/procedure/creating-domain-docs.md
+"""
 
 import sys
 from pathlib import Path

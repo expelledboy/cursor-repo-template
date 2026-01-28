@@ -77,5 +77,9 @@ Validate doc contracts and resolve errors before changing or adding docs.
 ### Missing reverse `related`
 - Add the reciprocal `related` link in the target doc.
 
+### Missing doc-code link
+- If a doc lists `implemented_by`, the target file must include `@implements <doc-path>`.
+- Add the annotation to the target file or remove the `implemented_by` entry if it is not applicable.
+
 ## Validation
 - `just docs-validate` exits with `Validation passed`.

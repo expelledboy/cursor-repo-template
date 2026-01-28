@@ -12,6 +12,8 @@ related:
 governs:
   docs/system/problem/context-limits-break-correctness.md: Load to verify this problem follows the contract
   docs/dev/problem/external-knowledge-drift.md: Load to verify this problem follows the contract
+  docs/system/problem/context-loss-breaks-alignment.md: Load to verify this problem follows the contract
+  docs/system/problem/doc-code-links-missing.md: Load to verify this problem follows the contract
 ---
 
 # Problem Doc Model

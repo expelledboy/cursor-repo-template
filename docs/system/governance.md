@@ -13,6 +13,8 @@ governs:
   docs/system/model/docs-domains-output.md: Load to ensure the docs-domains contract follows governance
   docs/system/model/docs-skills-output.md: Load to ensure the docs-skills contract follows governance
   docs/system/model/domain-doc.md: Load to ensure domain doc contracts follow governance
+  docs/system/model/objective-graph.md: Load to ensure objective graph contracts follow governance
+  docs/system/model/doc-code-linking.md: Load to ensure doc-code linking rules follow governance
   docs/system/model/reference-doc.md: Load to ensure reference doc contracts follow governance
   docs/system/model/problem-doc.md: Load to ensure problem contracts follow governance
   docs/system/model/decision-doc.md: Load to ensure decision contracts follow governance
@@ -81,6 +83,13 @@ include a `governed_by` link to its contract doc.
 ## External Sources
 - Prefer links to authoritative sources instead of duplicating their content.
 - Use `related` to surface external references that inform the current doc.
+
+## Objective Graph
+- The objective graph lives under `docs/work/` and is not committed.
+- Subtasks must re-load the objective graph and run entry checks before execution.
+- Realign after compaction, new sessions, or sub-agent starts.
+- Docs under `docs/work/` are operational state and are excluded from canonical validation.
+- Operational state is not authoritative and must not override canonicals.
 
 ## Metadata Rules
 - Use `doc_status` for document lifecycle (`stable`, `draft`, `deprecated`).

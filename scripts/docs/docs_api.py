@@ -14,6 +14,9 @@ class DocsRepository:
 
     def load_docs(self, include_drafts=False):
         for md_file in self.docs_root.rglob("*.md"):
+            rel_path = md_file.relative_to(self.docs_root)
+            if rel_path.parts and rel_path.parts[0] == "work":
+                continue
             frontmatter = self._parse_frontmatter(md_file)
             if not frontmatter:
                 continue

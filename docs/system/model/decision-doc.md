@@ -16,6 +16,8 @@ governs:
   docs/system/decision/enforce-doc-contracts.md: Load to verify this decision follows the contract
   docs/system/decision/introduce-domain-index.md: Load to verify this decision follows the contract
   docs/dev/decision/prefer-authoritative-sources.md: Load to verify this decision follows the contract
+  docs/system/decision/introduce-objective-graph.md: Load to verify this decision follows the contract
+  docs/system/decision/require-doc-code-linking.md: Load to verify this decision follows the contract
 ---
 
 # Decision Doc Model

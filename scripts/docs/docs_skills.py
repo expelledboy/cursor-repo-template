@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Render a deterministic skills index from agent/skills."""
+"""Render a deterministic skills index from agent/skills.
+
+@implements docs/system/model/docs-skills-output.md
+"""
 
 import sys
 from pathlib import Path

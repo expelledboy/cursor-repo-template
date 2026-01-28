@@ -21,6 +21,12 @@ governs:
   docs/system/loading-policy.md: Load to verify this procedure follows the contract
   docs/dev/procedure/creating-discovery-procedures.md: Load to verify this procedure follows the contract
   docs/dev/procedure/caching-external-references.md: Load to verify this procedure follows the contract
+  docs/system/procedure/maintaining-objective-graph.md: Load to verify this procedure follows the contract
+  docs/system/procedure/objective-graph-realignment.md: Load to verify this procedure follows the contract
+  docs/system/procedure/objective-graph-behavior-guide.md: Load to verify this procedure follows the contract
+  docs/system/procedure/defining-evaluation-frameworks.md: Load to verify this procedure follows the contract
+  docs/system/procedure/implementing-from-doc-deltas.md: Load to verify this procedure follows the contract
+  docs/system/procedure/resolving-conflicts.md: Load to verify this procedure follows the contract
 ---
 
 # Procedure Doc Model

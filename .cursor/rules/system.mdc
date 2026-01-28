@@ -7,5 +7,6 @@ alwaysApply: true
 - Use `just docs-index` to scan the full governed_by DAG.
 - Use `just docs-domains` to list domain scopes.
 - Use `just docs-skills` to list available agent skills.
+- Load the objective graph from `docs/work/` and realign after compaction or new sessions.
 - Precedence is inferred from `governs` and `governed_by`. Resolve conflicts by walking `governed_by` upward.
 - `AGENTS.md` is implementation-layer alignment and does not govern canonicals.

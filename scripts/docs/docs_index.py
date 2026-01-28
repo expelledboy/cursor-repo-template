@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Render a governed_by graph as a branching tree."""
+"""Render a governed_by graph as a branching tree.
+
+@implements docs/system/loading-policy.md
+@implements docs/system/model/docs-index-output.md
+"""
 
 import argparse
 import sys

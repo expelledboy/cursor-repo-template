@@ -8,6 +8,8 @@ governs:
   docs/system/loading-policy.md: Load to apply authority rules within loading steps
 implemented_by:
   docs/system/loading-policy.md: Load if you need the procedure that operationalizes authority rules
+related:
+  docs/system/procedure/resolving-conflicts.md: Load if you need the conflict resolution procedure
 ---
 
 # Authority Model

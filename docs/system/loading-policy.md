@@ -15,6 +15,7 @@ related:
   docs/system/model/problem-doc.md: Load if you need the contract for problem docs you create or validate
   docs/system/model/decision-doc.md: Load if you need the contract for decision docs you create or validate
   docs/system/model/procedure-doc.md: Load if you need the contract for procedure docs you create or validate
+  docs/system/procedure/objective-graph-realignment.md: Load if you need the realignment procedure after context loss
   docs/system/procedure/creating-problem-docs.md: Load if you need steps to create problem docs
   docs/system/procedure/creating-decision-docs.md: Load if you need steps to create decision docs
   docs/system/procedure/creating-procedure-docs.md: Load if you need steps to create procedure docs
@@ -51,6 +52,7 @@ implemented_by:
 - Maintain a manifest of required docs for the current task, for example a checklist or `docs-index` output.
 - After compaction, compare loaded docs to the manifest.
 - If any required doc is missing, reload it before proceeding.
+- After compaction, load `docs/work/objective-graph.yaml` and realign.
 
 ## Example Commands
 - `just docs-index --from docs/system/governance.md`

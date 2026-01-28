@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
-"""Validate docs frontmatter, relationships, and file links."""
+"""Validate docs frontmatter, relationships, and file links.
+
+@implements docs/system/governance.md
+@implements docs/system/intent-model.md
+@implements docs/system/intent-task-matrix.md
+@implements docs/system/task-model.md
+@implements docs/system/model/problem-doc.md
+@implements docs/system/model/decision-doc.md
+@implements docs/system/model/procedure-doc.md
+@implements docs/system/model/domain-doc.md
+@implements docs/system/procedure/validating-doc-contracts.md
+"""
 
 import argparse
 from pathlib import Path
@@ -123,6 +134,27 @@ def validate_domain_docs(repo):
     return errors
 
 
+def validate_doc_code_links(repo):
+    errors = []
+    for path, data in repo.get_docs().items():
+        implemented_by = data["relationships"].get("implemented_by", [])
+        if not implemented_by:
+            continue
+        for target in implemented_by:
+            if not repo_path_exists(target):
+                continue
+            if target.startswith("docs/") or target.endswith(".md") or target.endswith(".mdc"):
+                continue
+            target_path = ROOT / target
+            if not target_path.is_file():
+                continue
+            content = target_path.read_text(encoding="utf-8", errors="replace")
+            marker = f"@implements {path}"
+            if marker not in content:
+                errors.append(f"{path}: implemented_by {target} missing '{marker}'")
+    return errors
+
+
 def validate_paths_exist(repo):
     errors = []
     for path, data in repo.get_docs().items():
@@ -182,6 +214,7 @@ def main():
     errors.extend(validate_task_values(repo))
     errors.extend(validate_intent_task_matrix(repo))
     errors.extend(validate_domain_docs(repo))
+    errors.extend(validate_doc_code_links(repo))
     errors.extend(validate_paths_exist(repo))
     errors.extend(validate_bidirectional(repo))
 
